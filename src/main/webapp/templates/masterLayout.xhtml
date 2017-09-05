@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<f:loadBundle basename="ru.classcard.ui.locale.templates.masterLayout" var="masterLayoutMsg"/>
+<h:outputLink href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+<h:outputStylesheet name="css/master_layout.css" library="default" />
+<h:head>
+    <f:facet name="first">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    </f:facet>
+    <title>
+        <ui:insert name="windowTitle">
+            #{masterLayoutMsg['app.title']}
+        </ui:insert>
+    </title>
+</h:head>
+<h:body>
+    <div class="master-layout-div">
+        <!--<h:outputScript library="default" name="js/safe.js"/>
+        <h:outputScript library="default" name="js/calendar.js"/>-->
+        <!--<p:growl autoUpdate="true" showDetail="true"/>-->
+        <h:outputStylesheet library="default" name="css/styles.css"/>
+
+
+        <div id="header">
+            <ui:insert name="heading">
+                <ui:include src="pageHeader.xhtml"/>
+            </ui:insert>
+            <ui:insert name="mainMenu">
+                <ui:include src="mainMenu.xhtml"/>
+            </ui:insert>
+        </div>
+        <div id="content">
+            <ui:insert name="mainContent"/>
+        </div>
+        <div id="footer">
+            <ui:insert name="footerContent">
+                <ui:include src="footer.xhtml"/>
+            </ui:insert>
+        </div>
+
+        <p:ajaxExceptionHandler type="java.lang.Throwable"
+                                update="exceptionDialog"
+                                onexception="PF('exceptionDialog').show();"/>
+        <p:dialog id="exceptionDialog" header="Exception: #{pfExceptionHandler.type} occured!"
+                  widgetVar="exceptionDialog"
+                  position="center top"
+                  height="500px" resizable="false">
+
+            Message: #{pfExceptionHandler.message} <br/>
+            StackTrace: <h:outputText value="#{pfExceptionHandler.formattedStackTrace}" escape="false"/>
+            <p:button onclick="document.location.href = document.location.href;" value="Reload!"/>
+        </p:dialog>
+    </div>
+</h:body>
+</html>

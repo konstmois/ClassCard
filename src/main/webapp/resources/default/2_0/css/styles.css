@@ -1,0 +1,430 @@
+/* open-sans-regular - latin_cyrillic */
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url('#{resource["fonts/open-sans-regular.eot"]}'); /* IE9 Compat Modes */
+    src: local('Open Sans'), local('OpenSans'),
+    url('#{resource["fonts/open-sans-regular.eot?#iefix"]}') format('embedded-opentype'), /* IE6-IE8 */
+    url('#{resource["fonts/open-sans-regular.woff2"]}') format('woff2'), /* Super Modern Browsers */
+    url('#{resource["fonts/open-sans-regular.woff"]}') format('woff'), /* Modern Browsers */
+    url('#{resource["fonts/open-sans-regular.ttf"]}') format('truetype'), /* Safari, Android, iOS */
+    url('#{resource["fonts/open-sans-regular.svg#OpenSans"]}') format('svg'); /* Legacy iOS */
+}
+
+/**
+* Элементты input, label
+*/
+.ui-outputlabel {
+    background-color: white;
+    font-style: normal;
+    color: #666666;
+}
+
+input.ui-inputfield, textarea.ui-inputfield, div.ui-selectonemenu {
+    border: solid 1px #cccccc;
+    background-color: white;
+    margin: 2px 10px;
+    font-style: normal;
+    color: #333333;
+}
+
+label.ui-selectonemenu-label {
+    text-align: left !important;
+}
+
+input.ui-inputfield[readonly='readonly'], input.ui-inputfield[readonly],
+textarea.ui-inputfield[readonly='readonly'], textarea.ui-inputfield[readonly] {
+    background-color: #cccccc;
+    color: #666666;
+}
+
+
+/*Кнопки -
+    сделать неактивной - добавить класс disabled,
+    кнопка отмены - класс cancel-button
+    кнопка основного действия - main-button
+    */
+.ui-button {
+    height: 27px !important;
+    font-size: 16px !important;
+    color: rgb(255, 255, 255) !important;
+    margin: 2px 10px !important;
+    background-color: rgb(54, 152, 30) !important;
+    top: 2px;
+}
+
+.ui-button-text-only .ui-button-text {
+    padding: 0px 20px !important;
+    vertical-align: middle;
+}
+
+.ui-button:hover {
+    background-color: rgb(39, 112, 22) !important;
+}
+
+.ui-button.ui-state-disabled {
+    background-color: rgb(155, 205, 143) !important;
+}
+
+.ui-button.cancel-button {
+    background-color: rgb(102, 102, 102) !important;
+}
+
+.ui-button.cancel-button:hover {
+    background-color: #333333 !important;
+}
+
+.ui-button.cancel-button.ui-state-disabled {
+    background-color: rgb(179, 179, 179) !important;
+}
+
+.ui-button.main-button {
+    background-color: rgb(245, 151, 36) !important;
+}
+
+.ui-button.main-button:hover {
+    background-color: rgb(220, 126, 10) !important;
+}
+
+.ui-button.main-button.ui-state-disabled {
+    background-color: rgb(250, 203, 146) !important;
+}
+
+/* Гриды*/
+.ui-datatable-tablewrapper thead .ui-state-default {
+    background-color: rgb(54, 152, 30);
+}
+
+.ui-datatable-tablewrapper .ui-button {
+    margin: 2px 0px !important;
+    margin-right: 10px !important;
+}
+
+.ui-widget-content .ui-outputlabel {
+    background: none !important;
+}
+
+.ui-column-title {
+    font-size: 13px;
+    color: rgb(255, 255, 255);
+    margin: 2px 2px;
+}
+
+.ui-sortable-column-icon {
+    background-color: white;
+}
+
+input.ui-column-filter {
+    background-color: white !important;
+}
+
+
+.ui-calendar.ui-column-filter input {
+    margin-left: -30px;
+    background-color: white !important;
+    width: 150px;
+}
+
+.ui-slider-handle {
+    border: solid 1px rgb(102, 102, 102) !important;
+    background-color: rgb(54, 152, 30) !important;
+}
+
+.ui-datatable-even {
+    background-color: rgb(245, 245, 245);
+}
+
+.ui-datatable-header {
+    background: rgb(155, 205, 143);
+    color: white;
+    font-size: 16px;
+}
+
+.ui-datatable-selectable:hover, .ui-datatable-selectable.ui-state-highlight {
+    background: rgb(245, 151, 36);
+    color: white;
+}
+
+/* tab*/
+.ui-tabs-nav .ui-state-default {
+    font-size: 16px;
+}
+
+.ui-tabs-nav .ui-state-default:hover, .ui-tabs-nav .ui-state-active {
+    background: rgb(245, 151, 36);
+}
+
+.ui-tabs-nav .ui-state-default:hover a, .ui-tabs-nav .ui-state-active a {
+    color: white;
+}
+
+
+/* select-box*/
+.ui-selectcheckboxmenu-label {
+    background-color: white;
+}
+
+.ui-selectcheckboxmenu-trigger {
+    background-color: white !important;
+}
+
+
+/* панель, очень много только для модального окна*/
+.ui-panel-titlebar {
+    text-align: center;
+    background: rgb(155, 205, 143);
+}
+
+.ui-panel-title {
+    height: 30px;
+    clear: both;
+}
+
+.ui-dialog {
+    margin-top: 70px;
+    max-height: 700px !important;
+    overflow:auto;
+}
+
+.ui-dialog, .ui-dialog .ui-panel {
+    width: 600px;
+}
+
+.ui-panel-title .ui-outputlabel {
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 400;
+}
+
+.ui-panel-footer {
+    height: 34px;
+}
+
+.ui-dialog .ui-panel-content {
+    display: table;
+}
+.ui-dialog .ui-panel-content label {
+    text-align: right;
+    float: left;
+}
+
+.ui-dialog .ui-panel-content input, .ui-dialog .ui-panel-content textarea, .ui-dialog .ui-panel-content .ui-messages {
+    float: left;
+}
+
+.ui-dialog .ui-panel-footer .main-button {
+    float: left;
+}
+
+.ui-dialog .ui-panel-footer .cancel-button {
+    float: right;
+}
+
+/* панель подтвреждения*/
+.ui-confirm-dialog {
+    width: 330px !important;
+    height: 160px !important;
+}
+
+.ui-confirm-dialog .ui-dialog-footer {
+    border-width: 0 0 0 0;
+}
+
+.ui-confirm-dialog .ui-dialog-content {
+    display: none;
+}
+
+.ui-dialog-titlebar {
+    display: none;
+}
+
+/*чекбокс*/
+.ui-chkbox {
+    height: 20px;
+    width: 20px;
+    border: solid 1px #cccccc;
+    background-color: white;
+    border-radius: 2px;
+}
+
+.ui-chkbox-box {
+    height: 20px;
+    width: 20px;
+    border: none;
+    background-color: white;
+    border-radius: 2px;
+}
+
+.ui-chkbox .ui-chkbox-box {
+    height: 20px;
+    width: 20px;
+    border: none;
+    background-color: white;
+    border-radius: 2px;
+}
+
+.ui-chkbox-icon.ui-icon {
+    width: 14px;
+    height: 14px;
+    border: none;
+    background-image: none;
+    background-position: center;
+}
+
+.ui-chkbox-icon.ui-icon-check {
+    width: 14px;
+    height: 14px;
+    border: none;
+    margin: 3px;
+    background-color: rgb(245, 151, 36);
+    background-image: none;
+    border-radius: 2px;
+}
+
+.ui-datepicker-header {
+    background: rgb(155, 205, 143);
+}
+
+.ui-datepicker td span, .ui-datepicker td a  {
+    border-color: white;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.ui-datepicker .ui-state-default, .ui-datepicker .ui-widget-content .ui-state-default {
+    border-color: white;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.ui-datepicker-today .ui-state-highlight, .ui-datepicker-today a.ui-state-default.ui-state-highlight.ui-state-active {
+    background-color: rgb(245, 151, 36);
+    color: white;
+}
+
+.ui-datepicker-current-day .ui-state-active  {
+    border: 1px solid #fbd850;
+    color: rgb(245, 151, 36);
+}
+
+
+/*Основные классы для расположения элементов на панелях(но можно и в не их использовать)*/
+
+.table-cell {
+    display: table-cell;
+    vertical-align: middle
+}
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+.line {clear:both; display: table }
+
+.text-center {
+    text-align: center;
+}
+
+.clear {
+    clear: both;
+    display: table-cell;
+}
+
+.label-width {
+    width: 150px;
+}
+
+.label-small-width {
+    width: 75px;
+}
+
+.label-big-width {
+    width: 250px;
+}
+
+.right-label {
+    margin: 2px 10px
+}
+
+.value-width {
+    width: 200px;
+}
+
+.value-small-width {
+    width: 100px;
+}
+
+.value-big-width {
+    width: 400px;
+}
+
+.messages-width {
+    width: 200px;
+}
+
+.messages-small-width {
+    width: 100px;
+}
+
+.messages-big-width {
+    width: 350px;
+}
+
+.calendarFilter.ui-calendar.ui-column-filter input {
+    margin-left: 4px !important;
+    margin-right: 4px !important;
+}
+
+.calendarFilter-date.ui-calendar.ui-column-filter input {
+    width: 75px !important;
+}
+
+.calendarFilter-time {
+    width: 142px !important;
+}
+
+.calendarFilter-time.calendarFilter-time.ui-calendar.ui-column-filter input {
+    width: 124px !important;
+}
+
+.calendarFilter-hour.calendarFilter-hour.ui-calendar.ui-column-filter input {
+    width: 90px !important;
+}
+
+
+.ui-menu-dynamic .ui-menuitem .ui-menuitem-text {
+    color: #666666; !important;
+    font-size: 13px; !important;
+}
+
+.copyright {
+    font-size: 13px;
+}
+
+.images{
+    display:inline-block;
+    width:25px;
+    height:auto;
+    float: left;
+    overflow:hidden;
+    vertical-align:top
+}
+
+.data-table-header-image {
+    width: 20px;
+    height: 20px;
+}
+
+.ui-datatable tbody td span.wrap {
+    word-wrap: break-word;
+}
+
+.clientInfo.ui-panelgrid>*>tr,
+.clientInfo.ui-panelgrid .ui-panelgrid-cell {
+    border: none;
+}

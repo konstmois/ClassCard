@@ -1,0 +1,2 @@
+INSERT INTO USER (id, login, password, desc, role, deleted) VALUES (S_USER_ID.NEXTVAL, 'admin', 'admin', 'Admin', 'ADMIN', 0);
+INSERT INTO USER (id, login, password, desc, role, deleted) VALUES (S_USER_ID.NEXTVAL, 'test', 'test', 'Test Class Member', 'ADMIN', 0);

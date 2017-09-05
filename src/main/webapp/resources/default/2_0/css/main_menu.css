@@ -1,0 +1,52 @@
+.ui-menubar {
+    height: 35px;
+    background-color: #369B1E;
+}
+
+.ui-menuitem-text {
+    font-size: 16px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    font-family: 'Open Sans Regular', 'Open Sans'
+}
+
+.ui-menuitem {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.ui-menu-list {
+    margin-top: -10px;
+}
+
+.ui-menuitem .ui-menuitem-text {
+    color: #ffffff;
+}
+
+.ui-menubar .ui-menuitem-link {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.ui-menuitem-active .ui-menuitem-text {
+    color: #369B1E;
+}
+
+a.ui-menuitem-active, li.ui-menuitem-active a {
+    background: #ffffff;
+    height: 37px;
+    border: solid 1px #369B1E !important;
+}
+
+.ui-menuitem-link.sub-menu-item {
+    border: none !important;
+
+}
+
+.ui-menu-child .ui-menuitem-active .sub-menu-item .ui-menuitem-text {
+    color: #666666 !important;
+}
+
+.ui-menu .ui-menu-parent .ui-menu-child {
+    width: 300px !important;
+}

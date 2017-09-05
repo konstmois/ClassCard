@@ -1,0 +1,32 @@
+.title_image_size {
+    width: 110px;
+    height: 110px;
+}
+
+.loginPanel {
+    width: 350px;
+    border-radius: 8px;
+    display: inline-block;
+    text-align: center;
+}
+
+.centerLayer {
+    position: absolute; /* Абсолютное позиционирование */
+    left: 50%; /* Положение слоя от левого края */
+    top: 20%; /* Положение слоя от верхнего края */
+    margin-left: -170px; /* Отступ слева */
+    margin-top: -100px;	/* Отступ сверху */
+    padding: 10px; /* Поля вокруг текста */
+}
+
+.login-title-text, .login-title-text .ui-widget  {
+    font-size: 25px;
+    color: #369B1E;
+    vertical-align: 15px;
+    font-family: 'Open Sans Regular', 'Open Sans'
+}
+
+.login-value {
+    width: 218px;
+    float: left;
+}

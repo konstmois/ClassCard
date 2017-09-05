@@ -1,0 +1,58 @@
+group 'ru.classcard'
+version '0.1'
+
+apply plugin: 'java'
+apply plugin: 'war'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    providedCompile 'javax:javaee-web-api:6.0'
+
+    //jsf generated styles
+    compile files('./libs/sbersafetheme.jar')
+
+    //jsf dependencies
+    compile group: 'org.primefaces', name: 'primefaces', version: '6.0'
+    compile group: 'javax.servlet.jsp', name: 'jsp-api', version: '2.2'
+    compile group: 'jstl', name: 'jstl', version: '1.2'
+
+    compile group: 'org.apache.myfaces.core', name: 'myfaces-api', version: '2.2.10'
+    compile group: 'org.apache.myfaces.core', name: 'myfaces-impl', version: '2.2.10'
+    compile group: 'javax.el', name: 'el-api', version: '2.2'
+
+    //spring
+    compile group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.1.1'
+    compile group: 'org.springframework', name: 'spring-context', version: '3.2.18.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version: '3.2.18.RELEASE'
+    compile group: 'org.springframework', name: 'spring-orm', version: '3.2.18.RELEASE'
+    compile group: 'org.springframework', name: 'spring-web', version: '3.2.18.RELEASE'
+
+    //logging
+    compile group: 'log4j', name: 'log4j', version: '1.2.17'
+    compile group: 'log4j', name: 'apache-log4j-extras', version: '1.2.17'
+    compile group: 'org.slf4j', name: 'jul-to-slf4j', version: '1.7.21'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.21'
+    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.21'
+
+    //database connection
+    compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '4.2.12.Final'
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '4.1.12.Final'
+    compile group: 'com.h2database', name: 'h2', version: '1.4.196'
+    compile group: 'postgresql', name: 'postgresql', version: '9.1-901-1.jdbc4'
+
+    //utils
+    compile group: 'com.google.guava', name: 'guava', version: '23.0'
+}
+
+war {
+    archiveName = "ClassCard.war"
+}
+
+
+
+

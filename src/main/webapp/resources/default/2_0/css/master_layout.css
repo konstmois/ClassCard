@@ -1,0 +1,24 @@
+.master-layout-div {
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 0px;
+    width: 1170px;
+}
+
+body {
+    background: #f4f4f4 repeat-x scroll left top;
+    background-size: auto;
+    width: 100%;
+    margin: 0px;
+    text-align: left;
+}
+
+.footer {
+    padding: 10px;
+    clear: left;
+    background-color: #CCCCCC;
+    opacity: 0.5;
+}
