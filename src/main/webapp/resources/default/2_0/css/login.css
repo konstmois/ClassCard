@@ -8,6 +8,7 @@
     border-radius: 8px;
     display: inline-block;
     text-align: center;
+    border-width: 1px !important;
 }
 
 .centerLayer {

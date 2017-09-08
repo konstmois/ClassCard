@@ -3,10 +3,61 @@
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+
 <ui:composition template="../templates/masterLayout.xhtml">
     <ui:define name="mainContent">
-        <ui:include src="cardView.xhtml"/>
+        <f:loadBundle basename="ru.classcard.ui.locale.card" var="cardMsg"/>
+        <h:form id="cardInfoForm">
+            <p:panel id="cardInfoPanel">
+                <p:panelGrid styleClass="cardInfo" style="width: 100%">
+                    <p:row>
+                        <p:column>
+                            <p:graphicImage id="card-image-id" library="default" name="images/visa.jpg"       rendered="#{cardBean.card.type=='VISA'}"/>
+                            <!--<p:graphicImage id="card-image-id" library="default" name="images/mastercard.jpg" rendered="#{cardBean.card.type=='MASTER_CARD'}"/>-->
+                        </p:column>
+                        <p:column>
+                            <pre><p:outputLabel id="cardNumber" value="#{cardBean.getFormattedNumber()}" styleClass="label-width cardNumber"/></pre>
+                        </p:column>
+                        <!--<p:column>
+                            <p:outputLabel id="cardDesc" value="#{cardBean.card.desc}" styleClass="label-width"/>
+                        </p:column>-->
+                        <p:column>
+                            <div style="width: 350px; float:right;">
+                            <div style="text-align: right"><p:outputLabel value="#{cardMsg['balance']}" styleClass="cardBalance-title"/></div>
+                            <div style="text-align: right"><p:outputLabel id="cardBalance" value="#{cardBean.getFormattedBalance()}" styleClass="cardBalance"/></div>
+                            </div>
+                        </p:column>
+                    </p:row>
+                </p:panelGrid>
+            </p:panel>
+
+            <!--Вкладки-->
+            <p:tabView id="cardTabs" dynamic="true">
+                <p:ajax event="tabChange"/>
+                <!--Поступления-->
+                <p:tab id="income" title="#{cardMsg['income']}"
+                       titletip="#{cardMsg['income.hint']}">
+                    <ui:include src="tabs/income.xhtml"/>
+                </p:tab>
+                <!--Расходы-->
+                <p:tab id="expenseGraph" title="#{cardMsg['expenseGraph']}"
+                       titletip="#{cardMsg['expenseGraph.hint']}">
+                    <ui:include src="tabs/expenseGraph.xhtml"/>
+                </p:tab>
+                <!--Документы клиента-->
+                <p:tab id="expense" title="#{cardMsg['expense']}"
+                       titletip="#{cardMsg['expense.hint']}">
+                    <ui:include src="tabs/expense.xhtml"/>
+                </p:tab>
+            </p:tabView>
+        </h:form>
+
+
     </ui:define>
 </ui:composition>
 </html>

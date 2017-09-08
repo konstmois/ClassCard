@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="ru.classcard.model.CardOperation" table="CARD_OPERATION">
+        <meta attribute="class-description"/>
+        <id name="id" column="ID">
+            <generator class="sequence">
+                <param name="sequence">S_CARD_OP_ID</param>
+            </generator>
+        </id>
+        <many-to-one name="card" column="CARD" class="ru.classcard.model.Card" not-null="true"/>
+        <property name="type"    column="TYPE" not-null="true">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">ru.classcard.model.OperationType</param>
+                <param name="useNamed">true</param>
+            </type>
+        </property>
+
+        <property name="amount" type="java.math.BigDecimal" column="AMOUNT" not-null="true"/>
+        <property name="desc"   type="java.lang.String"     column="DESC"   not-null="true"/>
+        <property name="date"   type="java.util.Date"       column="DATE"   not-null="true"/>
+        <property name="mcc"    type="java.lang.String"     column="MCC"    not-null="true"/>
+    </class>
+
+</hibernate-mapping>

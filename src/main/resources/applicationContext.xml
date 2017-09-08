@@ -11,11 +11,14 @@
 
     <import resource="jpaContext.xml"/>
 
+    <bean id="userDAO"        class="ru.classcard.dao.UserDAOImpl"/>
+    <bean id="cardDAO"        class="ru.classcard.dao.CardDAOImpl"/>
+    <bean id="operationDAO"   class="ru.classcard.dao.CardOperationDAOImpl"/>
+    <bean id="mccCodeDAO"     class="ru.classcard.dao.MccCodeDAOImpl"/>
 
-    <bean id="userDAO" class="ru.classcard.dao.UserDAOImpl"/>
-
-    <!--TODO настроить профили?-->
-    <!--<bean id="authService" class="ru.classcard.services.auth.AuthServiceStub"/>-->
-    <bean id="authService" class="ru.classcard.services.auth.AuthServiceImpl"/>
+    <bean id="authService"    class="ru.classcard.services.auth.AuthServiceImpl"/>
+    <bean id="accessService"  class="ru.classcard.services.access.AccessService"/>
+    <bean id="expenseService" class="ru.classcard.services.operations.ExpenseService"/>
+    <bean id="uploadService"  class="ru.classcard.services.operations.OperationsUploadService"/>
 
 </beans>

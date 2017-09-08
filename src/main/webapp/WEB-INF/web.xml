@@ -57,11 +57,11 @@
 
     <!-- Filter to check authentication-->
     <filter>
-        <filter-name>LoginFilter</filter-name>
-        <filter-class>ru.classcard.filters.LoginFilter</filter-class>
+        <filter-name>AccessFilter</filter-name>
+        <filter-class>ru.classcard.filters.AccessFilter</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>LoginFilter</filter-name>
+        <filter-name>AccessFilter</filter-name>
         <url-pattern>*</url-pattern>
         <url-pattern>/*</url-pattern>
         <url-pattern>*.xhtml</url-pattern>

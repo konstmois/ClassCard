@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition>
+    <f:loadBundle basename="ru.classcard.ui.locale.users" var="usersMsg"/>
+    <p:dialog id="#{dialogId}"
+              widgetVar="#{dialogId}"
+              showEffect="fade"
+              hideEffect="fade"
+              modal="true"
+              closeOnEscape="true"
+              closable="false"
+              resizable="false"
+              draggable="false"
+              position="center top"
+              appendTo="@(body)">
+
+        <h:form id="userEditForm">
+            <p:panel id="#{panelId}" style="width: 400px">
+                <f:facet name="header">
+                    <p:outputLabel value="#{usersMsg['edit.panel.name']}" rendered="#{userEdit.isEdit()}"/>
+                    <p:outputLabel value="#{usersMsg['create.panel.name']}" rendered="#{!userEdit.isEdit()}"/>
+                    <p:commandLink onclick="PF('#{dialogId}').hide()" styleClass="ui-icon ui-icon-closethick right"/>
+                </f:facet>
+                <h:panelGrid columns="2">
+                    <!--Логин-->
+                    <p:outputLabel for="login" value="#{usersMsg['login']}" styleClass="label-small-width"/>
+                    <p:inputText id="login"
+                                 binding="#{loginValue}"
+                                 value="#{userEdit.user.login}"
+                                 required="true"
+                                 readonly="#{userEdit.isEdit()}"
+                                 styleClass="value-width"/>
+
+                    <!--Пароль-->
+                    <p:outputLabel for="password" value="#{usersMsg['password']}" styleClass="label-small-width"/>
+                    <p:password id="password" value="#{userEdit.user.password}" styleClass="value-width" required="true"/>
+
+                    <!--Имя-->
+                    <p:outputLabel for="desc" value="#{usersMsg['desc']}" styleClass="label-small-width"/>
+                    <p:inputText id="desc" value="#{userEdit.user.desc}" styleClass="value-width" required="true"/>
+
+                    <!--Роль-->
+                    <p:outputLabel for="role" value="#{usersMsg['role']}" styleClass="label-small-width"/>
+                    <p:selectOneMenu id="role"
+                                     value="#{userEdit.user.role}"
+                                     converter="UserRoleConverter"
+                                     styleClass="value-width"
+                                     showHeader="false"
+                                     required="true">
+                        <f:selectItems value="#{userEdit.userRoleList}"/>
+                    </p:selectOneMenu>
+                    <p:outputLabel for="deleted"
+                                   value="#{usersMsg['deleted']}"
+                                   styleClass="label-small-width"/>
+                    <p:selectBooleanCheckbox value="#{userEdit.user.deleted}" id="deleted" style="margin-left: 10px"/>
+                </h:panelGrid>
+
+
+                <f:facet name="footer">
+                    <p:commandButton id="saveButton" styleClass="main-button"
+                                     value="#{msg['save']}"
+                                     actionListener="#{userEdit.save()}"
+                                     oncomplete="PF('#{dialogId}').hide();"
+                                     process="userEditForm"
+                                     update="#{updateOnSubmit} @([id$=#{panelId}])"/>
+                    <p:commandButton id="cancelUserEdit"
+                                     styleClass="cancel-button"
+                                     value="#{msg['cancel']}"
+                                     process="@this"
+                                     onclick="PF('#{dialogId}').hide();"
+                                     update="@([id$=#{panelId}])"/>
+                </f:facet>
+            </p:panel>
+        </h:form>
+    </p:dialog>
+</ui:composition>
+</html>

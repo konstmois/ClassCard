@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition>
+    <f:loadBundle basename="ru.classcard.ui.locale.card" var="cardMsg"/>
+    <p:panel id="incomesPanel">
+        <p:dataTable id="incomesTable"
+                     widgetVar="incomesTable"
+                     value="#{cardBean.incomeList}"
+                     var="income"
+                     rows="10"
+                     paginator="true"
+                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
+                     paginatorPosition="bottom"
+                     emptyMessage="#{msg['no.record']}"
+                     rowKey="#{income.id}"
+                     lazy="true">
+
+            <!--Дата-->
+            <p:column headerText="#{cardMsg['operation.date']}" width="100">
+                <p:outputLabel value="#{income.date}">
+                    <f:convertDateTime pattern="dd.MM.yyyy"/>
+                </p:outputLabel>
+            </p:column>
+
+            <!--Сумма-->
+            <p:column headerText="#{cardMsg['operation.amount']}" width="150">
+                <p:outputLabel value="#{income.amount}"/>
+            </p:column>
+
+
+            <!--Описание-->
+            <p:column headerText="#{cardMsg['operation.desc']}" width="150">
+                <p:outputLabel value="#{income.desc}"/>
+            </p:column>
+        </p:dataTable>
+    </p:panel>
+
+</ui:composition>
+</html>

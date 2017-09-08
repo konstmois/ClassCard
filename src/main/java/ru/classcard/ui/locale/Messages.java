@@ -15,7 +15,7 @@ public class Messages extends ResourceBundle {
 
     private static final String BUNDLE_NAME = "ru.classcard.ui.locale.messages";
     private static final String BUNDLE_EXTENSION = "properties";
-    private static final Control UTF8_CONTROL = new UTF8Control();
+    public static final Control UTF8_CONTROL = new UTF8Control();
 
     public Messages() {
         setParent(ResourceBundle.getBundle(BUNDLE_NAME,

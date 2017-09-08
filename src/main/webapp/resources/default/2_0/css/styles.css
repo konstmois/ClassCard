@@ -105,6 +105,11 @@ textarea.ui-inputfield[readonly='readonly'], textarea.ui-inputfield[readonly] {
     background: none !important;
 }
 
+.ui-widget-content {
+    border-width: 0px;
+}
+
+
 .ui-column-title {
     font-size: 13px;
     color: rgb(255, 255, 255);
@@ -424,7 +429,76 @@ input.ui-column-filter {
     word-wrap: break-word;
 }
 
-.clientInfo.ui-panelgrid>*>tr,
-.clientInfo.ui-panelgrid .ui-panelgrid-cell {
+.cardInfo.ui-panelgrid>*>tr,
+.cardInfo.ui-panelgrid .ui-panelgrid-cell {
     border: none;
 }
+
+.cardInfo{
+    position: relative;
+}
+
+.ui-datepicker-calendar {
+    display: none;
+}
+
+.ui-datepicker-header a.ui-datepicker-prev,
+.ui-datepicker-header a.ui-datepicker-next {
+    display: none;
+}
+
+
+
+.cardNumber{
+    position: absolute;
+    top:140px;
+    left:40px;
+    color:#dddddd;
+    font-weight:bold;
+    font-size:14px;
+}
+
+.cardBalance {
+    font-size:22px!important;
+    display: block;
+    width:100%;
+}
+
+.cardBalance-title {
+    font-size:18px!important;
+    display: block;
+    width:100%;
+}
+
+.div-custom-calendar{
+    position: absolute;
+    height: 30px;
+    top: 90px;
+    z-index: 1;
+    left: 25px;
+}
+
+.custom-calendar {
+    border: none;
+    position: absolute!important;
+    top:2px;
+    left:50px;
+}
+
+.ui-datepicker-header {
+    background-color:rgb(54, 152, 30) !important;
+}
+
+.customNavLeft {
+    position: absolute!important;
+    top:5px;
+    border:none;
+}
+
+.customNavRight {
+    position: absolute!important;
+    top:5px;
+    border:none;
+    left:268px;
+}
+

@@ -2,11 +2,10 @@ package ru.classcard.ui.beans;
 
 import org.jboss.logging.Logger;
 import ru.classcard.model.User;
+import ru.classcard.services.auth.AuthService;
 import ru.classcard.services.exceptions.AuthorizationException;
-import ru.classcard.ui.beans.services.AuthorizationServiceBean;
 import ru.classcard.ui.locale.Messages;
 
-import javax.annotation.PostConstruct;
 import javax.faces.application.Application;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -16,32 +15,29 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import java.io.Serializable;
 
-import static ru.classcard.filters.LoginFilter.USER_SESSION_ATTR;
+import static ru.classcard.filters.AccessFilter.USER_SESSION_ATTR;
 
 @ViewScoped
 @ManagedBean(name = "authBean")
 public class AuthorizationBean implements Serializable {
+
     private static final String RETURN_TO_LOGIN_PAGE = "login";
     private static final String REDIRECT_AFTER_LOGOUT = "/login?faces-redirect=true";
-    private static final String REDIRECT_TO_MAIN_PAGE = "main/card?faces-redirect=true";
+    private static final String REDIRECT_SUFFIX = "?faces-redirect=true";
 
     private String login;
     private String password;
     private User user;
     private static final Logger LOGGER = Logger.getLogger(AuthorizationBean.class);
 
-    @ManagedProperty(value = "#{authorizationService}")
-    private AuthorizationServiceBean service;
-
-    @PostConstruct
-    public void init() {
-    }
+    @ManagedProperty("#{authService}")
+    private AuthService service;
 
     public String loginAction() {
         try {
             user = service.authorize(login, password);
             setUserToCurrentSession(user);
-            return REDIRECT_TO_MAIN_PAGE;
+            return user.getRole().getStartingPage() + REDIRECT_SUFFIX;
         } catch (AuthorizationException e) {
             LOGGER.error(e);
             return accessDenied();
@@ -95,7 +91,7 @@ public class AuthorizationBean implements Serializable {
         this.password = password;
     }
 
-    public void setService(AuthorizationServiceBean service) {
+    public void setService(AuthService service) {
         this.service = service;
     }
 }
