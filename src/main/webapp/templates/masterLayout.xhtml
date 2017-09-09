@@ -8,12 +8,8 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
 <f:loadBundle basename="ru.classcard.ui.locale.templates.masterLayout" var="masterLayoutMsg"/>
-<h:outputLink href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
 <h:outputStylesheet name="css/master_layout.css" library="default" />
 <h:head>
-    <f:facet name="first">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    </f:facet>
     <title>
         <ui:insert name="windowTitle">
             #{masterLayoutMsg['app.title']}
@@ -22,9 +18,6 @@
 </h:head>
 <h:body>
     <div class="master-layout-div">
-        <!--<h:outputScript library="default" name="js/safe.js"/>
-        <h:outputScript library="default" name="js/calendar.js"/>-->
-        <!--<p:growl autoUpdate="true" showDetail="true"/>-->
         <h:outputStylesheet library="default" name="css/styles.css"/>
 
 

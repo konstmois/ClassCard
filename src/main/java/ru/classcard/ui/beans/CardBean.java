@@ -25,7 +25,7 @@ import static ru.classcard.model.OperationType.INCOME;
 public class CardBean {
 
     private static final String CARD_NUMBER_MASK = "****   ****   ****   ";
-    private static final String RUBLE_SIGN = " \u20B6";
+    private static final String RUBLE_SIGN = " \u20BD";
     private static final String EXPENSE_GRAPH_HEADER = "Расходы";
     private static final String NO_EXPENSES = "Расходы отсутствуют";
 

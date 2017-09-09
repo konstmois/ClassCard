@@ -23,7 +23,8 @@ import static ru.classcard.model.OperationType.INCOME;
 
 public class OperationsUploadService {
 
-    private static final String SPLIT_BY = ",";
+    private static final String COMA_SPLIT_BY = ",";
+    private static final String SEMI_SPLIT_BY = ";";
 
     @Autowired
     private CardOperationDAO dao;
@@ -38,11 +39,19 @@ public class OperationsUploadService {
         br.readLine();
         List<CardOperation> operationList = new ArrayList<>();
         while ((line = br.readLine()) != null) {
-            String[] operationFields = line.split(SPLIT_BY);
+            String[] operationFields = splitLine(line);
             operationList.add(createCardOperation(card, operationFields));
         }
         dao.saveList(operationList);
         cardDAO.save(card);
+    }
+
+    private String[] splitLine(String line) {
+        String[] split = line.split(COMA_SPLIT_BY);
+        if (split.length == 1) {
+            split = line.split(SEMI_SPLIT_BY);
+        }
+        return split;
     }
 
     private CardOperation createCardOperation(Card card, String[] operationFields) throws ParseException, UnsupportedEncodingException {
