@@ -22,4 +22,9 @@ public class UserDAOImpl extends AbstractEntityDAOImpl implements UserDAO {
         return (List<User>) getSession().createCriteria(User.class).list();
     }
 
+    @Override
+    @Transactional
+    public <T> void save(T entity) {
+        super.save(entity);
+    }
 }

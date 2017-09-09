@@ -6,6 +6,7 @@
 .loginPanel {
     width: 350px;
     border-radius: 8px;
+    border-color: #BBBBBB;
     display: inline-block;
     text-align: center;
     border-width: 1px !important;

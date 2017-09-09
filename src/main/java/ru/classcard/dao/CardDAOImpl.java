@@ -14,4 +14,10 @@ public class CardDAOImpl extends AbstractEntityDAOImpl implements CardDAO {
                 .add(Restrictions.eq("owner", user))
                 .uniqueResult();
     }
+
+    @Override
+    @Transactional
+    public <T> void save(T entity) {
+        super.save(entity);
+    }
 }

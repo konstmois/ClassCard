@@ -1,6 +1,7 @@
 package ru.classcard.ui.beans;
 
 import org.jboss.logging.Logger;
+import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 import ru.classcard.services.operations.OperationsUploadService;
 
@@ -22,27 +23,28 @@ public class OperationsUploadBean {
     @ManagedProperty(value = "#{uploadService}")
     private OperationsUploadService uploadService;
 
-    private UploadedFile file;
 
-    public void upload() {
+
+    public void upload(FileUploadEvent event) {
+        UploadedFile file = event.getFile();
         if(file != null) {
             try {
                 uploadService.uploadOperations(cardBean.getCard(), file.getInputstream());
-                addSuccessMessage();
+                addSuccessMessage(file);
             } catch (Exception ex) {
                 LOGGER.error("Filename = " + file.getFileName(), ex);
-                addErrorMessage();
+                addErrorMessage(file);
             }
         }
     }
 
-    private void addSuccessMessage() {
-        FacesMessage message = new FacesMessage("Succesful", file.getFileName() + " is uploaded.");
+    private void addSuccessMessage(UploadedFile file) {
+        FacesMessage message = new FacesMessage("Выписка загружена.", file.getFileName());
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
 
-    private void addErrorMessage() {
-        FacesMessage message = new FacesMessage("Error", file.getFileName() + " is not uploaded.");
+    private void addErrorMessage(UploadedFile file) {
+        FacesMessage message = new FacesMessage("Ошибка загрузки.", " Файл не был загружен, обратитесь к администратору");
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
 
@@ -52,14 +54,6 @@ public class OperationsUploadBean {
 
     public void setUploadService(OperationsUploadService uploadService) {
         this.uploadService = uploadService;
-    }
-
-    public UploadedFile getFile() {
-        return file;
-    }
-
-    public void setFile(UploadedFile file) {
-        this.file = file;
     }
 
 }

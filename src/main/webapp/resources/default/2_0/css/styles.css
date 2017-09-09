@@ -314,9 +314,6 @@ input.ui-column-filter {
     color: rgb(245, 151, 36);
 }
 
-
-/*Основные классы для расположения элементов на панелях(но можно и в не их использовать)*/
-
 .table-cell {
     display: table-cell;
     vertical-align: middle
@@ -429,6 +426,14 @@ input.ui-column-filter {
     word-wrap: break-word;
 }
 
+.ui-datatable tbody td {
+    border-color:#BBBBBB!important;
+}
+
+.ui-state-default, .ui-widget-header, .ui-panel-footer {
+    border-color:#BBBBBB!important;
+}
+
 .cardInfo.ui-panelgrid>*>tr,
 .cardInfo.ui-panelgrid .ui-panelgrid-cell {
     border: none;
@@ -447,13 +452,11 @@ input.ui-column-filter {
     display: none;
 }
 
-
-
 .cardNumber{
     position: absolute;
     top:140px;
     left:40px;
-    color:#dddddd;
+    color:#eeeeee;
     font-weight:bold;
     font-size:14px;
 }
@@ -462,18 +465,20 @@ input.ui-column-filter {
     font-size:22px!important;
     display: block;
     width:100%;
+    margin-left: -12px;
 }
 
 .cardBalance-title {
     font-size:18px!important;
     display: block;
     width:100%;
+    margin-left: -12px;
 }
 
 .div-custom-calendar{
     position: absolute;
     height: 30px;
-    top: 90px;
+    top: 66px;
     z-index: 1;
     left: 25px;
 }
@@ -500,5 +505,63 @@ input.ui-column-filter {
     top:5px;
     border:none;
     left:268px;
+}
+
+.ui-tabs-nav {
+    padding-left:32px!important;
+}
+
+.card-logo {
+    padding-left:6px!important;
+}
+
+
+/* hide the icons in the file upload button bar */
+.ui-fileupload-buttonbar .ui-icon {
+    display: none;
+}
+
+/* adjust the padding of all buttons inside the file upload button bar */
+.ui-fileupload-buttonbar .ui-button-text-icon-left .ui-button-text {
+
+    padding: 0 0.5em;
+}
+
+/* unstyle the file upload button bar background */
+.ui-fileupload-buttonbar.ui-widget-header {
+    background-color: transparent;
+    border: 0 none;
+}
+
+/* remove the border of file upload content list */
+.ui-fileupload-content {
+    border: 0 none;
+}
+
+.jqplot-series-canvas {
+    background:#ffffff;
+    border:none;
+    font-size:18px;
+}
+
+.jqplot-target {
+    color:#777777 !important;
+    font-size:18px;
+}
+
+table.jqplot-table-legend {
+    border-color:#BBBBBB!important;
+    border-radius: 3px;
+    padding: 20px;
+}
+
+.in-panel-header-label {
+    font-size:15px!important;
+    margin-left:50%;
+}
+
+.in-panel-header-div {
+    width:100%;
+    height:30px;
 }
 

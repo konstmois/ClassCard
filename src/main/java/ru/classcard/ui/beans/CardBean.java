@@ -26,7 +26,6 @@ public class CardBean {
 
     private static final String CARD_NUMBER_MASK = "****   ****   ****   ";
     private static final String RUBLE_SIGN = " \u20BD";
-    private static final String EXPENSE_GRAPH_HEADER = "Расходы";
     private static final String NO_EXPENSES = "Расходы отсутствуют";
 
     @ManagedProperty(value = "#{currentUser}")
@@ -116,7 +115,6 @@ public class CardBean {
             expenseGraphModel.setShowDataLabels(true);
             expenseGraphModel.setDataFormat("value");
             expenseGraphModel.setShadow(true);
-            expenseGraphModel.setTitle(new String(EXPENSE_GRAPH_HEADER.getBytes(), "UTF-8"));
         } catch (UnsupportedEncodingException e) {}
     }
 

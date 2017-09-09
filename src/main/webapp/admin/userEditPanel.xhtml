@@ -9,6 +9,7 @@
       xmlns:f="http://java.sun.com/jsf/core">
 <ui:composition>
     <f:loadBundle basename="ru.classcard.ui.locale.users" var="usersMsg"/>
+    <f:loadBundle basename="ru.classcard.ui.locale.card" var="cardMsg"/>
     <p:dialog id="#{dialogId}"
               widgetVar="#{dialogId}"
               showEffect="fade"
@@ -55,12 +56,64 @@
                                      showHeader="false"
                                      required="true">
                         <f:selectItems value="#{userEdit.userRoleList}"/>
+                        <p:ajax listener="#{userEdit.userRoleChanged}" process="@this" update="@([id$=#{panelId}])"/>
                     </p:selectOneMenu>
+
+                    <!--Удален-->
                     <p:outputLabel for="deleted"
                                    value="#{usersMsg['deleted']}"
                                    styleClass="label-small-width"/>
                     <p:selectBooleanCheckbox value="#{userEdit.user.deleted}" id="deleted" style="margin-left: 10px"/>
                 </h:panelGrid>
+
+
+                <!--Карта-->
+                <div class="in-panel-header-div">
+                    <p:outputLabel id="card-fields-panel-header" value="#{cardMsg['card.header']}" rendered="#{!userEdit.isAdmin()}" styleClass="in-panel-header-label"/>
+                </div>
+                <h:panelGrid columns="2" id="card-fields-panel" rendered="#{!userEdit.isAdmin()}" >
+
+                    <!--Номер-->
+                    <p:outputLabel for="cardNumber"
+                                   value="#{cardMsg['card.number']}"
+                                   styleClass="label-small-width"/>
+                    <p:inputMask id="cardNumber"
+                                 value="#{userEdit.card.number}"
+                                 mask="9999"
+                                 styleClass="value-width"
+                                 required="#{!userEdit.isAdmin()}"/>
+
+                    <!--Баланс-->
+                    <p:outputLabel for="cardBalance"
+                                   value="#{cardMsg['card.balance']}"
+                                   styleClass="label-small-width"/>
+                    <p:inputNumber id="cardBalance"
+                                   value="#{userEdit.card.balance}"
+                                   styleClass="value-width"
+                                   decimalPlaces="2"
+                                   required="#{!userEdit.isAdmin()}"/>
+
+                    <!--Тип-->
+                    <p:outputLabel for="cardType" value="#{cardMsg['card.type']}" styleClass="label-small-width"/>
+                    <p:selectOneMenu id="cardType"
+                                     value="#{userEdit.card.type}"
+                                     converter="CardTypeConverter"
+                                     styleClass="value-width"
+                                     showHeader="false"
+                                     required="true">
+                        <f:selectItems value="#{userEdit.cardTypeList}"/>
+                    </p:selectOneMenu>
+
+                    <!--Описание-->
+                    <p:outputLabel for="cardDesc"
+                                   value="#{cardMsg['card.desc']}"
+                                   styleClass="label-small-width"/>
+                    <p:inputText id="cardDesc"
+                                 value="#{userEdit.card.desc}"
+                                 styleClass="value-width"
+                                 required="#{!userEdit.isAdmin()}"/>
+                </h:panelGrid>
+
 
 
                 <f:facet name="footer">
