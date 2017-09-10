@@ -19,10 +19,10 @@
             </type>
         </property>
 
-        <property name="amount" type="java.math.BigDecimal" column="AMOUNT" not-null="true"/>
-        <property name="desc"   type="java.lang.String"     column="DESC"   not-null="true"/>
-        <property name="date"   type="java.util.Date"       column="DATE"   not-null="true"/>
-        <property name="mcc"    type="java.lang.String"     column="MCC"    not-null="true"/>
+        <property name="amount" type="java.math.BigDecimal" column="AMOUNT"        not-null="true"/>
+        <property name="desc"   type="java.lang.String"     column="DESCRIPTION"   not-null="true"/>
+        <property name="date"   type="java.util.Date"       column="DATE"          not-null="true"/>
+        <property name="mcc"    type="java.lang.String"     column="MCC"           not-null="true"/>
     </class>
 
 </hibernate-mapping>

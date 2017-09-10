@@ -11,10 +11,10 @@
                 <param name="sequence">S_CARD_ID</param>
             </generator>
         </id>
-        <property name="number"  type="java.lang.String"     column="NUMBER"  not-null="true"/>
-        <property name="balance" type="java.math.BigDecimal" column="BALANCE" not-null="true"/>
-        <property name="desc"    type="java.lang.String"     column="DESC"    not-null="false" />
-        <many-to-one name="owner" column="OWNER" class="ru.classcard.model.User" not-null="true"/>
+        <property name="number"  type="java.lang.String"     column="NUMBER"      not-null="true"/>
+        <property name="balance" type="java.math.BigDecimal" column="BALANCE"     not-null="true"/>
+        <property name="desc"    type="java.lang.String"     column="DESCRIPTION" not-null="false" />
+        <many-to-one name="owner" column="OWNER" class="ru.classcard.model.User"  not-null="true"/>
         <property name="type"    column="TYPE" not-null="true">
             <type name="org.hibernate.type.EnumType">
                 <param name="enumClass">ru.classcard.model.CardType</param>

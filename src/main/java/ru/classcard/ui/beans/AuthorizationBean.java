@@ -1,6 +1,7 @@
 package ru.classcard.ui.beans;
 
-import org.jboss.logging.Logger;
+
+import org.apache.log4j.Logger;
 import ru.classcard.model.User;
 import ru.classcard.services.auth.AuthService;
 import ru.classcard.services.exceptions.AuthorizationException;

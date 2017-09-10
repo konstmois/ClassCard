@@ -4,17 +4,17 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="ru.classcard.model.User" table="USER">
+    <class name="ru.classcard.model.User" table="CC_USER">
         <meta attribute="class-description"/>
         <id name="id" column="ID">
             <generator class="sequence">
                 <param name="sequence">S_USER_ID</param>
             </generator>
         </id>
-        <property name="login"    type="java.lang.String"  column="LOGIN"    not-null="true"/>
-        <property name="password" type="java.lang.String"  column="PASSWORD" not-null="true"/>
-        <property name="desc"     type="java.lang.String"  column="DESC"     not-null="false" />
-        <property name="deleted"  type="java.lang.Boolean" column="DELETED"  not-null="true"/>
+        <property name="login"    type="java.lang.String"  column="LOGIN"       not-null="true"/>
+        <property name="password" type="java.lang.String"  column="PASSWORD"    not-null="true"/>
+        <property name="desc"     type="java.lang.String"  column="DESCRIPTION" not-null="false" />
+        <property name="deleted"  type="java.lang.Boolean" column="DELETED"     not-null="true"/>
         <property name="role"     column="ROLE" not-null="true">
             <type name="org.hibernate.type.EnumType">
                 <param name="enumClass">ru.classcard.model.UserRole</param>

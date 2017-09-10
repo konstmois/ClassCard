@@ -1,11 +1,11 @@
 package ru.classcard.ui.beans;
 
 import ru.classcard.dao.CardDAO;
-import ru.classcard.dao.UserDAO;
 import ru.classcard.model.Card;
 import ru.classcard.model.CardType;
 import ru.classcard.model.User;
 import ru.classcard.model.UserRole;
+import ru.classcard.services.user.UserService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -37,8 +37,8 @@ public class UserEditBean implements Serializable {
     @ManagedProperty(value = "#{cardDAO}")
     private CardDAO cardDAO;
 
-    @ManagedProperty(value = "#{userDAO}")
-    private UserDAO userDao;
+    @ManagedProperty(value = "#{userService}")
+    private UserService userService;
 
     public void initNew() {
         user = new User();
@@ -55,11 +55,7 @@ public class UserEditBean implements Serializable {
     }
 
     public void save() {
-        userDao.save(user);
-        if (!isUserAdmin(user)) {
-            card.setOwner(user);
-            cardDAO.save(card);
-        }
+       userService.save(user, card);
     }
 
     private boolean isUserAdmin(User user) {
@@ -116,8 +112,7 @@ public class UserEditBean implements Serializable {
         this.cardDAO = cardDAO;
     }
 
-    public void setUserDao(UserDAO userDao) {
-        this.userDao = userDao;
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
-
 }

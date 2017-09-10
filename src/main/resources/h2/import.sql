@@ -1,47 +1,46 @@
-INSERT INTO USER (id, login, password, desc, role, deleted) VALUES (S_USER_ID.NEXTVAL, 'test', 'test', 'Test Class Member', 'CLASS_MEMBER', 0);
-INSERT INTO USER (id, login, password, desc, role, deleted) VALUES (S_USER_ID.NEXTVAL, 'admin', 'admin', 'Admin', 'ADMIN', 0);
+INSERT INTO CC_USER (id, login, password, description, role, deleted) VALUES (S_USER_ID.NEXTVAL, 'test',  'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'Test Class Member', 'CLASS_MEMBER', 0);
+INSERT INTO CC_USER (id, login, password, description, role, deleted) VALUES (S_USER_ID.NEXTVAL, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Admin', 'ADMIN', 0);
 
-INSERT INTO CARD (id, owner, number, balance, type, desc) VALUES (S_CARD_ID.NEXTVAL, 1, '4517', 10000.00, 'VISA', 'Visa Classic');
-
-
-INSERT INTO CARD_OPERATION (id, card, type, amount, desc, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'EXPENSE', -1500.00, 'Тетради',   '7395', sysdate);
-INSERT INTO CARD_OPERATION (id, card, type, amount, desc, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'EXPENSE', -2500.00, 'Учебники',  '7395', sysdate);
-INSERT INTO CARD_OPERATION (id, card, type, amount, desc, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'EXPENSE', -3500.00, 'Театр',     '7929', sysdate);
-INSERT INTO CARD_OPERATION (id, card, type, amount, desc, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'EXPENSE', -4500.00, 'Экскурсия', '7929', sysdate);
-INSERT INTO CARD_OPERATION (id, card, type, amount, desc, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'EXPENSE', -1000.00, 'Тетради',   '7395', sysdate);
-INSERT INTO CARD_OPERATION (id, card, type, amount, desc, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'EXPENSE', -2000.00, 'Учебники',  '5972', sysdate);
-INSERT INTO CARD_OPERATION (id, card, type, amount, desc, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'EXPENSE', -3000.00, 'Экскурсия', '5972', sysdate);
-INSERT INTO CARD_OPERATION (id, card, type, amount, desc, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'EXPENSE', -4000.00, 'Театр',     '5972', sysdate);
+INSERT INTO CARD (id, owner, number, balance, type, description) VALUES (S_CARD_ID.NEXTVAL, 1, '4517', 10000.00, 'VISA', 'Visa Classic');
 
 
-INSERT INTO CARD_OPERATION (id, card, type, amount, desc, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 2500.00, 'От Петр Петрович П.',      '2001', sysdate);
-INSERT INTO CARD_OPERATION (id, card, type, amount, desc, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 2500.00, 'От Илья Игоревич И.',      '2001', sysdate);
-INSERT INTO CARD_OPERATION (id, card, type, amount, desc, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 3500.00, 'От Анна Сергеевна П.',     '2002', sysdate);
-INSERT INTO CARD_OPERATION (id, card, type, amount, desc, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 4500.00, 'От Ирина Алексндровна У.', '2003', sysdate);
-INSERT INTO CARD_OPERATION (id, card, type, amount, desc, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 1000.00, 'От Ирина Петровна Б.',     '2000', sysdate);
-INSERT INTO CARD_OPERATION (id, card, type, amount, desc, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 2000.00, 'От Ирина Петровна Б.',     '2001', sysdate);
-INSERT INTO CARD_OPERATION (id, card, type, amount, desc, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 3000.00, 'От Ирина Алексндровна У.', '2002', sysdate);
-INSERT INTO CARD_OPERATION (id, card, type, amount, desc, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 4000.00, 'От Илья Игоревич И.',      '2003', sysdate);
+INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'EXPENSE', -1500.00, 'Тетради',   '7395', sysdate);
+INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'EXPENSE', -2500.00, 'Учебники',  '7395', sysdate);
+INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'EXPENSE', -3500.00, 'Театр',     '7929', sysdate);
+INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'EXPENSE', -4500.00, 'Экскурсия', '7929', sysdate);
+INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'EXPENSE', -1000.00, 'Тетради',   '7395', sysdate);
+INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'EXPENSE', -2000.00, 'Учебники',  '5972', sysdate);
+INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'EXPENSE', -3000.00, 'Экскурсия', '5972', sysdate);
+INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'EXPENSE', -4000.00, 'Театр',     '5972', sysdate);
 
 
-INSERT INTO EXPENSE_CATEGORY (id, desc) VALUES (7, 'Коммунальные услуги');
-INSERT INTO EXPENSE_CATEGORY (id, desc) VALUES (5, 'Отели и мотели');
-INSERT INTO EXPENSE_CATEGORY (id, desc) VALUES (4, 'Аренда автомобилей');
-INSERT INTO EXPENSE_CATEGORY (id, desc) VALUES (14, 'Поставщики услуг');
-INSERT INTO EXPENSE_CATEGORY (id, desc) VALUES (1, 'Контрактные услуги');
-INSERT INTO EXPENSE_CATEGORY (id, desc) VALUES (10, 'Продажа в розницу');
-INSERT INTO EXPENSE_CATEGORY (id, desc) VALUES (12, 'Магазины одежды');
-INSERT INTO EXPENSE_CATEGORY (id, desc) VALUES (6, 'Транспортировка');
-INSERT INTO EXPENSE_CATEGORY (id, desc) VALUES (9, 'Оптовые поставщики и производители');
-INSERT INTO EXPENSE_CATEGORY (id, desc) VALUES (11, 'Автомобили и прочие автотранспортные средства');
-INSERT INTO EXPENSE_CATEGORY (id, desc) VALUES (13, 'Различные магазины');
-INSERT INTO EXPENSE_CATEGORY (id, desc) VALUES (2, 'Оптовые распространители и производители');
-INSERT INTO EXPENSE_CATEGORY (id, desc) VALUES (16, 'Поставщик услуг');
-INSERT INTO EXPENSE_CATEGORY (id, desc) VALUES (17, 'Бизнес услуги');
-INSERT INTO EXPENSE_CATEGORY (id, desc) VALUES (18, 'Развлечения');
-INSERT INTO EXPENSE_CATEGORY (id, desc) VALUES (3, 'Авиалинии');
-INSERT INTO EXPENSE_CATEGORY (id, desc) VALUES (15, 'Поставщики почтовых/телефонных услуг');
-INSERT INTO EXPENSE_CATEGORY (id, desc) VALUES (8, 'Провайдеры услуг');
+INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 2500.00, 'От Петр Петрович П.',      '2001', sysdate);
+INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 2500.00, 'От Илья Игоревич И.',      '2001', sysdate);
+INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 3500.00, 'От Анна Сергеевна П.',     '2002', sysdate);
+INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 4500.00, 'От Ирина Алексндровна У.', '2003', sysdate);
+INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 1000.00, 'От Ирина Петровна Б.',     '2000', sysdate);
+INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 2000.00, 'От Ирина Петровна Б.',     '2001', sysdate);
+INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 3000.00, 'От Ирина Алексндровна У.', '2002', sysdate);
+INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 4000.00, 'От Илья Игоревич И.',      '2003', sysdate);
+
+INSERT INTO EXPENSE_CATEGORY (id, description) VALUES (7, 'Коммунальные услуги');
+INSERT INTO EXPENSE_CATEGORY (id, description) VALUES (5, 'Отели и мотели');
+INSERT INTO EXPENSE_CATEGORY (id, description) VALUES (4, 'Аренда автомобилей');
+INSERT INTO EXPENSE_CATEGORY (id, description) VALUES (14, 'Поставщики услуг');
+INSERT INTO EXPENSE_CATEGORY (id, description) VALUES (1, 'Контрактные услуги');
+INSERT INTO EXPENSE_CATEGORY (id, description) VALUES (10, 'Продажа в розницу');
+INSERT INTO EXPENSE_CATEGORY (id, description) VALUES (12, 'Магазины одежды');
+INSERT INTO EXPENSE_CATEGORY (id, description) VALUES (6, 'Транспортировка');
+INSERT INTO EXPENSE_CATEGORY (id, description) VALUES (9, 'Оптовые поставщики и производители');
+INSERT INTO EXPENSE_CATEGORY (id, description) VALUES (11, 'Автомобили и прочие автотранспортные средства');
+INSERT INTO EXPENSE_CATEGORY (id, description) VALUES (13, 'Различные магазины');
+INSERT INTO EXPENSE_CATEGORY (id, description) VALUES (2, 'Оптовые распространители и производители');
+INSERT INTO EXPENSE_CATEGORY (id, description) VALUES (16, 'Поставщик услуг');
+INSERT INTO EXPENSE_CATEGORY (id, description) VALUES (17, 'Бизнес услуги');
+INSERT INTO EXPENSE_CATEGORY (id, description) VALUES (18, 'Развлечения');
+INSERT INTO EXPENSE_CATEGORY (id, description) VALUES (3, 'Авиалинии');
+INSERT INTO EXPENSE_CATEGORY (id, description) VALUES (15, 'Поставщики почтовых/телефонных услуг');
+INSERT INTO EXPENSE_CATEGORY (id, description) VALUES (8, 'Провайдеры услуг');
 INSERT INTO MCC_CODE (id, code, category) VALUES (S_MCC_CODE_ID.NEXTVAL, '5261', 10);
 INSERT INTO MCC_CODE (id, code, category) VALUES (S_MCC_CODE_ID.NEXTVAL, '8651', 7);
 INSERT INTO MCC_CODE (id, code, category) VALUES (S_MCC_CODE_ID.NEXTVAL, '5021', 9);

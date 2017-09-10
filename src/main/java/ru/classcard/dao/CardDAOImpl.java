@@ -15,9 +15,4 @@ public class CardDAOImpl extends AbstractEntityDAOImpl implements CardDAO {
                 .uniqueResult();
     }
 
-    @Override
-    @Transactional
-    public <T> void save(T entity) {
-        super.save(entity);
-    }
 }

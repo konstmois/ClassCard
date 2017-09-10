@@ -9,14 +9,15 @@
 
     <context:annotation-config/>
 
-    <import resource="jpaContext.xml"/>
+    <import resource="h2/jpaContext.xml"/>
 
     <bean id="userDAO"        class="ru.classcard.dao.UserDAOImpl"/>
     <bean id="cardDAO"        class="ru.classcard.dao.CardDAOImpl"/>
     <bean id="operationDAO"   class="ru.classcard.dao.CardOperationDAOImpl"/>
     <bean id="mccCodeDAO"     class="ru.classcard.dao.MccCodeDAOImpl"/>
 
-    <bean id="authService"    class="ru.classcard.services.auth.AuthServiceImpl"/>
+    <bean id="userService"    class="ru.classcard.services.user.UserService"/>
+    <bean id="authService"    class="ru.classcard.services.auth.AuthService"/>
     <bean id="accessService"  class="ru.classcard.services.access.AccessService"/>
     <bean id="expenseService" class="ru.classcard.services.operations.ExpenseService"/>
     <bean id="uploadService"  class="ru.classcard.services.operations.OperationsUploadService"/>

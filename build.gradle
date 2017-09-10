@@ -43,14 +43,14 @@ dependencies {
     compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '4.2.12.Final'
     compile group: 'org.hibernate', name: 'hibernate-core', version: '4.1.12.Final'
     compile group: 'com.h2database', name: 'h2', version: '1.4.196'
-    compile group: 'postgresql', name: 'postgresql', version: '9.1-901-1.jdbc4'
+    compile group: 'org.postgresql', name: 'postgresql', version: '9.4.1212'
 
     //utils
     compile group: 'com.google.guava', name: 'guava', version: '23.0'
 }
 
 war {
-    archiveName = "ClassCard.war"
+    archiveName = "classcard.war"
 }
 
 

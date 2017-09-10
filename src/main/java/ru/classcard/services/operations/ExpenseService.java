@@ -32,23 +32,26 @@ public class ExpenseService {
     private MccCodeDAO mccCodeDAO;
 
     public Map<String, Number> getExpenseMapping(Card card, Date month) {
-        List<CardOperation> expenses = operationDAO.getOperationsBy(card, -1, -1, null, null, createFiltersForExpenseMapping(month));
-        List<MccCode> mccList = mccCodeDAO.getListByCodes(getMccCodesFrom(expenses));
-        Map<String, ExpenseCategory> mccToCategory = mccList.stream().collect(toMap(MccCode::getCode, MccCode::getCategory));
-
         Map<String, Number> expenseMap = new HashMap<>();
-        double amountOfOtherExpenses = 0;
-        for (CardOperation expense : expenses) {
-            double amount = expense.getAmount().abs().doubleValue();
-            ExpenseCategory cat = mccToCategory.get(expense.getMcc());
-            if (cat != null) {
-                addExpensesToCategory(expenseMap, amount, cat);
-            } else {
-                amountOfOtherExpenses+=amount;
-            }
-        }
+        List<CardOperation> expenses = operationDAO.getOperationsBy(card, -1, -1, null, null, createFiltersForExpenseMapping(month));
+        if (!expenses.isEmpty()) {
+            List<MccCode> mccList = mccCodeDAO.getListByCodes(getMccCodesFrom(expenses));
+            Map<String, ExpenseCategory> mccToCategory = mccList.stream().collect(toMap(MccCode::getCode, MccCode::getCategory));
 
-        addOtherExpenses(expenseMap, amountOfOtherExpenses);
+
+            double amountOfOtherExpenses = 0;
+            for (CardOperation expense : expenses) {
+                double amount = expense.getAmount().abs().doubleValue();
+                ExpenseCategory cat = mccToCategory.get(expense.getMcc());
+                if (cat != null) {
+                    addExpensesToCategory(expenseMap, amount, cat);
+                } else {
+                    amountOfOtherExpenses+=amount;
+                }
+            }
+
+            addOtherExpenses(expenseMap, amountOfOtherExpenses);
+        }
         return expenseMap;
     }
 
