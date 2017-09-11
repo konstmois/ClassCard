@@ -56,7 +56,7 @@
                                      showHeader="false"
                                      required="true">
                         <f:selectItems value="#{userEdit.userRoleList}"/>
-                        <p:ajax process="@this" update="@([id$='card-fields-panel'])"/>
+                        <p:ajax process="@this" update="@([id$=#{cardPanelId}])"/>
                     </p:selectOneMenu>
 
                     <!--Удален-->
@@ -67,7 +67,7 @@
                 </h:panelGrid>
             </p:panel>
 
-            <p:panel id="card-fields-panel" style="width: 400px">
+            <p:panel id="#{cardPanelId}" style="width: 400px">
                 <!--Карта-->
                 <div class="in-panel-header-div">
                     <p:outputLabel id="card-fields-panel-header"
@@ -126,7 +126,7 @@
                                      actionListener="#{userEdit.save()}"
                                      oncomplete="PF('#{dialogId}').hide();"
                                      process="userEditForm"
-                                     update="#{updateOnSubmit} @([id$=#{panelId}])"/>
+                                     update="#{updateOnSubmit} @([id$=#{panelId}])  @([id$=#{cardPanelId}])"/>
                     <p:commandButton id="cancelUserEdit"
                                      styleClass="cancel-button"
                                      value="#{msg['cancel']}"

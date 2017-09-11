@@ -27,7 +27,7 @@
                              selectionMode="single">
 
                     <!--Открытие панели пользователя-->
-                    <p:ajax event="rowSelect" oncomplete="PF('editUserDialog').show()" update="@([id$='editUserPanel'])"/>
+                    <p:ajax event="rowSelect" oncomplete="PF('editUserDialog').show()" update="@([id$='editUserPanel']) @([id$='editCardPanel'])"/>
                     <f:facet name="header">
                         <div class="images">
                             <p:graphicImage id="createUserImage"
@@ -66,6 +66,7 @@
 
       <ui:include src="userEditPanel.xhtml">
             <ui:param name="panelId" value="editUserPanel"/>
+            <ui:param name="cardPanelId" value="editCardPanel"/>
             <ui:param name="dialogId" value="editUserDialog"/>
             <ui:param name="updateOnSubmit" value="@([id$=userListPanel])"/>
         </ui:include>

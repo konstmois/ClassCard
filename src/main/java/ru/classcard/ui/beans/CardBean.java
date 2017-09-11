@@ -13,6 +13,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import java.io.UnsupportedEncodingException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
@@ -58,7 +60,14 @@ public class CardBean {
     }
 
     public String getFormattedBalance() {
-        return getCard().getBalance() + RUBLE_SIGN;
+        return getMoneyFormatter().format(getCard().getBalance()) + RUBLE_SIGN;
+    }
+
+    private DecimalFormat getMoneyFormatter() {
+        DecimalFormat fmt = (DecimalFormat) NumberFormat.getInstance();
+        fmt.setGroupingSize(3);
+        fmt.setMaximumFractionDigits(2);
+        return fmt;
     }
 
     public LazyDataModel<CardOperation> getIncomeList() {
