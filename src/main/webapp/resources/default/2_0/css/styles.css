@@ -467,7 +467,7 @@ div.ui-paginator.ui-paginator-bottom {
 }
 
 .cardBalance {
-    font-size:23px!important;
+    font-size:20px!important;
     display: block;
     width:100%;
     margin-left: -12px;
@@ -475,19 +475,20 @@ div.ui-paginator.ui-paginator-bottom {
 }
 
 .cardBalance-title {
-    font-size:19px!important;
+    font-size:17px!important;
     display: block;
     width:100%;
     margin-left: -12px;
     color: rgb(120, 120, 120);
 }
 
-.div-custom-calendar{
+.div-custom-calendar {
     position: absolute;
+    float: right;
     height: 30px;
-    top: 66px;
     z-index: 1;
-    left: 25px;
+    right: 330px;
+    top: 8px;
 }
 
 .custom-calendar {
@@ -499,17 +500,18 @@ div.ui-paginator.ui-paginator-bottom {
 
 .ui-datepicker-header {
     background-color:rgb(54, 152, 30) !important;
+    height:20px;
 }
 
 .customNavLeft {
     position: absolute!important;
-    top:5px;
+    top:3px;
     border:none;
 }
 
 .customNavRight {
     position: absolute!important;
-    top:5px;
+    top:3px;
     border:none;
     left:268px;
 }
@@ -548,18 +550,21 @@ div.ui-paginator.ui-paginator-bottom {
 .jqplot-series-canvas {
     background:#ffffff;
     border:none;
-    font-size:18px;
 }
 
 .jqplot-target {
-    color:#777777 !important;
-    font-size:18px;
+    color:#efefef !important;
+    font-size:13px;
 }
 
 table.jqplot-table-legend {
     border-color:#BBBBBB!important;
-    border-radius: 3px;
-    padding: 20px;
+    border-radius: 4px;
+    padding: 10px;
+    font-size:12px;
+    color:#777777!important;
+    /*height:200px;*/
+    overflow-y: scroll;
 }
 
 .in-panel-header-label {
