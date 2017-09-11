@@ -466,6 +466,16 @@ div.ui-paginator.ui-paginator-bottom {
     font-size:14px;
 }
 
+.cardBalance-container {
+    width:190px;
+    padding-right:0px;
+}
+
+.cardBalance-cell {
+    width: 100%;
+    padding-top:70px;
+}
+
 .cardBalance {
     font-size:20px!important;
     display: block;
@@ -486,9 +496,8 @@ div.ui-paginator.ui-paginator-bottom {
     position: absolute;
     float: right;
     height: 30px;
-    z-index: 1;
+    z-index: 3;
     right: 330px;
-    top: 8px;
 }
 
 .custom-calendar {
@@ -522,6 +531,26 @@ div.ui-paginator.ui-paginator-bottom {
 
 .card-logo {
     padding-left:6px!important;
+}
+
+.valign-top {
+    vertical-align: top;
+}
+
+.card-expense-graph-cell{
+    box-shadow: inset 5px -10px 0px 20px rgba(255,255,255,1);
+    z-index:2;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+.card-expense-graph {
+    width:610px;
+    height:280px;
+    z-index:1;
 }
 
 
@@ -560,11 +589,9 @@ div.ui-paginator.ui-paginator-bottom {
 table.jqplot-table-legend {
     border-color:#BBBBBB!important;
     border-radius: 4px;
-    padding: 10px;
-    font-size:12px;
+    padding: 7px;
+    font-size:11px;
     color:#777777!important;
-    /*height:200px;*/
-    overflow-y: scroll;
 }
 
 .in-panel-header-label {

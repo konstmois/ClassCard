@@ -31,10 +31,13 @@
 
         </div>
 
-        <p:chart id="expenseGraphDonut"
+        <div style="margin-top: -10px;">
+            <div class="card-expense-graph-cell"/>
+            <p:chart id="expenseGraphDonut"
                  type="donut"
                  model="#{cardBean.expenseGraphModel}"
-                 style="width:610px;"/>
+                 styleClass="card-expense-graph"/>
+        </div>
     </div>
 </ui:composition>
 
