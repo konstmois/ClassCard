@@ -16,7 +16,7 @@
             <p:panel id="cardInfoPanel">
                 <p:panelGrid styleClass="cardInfo" style="width: 100%">
                     <p:row>
-                        <p:column>
+                        <p:column style="width:300px">
                             <p:graphicImage library="default" name="images/visa.jpg"       rendered="#{cardBean.card.type=='VISA'}" styleClass="card-logo"/>
                             <p:graphicImage library="default" name="images/mastercard.jpg" rendered="#{cardBean.card.type=='MASTER_CARD'}" styleClass="card-logo"/>
 
@@ -25,9 +25,9 @@
                             <pre><p:outputLabel id="cardNumber" value="#{cardBean.getFormattedNumber()}" styleClass="label-width cardNumber"/></pre>
                         </p:column>
                         <p:column>
-                            <div style="width: 350px; float:right;">
-                            <div style="text-align: right"><p:outputLabel value="#{cardMsg['balance']}" styleClass="cardBalance-title"/></div>
-                            <div style="text-align: right"><p:outputLabel id="cardBalance" value="#{cardBean.getFormattedBalance()}" styleClass="cardBalance"/></div>
+                            <div style="width: 100%; margin:auto auto;">
+                                <div style="text-align: center"><p:outputLabel value="#{cardMsg['balance']}" styleClass="cardBalance-title"/></div>
+                                <div style="text-align: center"><p:outputLabel id="cardBalance" value="#{cardBean.getFormattedBalance()}" styleClass="cardBalance"/></div>
                             </div>
                         </p:column>
                     </p:row>

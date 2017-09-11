@@ -427,7 +427,12 @@ input.ui-column-filter {
 }
 
 .ui-datatable tbody td {
-    border-color:#BBBBBB!important;
+    border:none;
+    height:30px;
+}
+
+div.ui-paginator.ui-paginator-bottom {
+    border:none;
 }
 
 .ui-state-default, .ui-widget-header, .ui-panel-footer {
@@ -462,17 +467,19 @@ input.ui-column-filter {
 }
 
 .cardBalance {
-    font-size:22px!important;
+    font-size:23px!important;
     display: block;
     width:100%;
     margin-left: -12px;
+    color: rgb(80, 170, 70);
 }
 
 .cardBalance-title {
-    font-size:18px!important;
+    font-size:19px!important;
     display: block;
     width:100%;
     margin-left: -12px;
+    color: rgb(120, 120, 120);
 }
 
 .div-custom-calendar{
@@ -565,3 +572,6 @@ table.jqplot-table-legend {
     height:30px;
 }
 
+li.ui-state-default.ui-corner-top {
+    box-shadow: 0px -3px 2px 0px #DDDDDD;
+}

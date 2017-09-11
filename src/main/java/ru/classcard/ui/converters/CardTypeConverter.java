@@ -8,12 +8,14 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
 
+import static ru.classcard.model.CardType.VISA;
+
 @FacesConverter("CardTypeConverter")
 public class CardTypeConverter implements Converter {
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) throws ConverterException {
-        return CardType.valueOf(value);
+        return value != null ? CardType.valueOf(value) : VISA;
     }
 
     @Override

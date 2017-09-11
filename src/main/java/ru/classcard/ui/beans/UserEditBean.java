@@ -32,7 +32,6 @@ public class UserEditBean implements Serializable {
     private List<SelectItem> userRoleList;
     private List<SelectItem> cardTypeList;
     private boolean isEditMode;
-    private boolean isAdmin;
 
     @ManagedProperty(value = "#{cardDAO}")
     private CardDAO cardDAO;
@@ -44,26 +43,20 @@ public class UserEditBean implements Serializable {
         user = new User();
         card = new Card();
         isEditMode = false;
-        isAdmin = true;
     }
 
     public void setUser(User user) {
         this.isEditMode = true;
         this.user = user;
         this.card = cardDAO.getCardBy(user);
-        isAdmin = isUserAdmin(user);
     }
 
     public void save() {
-       userService.save(user, card);
+        userService.save(user, card);
     }
 
-    private boolean isUserAdmin(User user) {
-        return ADMIN.equals(user.getRole());
-    }
-
-    public void userRoleChanged() {
-       isAdmin = isUserAdmin(user);
+    public boolean isAdmin() {
+        return user == null || ADMIN.equals(user.getRole());
     }
 
     public User getUser() {
@@ -104,10 +97,6 @@ public class UserEditBean implements Serializable {
         return cardTypeList;
     }
 
-    public boolean isAdmin(){
-        return isAdmin;
-    }
-
     public void setCardDAO(CardDAO cardDAO) {
         this.cardDAO = cardDAO;
     }
@@ -115,4 +104,5 @@ public class UserEditBean implements Serializable {
     public void setUserService(UserService userService) {
         this.userService = userService;
     }
+
 }

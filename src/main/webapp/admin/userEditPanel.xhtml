@@ -56,7 +56,7 @@
                                      showHeader="false"
                                      required="true">
                         <f:selectItems value="#{userEdit.userRoleList}"/>
-                        <p:ajax listener="#{userEdit.userRoleChanged}" process="@this" update="@([id$=#{panelId}])"/>
+                        <p:ajax process="@this" update="@([id$='card-fields-panel'])"/>
                     </p:selectOneMenu>
 
                     <!--Удален-->
@@ -65,13 +65,17 @@
                                    styleClass="label-small-width"/>
                     <p:selectBooleanCheckbox value="#{userEdit.user.deleted}" id="deleted" style="margin-left: 10px"/>
                 </h:panelGrid>
+            </p:panel>
 
-
+            <p:panel id="card-fields-panel" style="width: 400px">
                 <!--Карта-->
                 <div class="in-panel-header-div">
-                    <p:outputLabel id="card-fields-panel-header" value="#{cardMsg['card.header']}" rendered="#{!userEdit.isAdmin()}" styleClass="in-panel-header-label"/>
+                    <p:outputLabel id="card-fields-panel-header"
+                                   value="#{cardMsg['card.header']}"
+                                   rendered="#{!userEdit.isAdmin()}"
+                                   styleClass="in-panel-header-label"/>
                 </div>
-                <h:panelGrid columns="2" id="card-fields-panel" rendered="#{!userEdit.isAdmin()}" >
+                <h:panelGrid columns="2" rendered="#{!userEdit.isAdmin()}">
 
                     <!--Номер-->
                     <p:outputLabel for="cardNumber"

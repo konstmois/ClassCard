@@ -1,32 +1,29 @@
 package ru.classcard.ui.beans;
 
+import org.primefaces.model.LazyDataModel;
 import ru.classcard.dao.UserDAO;
 import ru.classcard.model.User;
+import ru.classcard.ui.datamodels.UserLazyModel;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import java.io.Serializable;
-import java.util.List;
 
 @ViewScoped
 @ManagedBean(name = "users")
 public class UserListBean implements Serializable {
 
-    private List<User> userList;
+    private LazyDataModel<User> userList;
 
     @ManagedProperty(value = "#{userDAO}")
     private UserDAO userDAO;
 
-    public List<User> getList() {
+    public LazyDataModel<User> getList() {
         if (userList == null) {
-            userList = userDAO.getList();
+            userList = new UserLazyModel(userDAO);
         }
         return userList;
-    }
-
-    public void setList(List<User> userList) {
-        this.userList = userList;
     }
 
     public void setUserDAO(UserDAO userDAO) {
