@@ -607,3 +607,15 @@ table.jqplot-table-legend {
 li.ui-state-default.ui-corner-top {
     box-shadow: 0px -3px 2px 0px #DDDDDD;
 }
+
+button:focus {
+    outline: none;
+}
+
+span.ui-icon.ui-button-icon-left {
+    background-image: url("#{resource['default:images/ui-icons_ffffff_256x240.png']}")!important;
+}
+
+span.ui-icon.ui-button-icon-right {
+    background-image: url("#{resource['default:images/ui-icons_ffffff_256x240.png']}")!important;
+}

@@ -9,7 +9,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
+
+import static javax.faces.context.FacesContext.getCurrentInstance;
 
 @ViewScoped
 @ManagedBean(name = "operationsUpload")
@@ -33,19 +34,21 @@ public class OperationsUploadBean {
                 addSuccessMessage(file);
             } catch (Exception ex) {
                 LOGGER.error("Filename = " + file.getFileName(), ex);
-                addErrorMessage(file);
+                addErrorMessage();
             }
         }
     }
 
     private void addSuccessMessage(UploadedFile file) {
         FacesMessage message = new FacesMessage("Выписка загружена.", file.getFileName());
-        FacesContext.getCurrentInstance().addMessage(null, message);
+        getCurrentInstance().addMessage(null, message);
     }
 
-    private void addErrorMessage(UploadedFile file) {
-        FacesMessage message = new FacesMessage("Ошибка загрузки.", " Файл не был загружен, обратитесь к администратору");
-        FacesContext.getCurrentInstance().addMessage(null, message);
+    private void addErrorMessage() {
+        FacesMessage message = new FacesMessage("Ошибка загрузки.", "Некорректный формат выписки. \n" +
+                                                                    "Проверьте заполнение полей и номер карты,\n" +
+                                                                    " повторите загрузку еще раз.\n");
+        getCurrentInstance().addMessage(null, message);
     }
 
     public void setCardBean(CardBean cardBean) {
