@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="ru.classcard.model.StudentClass" table="STUDENT_CLASS">
+        <meta attribute="class-description"/>
+        <id name="id" column="ID">
+            <generator class="sequence">
+                <param name="sequence">S_STUDENT_CLASS_ID</param>
+            </generator>
+        </id>
+        <property name="name" type="java.lang.String" column="NAME"  not-null="true"/>
+        <many-to-one name="card" column="CARD" class="ru.classcard.model.Card" not-null="false"/>
+    </class>
+</hibernate-mapping>

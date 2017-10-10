@@ -21,6 +21,7 @@
                 <param name="useNamed">true</param>
             </type>
         </property>
+        <many-to-one name="studentClass" column="STUDENT_CLASS" class="ru.classcard.model.StudentClass" not-null="false"/>
     </class>
 
 </hibernate-mapping>

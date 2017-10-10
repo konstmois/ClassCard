@@ -19,7 +19,7 @@
                         <p:column styleClass="valign-top">
                             <p:graphicImage library="default" name="images/visa.jpg"       rendered="#{cardBean.card.type=='VISA'}" styleClass="card-logo"/>
                             <p:graphicImage library="default" name="images/mastercard.jpg" rendered="#{cardBean.card.type=='MASTER_CARD'}" styleClass="card-logo"/>
-                            <pre><p:outputLabel id="cardNumber" value="#{cardBean.getFormattedNumber()}" styleClass="label-width cardNumber"/></pre>
+                            <pre><p:outputLabel id="cardNumber" value="#{cardBean.getFormattedNumber()}" styleClass="cardNumber"/></pre>
                         </p:column>
                         <p:column styleClass="cardBalance-container valign-top">
                             <div class="cardBalance-cell">

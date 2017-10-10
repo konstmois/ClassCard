@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition>
+    <f:loadBundle basename="ru.classcard.ui.locale.user"  var="userMsg"/>
+    <f:loadBundle basename="ru.classcard.ui.locale.card"  var="cardMsg"/>
+    <f:loadBundle basename="ru.classcard.ui.locale.class" var="classMsg"/>
+    <p:dialog id="#{dialogId}"
+              widgetVar="#{dialogId}"
+              showEffect="fade"
+              hideEffect="fade"
+              modal="true"
+              closeOnEscape="true"
+              closable="false"
+              resizable="false"
+              draggable="false"
+              position="center top"
+              appendTo="@(body)">
+
+        <h:form id="classEditForm">
+            <p:panel id="#{panelId}" style="width: 900px">
+                <f:facet name="header">
+                    <p:outputLabel value="#{classMsg['edit.panel.name']}" rendered="#{classEdit.isEdit()}"/>
+                    <p:outputLabel value="#{classMsg['create.panel.name']}" rendered="#{!classEdit.isEdit()}"/>
+                    <p:commandLink onclick="PF('#{dialogId}').hide()" styleClass="ui-icon ui-icon-closethick right"/>
+                </f:facet>
+                <p:panelGrid>
+
+                    <!--Имя класса-->
+                    <p:row>
+                        <p:column colspan="1">
+                            <div style="float: right;">
+                            <p:outputLabel for="className" value="#{classMsg['field.name']}" styleClass="label-small"/>
+                            </div>
+                        </p:column>
+                        <p:column colspan="2">
+                            <p:inputText id="className" value="#{classEdit.entities.studentClass.name}" required="true" styleClass="value-large"/>
+                        </p:column>
+                    </p:row>
+
+
+                    <p:row>
+                        <!--Пользователь для администратора/казначея класса-->
+                        <p:column>
+                            <p:panelGrid columns="2" styleClass="inner-panel-grid">
+                                <f:facet name="header"><p:outputLabel value="#{classMsg['classadmin.panel.name']}"/> </f:facet>
+                                <!--Логин-->
+                                <p:outputLabel for="login-adm" value="#{userMsg['login']}" styleClass="label-small"/>
+                                <p:inputText id="login-adm" value="#{classEdit.entities.classAdmin.login}" required="true" styleClass="value-small"/>
+
+                                <!--Пароль-->
+                                <p:outputLabel for="password-adm" value="#{userMsg['password']}" styleClass="label-small"/>
+                                <p:password id="password-adm" value="#{classEdit.entities.classAdmin.password}" styleClass="value-small" required="true" redisplay="true"/>
+
+                                <!--Имя-->
+                                <p:outputLabel for="desc-adm" value="#{userMsg['desc']}" styleClass="label-small"/>
+                                <p:inputText id="desc-adm" value="#{classEdit.entities.classAdmin.desc}" styleClass="value-small" required="true"/>
+
+                                <!--Удален-->
+                                <p:outputLabel for="deleted-adm" value="#{userMsg['deleted']}" styleClass="label-small"/>
+                                <p:selectBooleanCheckbox id="deleted-adm" value="#{classEdit.entities.classAdmin.deleted}" style="margin-left: 10px"/>
+                            </p:panelGrid>
+                        </p:column>
+
+
+
+
+                        <!--Пользователь для остальных представителей класса-->
+                        <p:column>
+                            <p:panelGrid columns="2" styleClass="inner-panel-grid">
+                                <f:facet name="header"><p:outputLabel value="#{classMsg['classmember.panel.name']}"/> </f:facet>
+                                <!--Логин-->
+                                <p:outputLabel for="login" value="#{userMsg['login']}" styleClass="label-small"/>
+                                <p:inputText id="login" value="#{classEdit.entities.classMember.login}" required="true" styleClass="value-small"/>
+
+                                <!--Пароль-->
+                                <p:outputLabel for="password" value="#{userMsg['password']}" styleClass="label-small"/>
+                                <p:password id="password" value="#{classEdit.entities.classMember.password}" styleClass="value-small" required="true" redisplay="true"/>
+
+                                <!--Имя-->
+                                <p:outputLabel for="desc" value="#{userMsg['desc']}" styleClass="label-small"/>
+                                <p:inputText id="desc" value="#{classEdit.entities.classMember.desc}" styleClass="value-small" required="true"/>
+
+                                <!--Удален-->
+                                <p:outputLabel for="deleted" value="#{userMsg['deleted']}" styleClass="label-small"/>
+                                <p:selectBooleanCheckbox id="deleted" value="#{classEdit.entities.classMember.deleted}" style="margin-left: 10px"/>
+                            </p:panelGrid>
+                        </p:column>
+
+
+
+
+                        <!--Данные карты класса-->
+                        <p:column>
+                            <p:panelGrid columns="2" styleClass="inner-panel-grid">
+                                <f:facet name="header"><p:outputLabel value="#{classMsg['card.panel.name']}"/> </f:facet>
+                                <!--Номер-->
+                                <p:outputLabel for="cardNumber" value="#{cardMsg['card.number']}" styleClass="label-small"/>
+                                <p:inputMask id="cardNumber" value="#{classEdit.entities.card.number}" mask="9999" styleClass="value-small" required="true"/>
+
+                                <!--Баланс-->
+                                <p:outputLabel for="cardBalance" value="#{cardMsg['card.balance']}" styleClass="label-small"/>
+                                <p:inputNumber id="cardBalance"  value="#{classEdit.entities.card.balance}" styleClass="value-small" decimalPlaces="2" required="true"/>
+
+                                <!--Тип-->
+                                <p:outputLabel for="cardType" value="#{cardMsg['card.type']}" styleClass="label-small"/>
+                                <p:selectOneMenu id="cardType" value="#{classEdit.entities.card.type}" converter="CardTypeConverter" styleClass="value-small" showHeader="false" required="true">
+                                    <f:selectItems value="#{classEdit.cardTypeList}"/>
+                                </p:selectOneMenu>
+
+                                <!--Описание-->
+                                <p:outputLabel for="cardDesc" value="#{cardMsg['card.desc']}" styleClass="label-small"/>
+                                <p:inputText id="cardDesc" value="#{classEdit.entities.card.desc}" styleClass="value-small" required="true"/>
+                            </p:panelGrid>
+                        </p:column>
+                    </p:row>
+                </p:panelGrid>
+
+
+
+                <!--Валидация-->
+                <h:panelGroup>
+                    <p:message for="login-adm" display="text" styleClass="value-large"/>
+                    <p:message for="password-adm" display="text" styleClass="value-large"/>
+                    <p:message for="desc-adm" display="text" styleClass="value-large"/>
+                    <p:message for="login" display="text" styleClass="value-large"/>
+                    <p:message for="password" display="text" styleClass="value-large"/>
+                    <p:message for="desc" display="text" styleClass="value-large"/>
+                    <p:message for="cardNumber" display="text" styleClass="value-large"/>
+                    <p:message for="cardBalance" display="text" styleClass="value-large"/>
+                    <p:message for="cardType" display="text" styleClass="value-large"/>
+                    <p:message for="cardDesc" display="text" styleClass="value-large"/>
+                </h:panelGroup>
+
+
+
+                <!--Кнопки действий-->
+                <f:facet name="footer">
+                    <p:commandButton id="saveButton" styleClass="main-button"
+                                     value="#{msg['save']}"
+                                     actionListener="#{classEdit.save()}"
+                                     oncomplete="PF('#{dialogId}').hide();"
+                                     process="classEditForm"
+                                     update="#{updateOnSubmit} @([id$=#{panelId}])"/>
+                    <p:commandButton id="cancelClassEdit"
+                                     styleClass="cancel-button"
+                                     value="#{msg['cancel']}"
+                                     process="@this"
+                                     onclick="PF('#{dialogId}').hide();"
+                                     update="@([id$=#{panelId}])"/>
+                </f:facet>
+            </p:panel>
+        </h:form>
+    </p:dialog>
+</ui:composition>
+</html>

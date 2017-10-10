@@ -2,26 +2,26 @@ package ru.classcard.ui.datamodels;
 
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
-import ru.classcard.dao.UserDAO;
-import ru.classcard.model.User;
+import ru.classcard.dao.StudentClassDAO;
+import ru.classcard.model.StudentClass;
 
 import java.util.List;
 import java.util.Map;
 
-public class UserLazyModel extends LazyDataModel<User> {
+public class StudentClassLazyModel extends LazyDataModel<StudentClass> {
 
     private static final long serialVersionUID = 2L;
 
-    private List<User> result;
+    private List<StudentClass> result;
 
-    private UserDAO dao;
+    private StudentClassDAO dao;
 
-    public UserLazyModel(UserDAO dao) {
+    public StudentClassLazyModel(StudentClassDAO dao) {
         this.dao = dao;
     }
 
     @Override
-    public List<User> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, Object> filters) {
+    public List<StudentClass> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, Object> filters) {
         result = dao.getList(first, pageSize, sortField, convertSortOrder(sortOrder), filters);
         this.setRowCount(dao.getCountBy(filters));
         return result;
@@ -32,10 +32,10 @@ public class UserLazyModel extends LazyDataModel<User> {
     }
 
     @Override
-    public User getRowData(String rowKey) {
-        for(User user : result) {
-            if (rowKey.equals(user.getId().toString())) {
-                return user;
+    public StudentClass getRowData(String rowKey) {
+        for(StudentClass clazz : result) {
+            if (rowKey.equals(clazz.getId().toString())) {
+                return clazz;
             }
         }
         return null;

@@ -181,6 +181,12 @@ input.ui-column-filter {
     background: rgb(155, 205, 143);
 }
 
+
+thead.ui-panelgrid-header td {
+    text-align: center;
+    background: rgb(155, 205, 143);
+}
+
 .ui-panel-title {
     height: 30px;
     clear: both;
@@ -225,24 +231,6 @@ input.ui-column-filter {
 
 .ui-dialog .ui-panel-footer .cancel-button {
     float: right;
-}
-
-/* панель подтвреждения*/
-.ui-confirm-dialog {
-    width: 330px !important;
-    height: 160px !important;
-}
-
-.ui-confirm-dialog .ui-dialog-footer {
-    border-width: 0 0 0 0;
-}
-
-.ui-confirm-dialog .ui-dialog-content {
-    display: none;
-}
-
-.ui-dialog-titlebar {
-    display: none;
 }
 
 /*чекбокс*/
@@ -326,56 +314,33 @@ input.ui-column-filter {
     float: left;
 }
 
-.line {clear:both; display: table }
-
-.text-center {
-    text-align: center;
-}
 
 .clear {
     clear: both;
     display: table-cell;
 }
 
-.label-width {
+
+.label-small {
+    width: 50px;
+}
+
+.value-small {
     width: 150px;
 }
 
-.label-small-width {
-    width: 75px;
+span.value-small input {
+    width: 150px;
 }
 
-.label-big-width {
-    width: 250px;
+div.value-small {
+    width: 132px;
 }
 
-.right-label {
-    margin: 2px 10px
-}
-
-.value-width {
-    width: 200px;
-}
-
-.value-small-width {
-    width: 100px;
-}
-
-.value-big-width {
-    width: 400px;
-}
-
-.messages-width {
-    width: 200px;
-}
-
-.messages-small-width {
-    width: 100px;
-}
-
-.messages-big-width {
+.value-large {
     width: 350px;
 }
+
 
 .calendarFilter.ui-calendar.ui-column-filter input {
     margin-left: 4px !important;
@@ -397,7 +362,6 @@ input.ui-column-filter {
 .calendarFilter-hour.calendarFilter-hour.ui-calendar.ui-column-filter input {
     width: 90px !important;
 }
-
 
 .ui-menu-dynamic .ui-menuitem .ui-menuitem-text {
     color: #666666; !important;
@@ -619,3 +583,12 @@ span.ui-icon.ui-button-icon-left {
 span.ui-icon.ui-button-icon-right {
     background-image: url("#{resource['default:images/ui-icons_ffffff_256x240.png']}")!important;
 }
+
+.ui-panelgrid .ui-panelgrid-cell {
+    border-width: 0px;
+}
+
+table.inner-panel-grid td{
+   background-color: #EEEEEE !important;
+}
+

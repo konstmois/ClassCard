@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition template="../templates/masterLayout.xhtml">
+    <ui:define name="mainContent">
+        <f:loadBundle basename="ru.classcard.ui.locale.class" var="classMsg"/>
+        <h:form>
+            <p:panel id="classListPanel">
+                <p:dataTable id="classesTable"
+                             widgetVar="classesTable"
+                             value="#{classes.list}"
+                             lazy="true"
+                             var="studentClass"
+                             rows="10"
+                             paginator="true"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                             paginatorPosition="bottom"
+                             emptyMessage="#{msg['no.record']}"
+                             rowKey="#{studentClass.id}"
+                             selection="#{classEdit.studentClass}"
+                             selectionMode="single">
+
+                    <!--Открытие панели пользователя-->
+                    <p:ajax event="rowSelect" oncomplete="PF('editClassDialog').show()" update="@([id$='editClassPanel'])"/>
+                    <f:facet name="header">
+                        <div class="images">
+                            <p:graphicImage id="createClassImage"
+                                            styleClass="data-table-header-image"
+                                            library="default"
+                                            title="#{classMsg['create.title']}"
+                                            name="images/create-user-icon.png"
+                                            onclick="createClassButton()"/>
+                            <p:remoteCommand id="createClass"
+                                             resetValues="true"
+                                             name="createClassButton"
+                                             actionListener="#{classEdit.createNew()}"
+                                             process="@this"
+                                             update="@([id$=editClassPanel])"
+                                             oncomplete="PF('editClassDialog').show();"/>
+
+                        </div>
+                        #{classMsg['dataGrid.header']}
+                        <div class="clear"/>
+                    </f:facet>
+                    <p:column headerText="#{classMsg['field.id']}" width="100">
+                        <h:outputText value="#{studentClass.id}"/>
+                    </p:column>
+                    <p:column headerText="#{classMsg['field.name']}">
+                        <h:outputText value="#{studentClass.name}"/>
+                    </p:column>
+
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+
+      <ui:include src="classEditPanel.xhtml">
+            <ui:param name="panelId" value="editClassPanel"/>
+            <ui:param name="dialogId" value="editClassDialog"/>
+            <ui:param name="updateOnSubmit" value="@([id$=classListPanel])"/>
+      </ui:include>
+
+    </ui:define>
+</ui:composition>
+</html>

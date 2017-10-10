@@ -47,7 +47,7 @@ public class OperationsUploadBean {
     private void addErrorMessage() {
         FacesMessage message = new FacesMessage("Ошибка загрузки.", "Некорректный формат выписки. \n" +
                                                                     "Проверьте заполнение полей и номер карты,\n" +
-                                                                    " повторите загрузку еще раз.\n");
+                                                                    "повторите загрузку еще раз.\n");
         getCurrentInstance().addMessage(null, message);
     }
 

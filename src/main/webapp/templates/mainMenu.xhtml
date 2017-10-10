@@ -25,7 +25,7 @@
 
             <!--Управление-->
             <p:menuitem id="userAdminItem" value="#{mainMenuMsg['admin']}" rendered="#{access.isAccessibleUserAdminMenu()}"
-                        action="/admin/users?faces-redirect=true"
+                        action="/admin/classes?faces-redirect=true"
                         styleClass="#{view.viewId.contains('/admin/') ? 'ui-menuitem-active' : ''}"/>
 
 

@@ -10,5 +10,6 @@
         <mapping resource="hbm/cardOperation.hbm.xml"/>
         <mapping resource="hbm/expenseCategory.hbm.xml"/>
         <mapping resource="hbm/mccCode.hbm.xml"/>
+        <mapping resource="hbm/studentClass.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

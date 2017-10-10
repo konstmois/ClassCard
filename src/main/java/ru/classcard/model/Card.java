@@ -9,7 +9,6 @@ public class Card {
     private String number;
     private CardType type;
     private String desc;
-    private User owner;
 
     public BigDecimal getBalance() {
         return balance;
@@ -33,14 +32,6 @@ public class Card {
 
     public void setType(CardType type) {
         this.type = type;
-    }
-
-    public User getOwner() {
-        return owner;
-    }
-
-    public void setOwner(User owner) {
-        this.owner = owner;
     }
 
     public Long getId() {

@@ -1,8 +1,10 @@
-INSERT INTO CC_USER (id, login, password, description, role, deleted) VALUES (S_USER_ID.NEXTVAL, 'test',  'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'Test Class Member', 'CLASS_MEMBER', 0);
+INSERT INTO CARD (id, number, balance, type, description) VALUES (S_CARD_ID.NEXTVAL, '7771', 10000.00, 'VISA', 'Visa Classic');
+
+INSERT INTO STUDENT_CLASS(id, name, card) VALUES (S_STUDENT_CLASS_ID.NEXTVAL, 'Школа №1, Класс 1А', 1);
+
+INSERT INTO CC_USER (id, login, password, student_class, description, role, deleted) VALUES (S_USER_ID.NEXTVAL, 'test',  'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 1,'Test Class Member', 'CLASS_MEMBER', 0);
+INSERT INTO CC_USER (id, login, password, student_class, description, role, deleted) VALUES (S_USER_ID.NEXTVAL, 'testa', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 1,'Test Class Admin', 'CLASS_ADMIN', 0);
 INSERT INTO CC_USER (id, login, password, description, role, deleted) VALUES (S_USER_ID.NEXTVAL, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Admin', 'ADMIN', 0);
-
-INSERT INTO CARD (id, owner, number, balance, type, description) VALUES (S_CARD_ID.NEXTVAL, 1, '4517', 10000.00, 'VISA', 'Visa Classic');
-
 
 INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'EXPENSE', -1500.00, 'Тетради',   '7395', sysdate);
 INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'EXPENSE', -2500.00, 'Учебники',  '7395', sysdate);
@@ -12,7 +14,6 @@ INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALU
 INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'EXPENSE', -2000.00, 'Учебники',  '5972', sysdate);
 INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'EXPENSE', -3000.00, 'Экскурсия', '5972', sysdate);
 INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'EXPENSE', -4000.00, 'Театр',     '5972', sysdate);
-
 
 INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 2500.00, 'От Петр Петрович П.',      '2001', sysdate);
 INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 2500.00, 'От Илья Игоревич И.',      '2001', sysdate);

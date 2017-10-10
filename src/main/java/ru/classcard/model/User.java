@@ -10,6 +10,7 @@ public class User implements Serializable {
     private String desc;
     private UserRole role;
     private boolean deleted;
+    private StudentClass studentClass;
 
     public Long getId() {
         return id;
@@ -57,5 +58,13 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public StudentClass getStudentClass() {
+        return studentClass;
+    }
+
+    public void setStudentClass(StudentClass studentClass) {
+        this.studentClass = studentClass;
     }
 }

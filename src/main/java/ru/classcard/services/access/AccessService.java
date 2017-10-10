@@ -10,18 +10,20 @@ import java.util.regex.Pattern;
 
 import static java.util.Arrays.asList;
 import static ru.classcard.model.UserRole.ADMIN;
+import static ru.classcard.model.UserRole.CLASS_ADMIN;
 import static ru.classcard.model.UserRole.CLASS_MEMBER;
 import static ru.classcard.services.access.Page.MAIN_CLIENT_MENU;
-import static ru.classcard.services.access.Page.UPLOAD_CLEINT_MENU;
-import static ru.classcard.services.access.Page.USERS_ADMIN_MENU;
+import static ru.classcard.services.access.Page.UPLOAD_CLIENT_MENU;
+import static ru.classcard.services.access.Page.CLASSES_ADMIN_MENU;
 
 public class AccessService {
 
     private static final EnumMap<UserRole, List<Page>> ACCESS_RULES = new EnumMap<>(UserRole.class);
 
     static {
-        ACCESS_RULES.put(ADMIN,        asList(USERS_ADMIN_MENU));
-        ACCESS_RULES.put(CLASS_MEMBER, asList(MAIN_CLIENT_MENU, UPLOAD_CLEINT_MENU));
+        ACCESS_RULES.put(ADMIN,        asList(CLASSES_ADMIN_MENU));
+        ACCESS_RULES.put(CLASS_MEMBER, asList(MAIN_CLIENT_MENU));
+        ACCESS_RULES.put(CLASS_ADMIN,  asList(MAIN_CLIENT_MENU, UPLOAD_CLIENT_MENU));
     }
 
 
@@ -36,7 +38,6 @@ public class AccessService {
             if (matcher.matches()) {
                 return true;
             }
-
         }
         return false;
     }

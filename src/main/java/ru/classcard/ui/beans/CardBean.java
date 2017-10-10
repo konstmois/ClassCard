@@ -2,7 +2,6 @@ package ru.classcard.ui.beans;
 
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.chart.DonutChartModel;
-import ru.classcard.dao.CardDAO;
 import ru.classcard.dao.CardOperationDAO;
 import ru.classcard.model.Card;
 import ru.classcard.model.CardOperation;
@@ -33,9 +32,6 @@ public class CardBean {
     @ManagedProperty(value = "#{currentUser}")
     private CurrentUserBean currentUserBean;
 
-    @ManagedProperty(value = "#{cardDAO}")
-    private CardDAO dao;
-
     @ManagedProperty(value = "#{operationDAO}")
     private CardOperationDAO operationDao;
 
@@ -50,7 +46,7 @@ public class CardBean {
 
     public Card getCard() {
         if (card == null) {
-            card = dao.getCardBy(currentUserBean.getUser());
+            card = currentUserBean.getUser().getStudentClass().getCard();
         }
         return card;
     }
@@ -140,10 +136,6 @@ public class CardBean {
 
     public void setCurrentUserBean(CurrentUserBean currentUserBean) {
         this.currentUserBean = currentUserBean;
-    }
-
-    public void setDao(CardDAO dao) {
-        this.dao = dao;
     }
 
     public void setOperationDao(CardOperationDAO operationDao) {
