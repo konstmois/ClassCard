@@ -23,7 +23,7 @@ public class StudentClassService {
         cardDAO.save(entities.getCard());
         classDao.save(entities.getStudentClass());
 
-        saveUser(entities.getClassAdmin(),  entities.getPrevClassAdminPass());
+        saveUser(entities.getClassManager(),  entities.getPrevClassManagerPass());
         saveUser(entities.getClassMember(), entities.getPrevClassMemberPass());
     }
 

@@ -2,22 +2,27 @@ package ru.classcard.ui.beans;
 
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.chart.DonutChartModel;
+import ru.classcard.comparator.SelectItemComparator;
 import ru.classcard.dao.CardOperationDAO;
+import ru.classcard.dao.StudentDAO;
+import ru.classcard.dao.TargetDAO;
 import ru.classcard.model.Card;
 import ru.classcard.model.CardOperation;
+import ru.classcard.model.StudentClass;
 import ru.classcard.services.operations.ExpenseService;
 import ru.classcard.ui.datamodels.CardOperationLazyModel;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import javax.faces.model.SelectItem;
 import java.io.UnsupportedEncodingException;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
+import static java.util.stream.Collectors.toList;
 import static ru.classcard.model.OperationType.EXPENSE;
 import static ru.classcard.model.OperationType.INCOME;
 
@@ -25,8 +30,6 @@ import static ru.classcard.model.OperationType.INCOME;
 @ManagedBean(name = "cardBean")
 public class CardBean {
 
-    private static final String CARD_NUMBER_MASK = "****   ****   ****   ";
-    private static final String RUBLE_SIGN = " \u20BD";
     private static final String NO_EXPENSES = "Расходы отсутствуют";
 
     @ManagedProperty(value = "#{currentUser}")
@@ -34,6 +37,12 @@ public class CardBean {
 
     @ManagedProperty(value = "#{operationDAO}")
     private CardOperationDAO operationDao;
+
+    @ManagedProperty(value = "#{studentDAO}")
+    private StudentDAO studentDao;
+
+    @ManagedProperty(value = "#{targetDAO}")
+    private TargetDAO targetDao;
 
     @ManagedProperty(value = "#{expenseService}")
     private ExpenseService expenseService;
@@ -43,27 +52,39 @@ public class CardBean {
     private CardOperationLazyModel expenseList;
     private Date expenseGraphDate = new Date();
     private DonutChartModel expenseGraphModel;
+    private List<SelectItem> studentFilterList;
+    private List<SelectItem> targetFilterList;
 
     public Card getCard() {
         if (card == null) {
-            card = currentUserBean.getUser().getStudentClass().getCard();
+            card = getCurrentClass().getCard();
         }
         return card;
     }
 
-    public String getFormattedNumber() {
-        return CARD_NUMBER_MASK + getCard().getNumber();
+    public List<SelectItem> getStudentFilterItems() {
+        if (studentFilterList == null) {
+            studentFilterList = studentDao.findBy(getCurrentClass())
+                    .stream()
+                    .map(s -> new SelectItem(s.getId(), s.getLastName() + " " + s.getName()))
+                    .collect(toList());
+            studentFilterList.sort(new SelectItemComparator());
+        }
+        return studentFilterList;
     }
 
-    public String getFormattedBalance() {
-        return getMoneyFormatter().format(getCard().getBalance()) + RUBLE_SIGN;
+    public List<SelectItem> getTargetFilterItems() {
+        if (targetFilterList == null) {
+            targetFilterList = targetDao.findBy(getCurrentClass())
+                    .stream()
+                    .map(s -> new SelectItem(s.getId(), s.getName()))
+                    .collect(toList());
+        }
+        return targetFilterList;
     }
 
-    private DecimalFormat getMoneyFormatter() {
-        DecimalFormat fmt = (DecimalFormat) NumberFormat.getInstance();
-        fmt.setGroupingSize(3);
-        fmt.setMaximumFractionDigits(2);
-        return fmt;
+    private StudentClass getCurrentClass() {
+        return currentUserBean.getUser().getStudentClass();
     }
 
     public LazyDataModel<CardOperation> getIncomeList() {
@@ -146,5 +167,11 @@ public class CardBean {
         this.expenseService = expenseService;
     }
 
+    public void setStudentDao(StudentDAO studentDao) {
+        this.studentDao = studentDao;
+    }
 
+    public void setTargetDao(TargetDAO targetDao) {
+        this.targetDao = targetDao;
+    }
 }

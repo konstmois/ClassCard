@@ -11,7 +11,10 @@
                 <param name="sequence">S_CARD_OP_ID</param>
             </generator>
         </id>
-        <many-to-one name="card" column="CARD" class="ru.classcard.model.Card" not-null="true"/>
+        <many-to-one name="card"    column="CARD"    class="ru.classcard.model.Card"    not-null="true"/>
+        <many-to-one name="student" column="STUDENT" class="ru.classcard.model.Student" not-null="false"/>
+        <many-to-one name="target"  column="TARGET"  class="ru.classcard.model.Target"  not-null="false"/>
+
         <property name="type"    column="TYPE" not-null="true">
             <type name="org.hibernate.type.EnumType">
                 <param name="enumClass">ru.classcard.model.OperationType</param>

@@ -19,12 +19,12 @@
                         <p:column styleClass="valign-top">
                             <p:graphicImage library="default" name="images/visa.jpg"       rendered="#{cardBean.card.type=='VISA'}" styleClass="card-logo"/>
                             <p:graphicImage library="default" name="images/mastercard.jpg" rendered="#{cardBean.card.type=='MASTER_CARD'}" styleClass="card-logo"/>
-                            <pre><p:outputLabel id="cardNumber" value="#{cardBean.getFormattedNumber()}" styleClass="cardNumber"/></pre>
+                            <pre><p:outputLabel id="cardNumber" value="#{formatter.getCardNumber(cardBean.card.number)}" styleClass="cardNumber"/></pre>
                         </p:column>
                         <p:column styleClass="cardBalance-container valign-top">
                             <div class="cardBalance-cell">
                                 <div style="text-align: right"><p:outputLabel value="#{cardMsg['balance']}" styleClass="cardBalance-title"/></div>
-                                <div style="text-align: right"><p:outputLabel id="cardBalance" value="#{cardBean.getFormattedBalance()}" styleClass="cardBalance"/></div>
+                                <div style="text-align: right"><p:outputLabel id="cardBalance" value="#{formatter.getCurrencyAmount(cardBean.card.balance)}" styleClass="cardBalance"/></div>
                             </div>
                         </p:column>
                         <p:column style="padding-left: 0px;">
@@ -36,7 +36,7 @@
 
             <!--Вкладки-->
             <div style="margin-top: -60px;">
-                <p:tabView id="cardTabs" dynamic="true">
+                <p:tabView id="cardTabs" dynamic="true" styleClass="card-tabs">
                     <p:ajax event="tabChange"/>
                     <!--Поступления-->
                     <p:tab id="income" title="#{cardMsg['income']}"
@@ -44,11 +44,18 @@
                         <ui:include src="tabs/income.xhtml"/>
                     </p:tab>
 
-                    <!--Документы клиента-->
+                    <!--Расходы-->
                     <p:tab id="expense" title="#{cardMsg['expense']}"
                            titletip="#{cardMsg['expense.hint']}">
                         <ui:include src="tabs/expense.xhtml"/>
                     </p:tab>
+
+                    <!--Цели-->
+                    <p:tab id="target" title="#{cardMsg['targets']}"
+                           titletip="#{cardMsg['targets.hint']}">
+                        <ui:include src="tabs/targets.xhtml"/>
+                    </p:tab>
+
                 </p:tabView>
             </div>
         </h:form>

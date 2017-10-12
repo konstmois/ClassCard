@@ -7,9 +7,9 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
 
-import static ru.classcard.services.access.Page.MAIN_CLIENT_MENU;
-import static ru.classcard.services.access.Page.UPLOAD_CLIENT_MENU;
-import static ru.classcard.services.access.Page.CLASSES_ADMIN_MENU;
+import static ru.classcard.services.access.Page.CLASS_MEMBER_MENU;
+import static ru.classcard.services.access.Page.CLASS_MANAGER_MENU;
+import static ru.classcard.services.access.Page.ADMIN_MENU;
 
 @ManagedBean(name = "access")
 @SessionScoped
@@ -22,16 +22,16 @@ public class AccessBean implements Serializable {
     private AccessService accessService;
 
 
-    public boolean isAccessibleClientMainMenu() {
-        return accessService.checkIsAccessible(currentUserBean.getUser(), MAIN_CLIENT_MENU);
+    public boolean isAccessibleClassMemberMenu() {
+        return accessService.checkIsAccessible(currentUserBean.getUser(), CLASS_MEMBER_MENU);
     }
 
-    public boolean isAccessibleUserAdminMenu() {
-        return accessService.checkIsAccessible(currentUserBean.getUser(), CLASSES_ADMIN_MENU);
+    public boolean isAccessibleAdminMenu() {
+        return accessService.checkIsAccessible(currentUserBean.getUser(), ADMIN_MENU);
     }
 
-    public boolean isAccessibleClientUploadMenu() {
-        return accessService.checkIsAccessible(currentUserBean.getUser(), UPLOAD_CLIENT_MENU);
+    public boolean isAccessibleClassManagerMenu() {
+        return accessService.checkIsAccessible(currentUserBean.getUser(), CLASS_MANAGER_MENU);
     }
 
     public void setCurrentUserBean(CurrentUserBean currentUserBean) {

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition>
+
+    <f:loadBundle basename="ru.classcard.ui.locale.target" var="targetMsg"/>
+    <p:tabView value="#{targets.list}" var="target" orientation="right" dynamic="true" styleClass="target-tabs">
+
+        <p:tab title="#{target.name}" titleStyleClass="tabs-like-buttons-right">
+
+            <div style="margin: 0 auto;">
+                <div class="target-params-div">
+                    <div><p:outputLabel value="#{targetMsg['required']}"  styleClass="target-required"/></div>
+                    <div><p:outputLabel value="#{formatter.getCurrencyAmount(target.requiredAmount)}"  styleClass="target-required"/></div>
+                </div>
+                <div class="target-params-div">
+                    <div><p:outputLabel value="#{targetMsg['income']}" styleClass="target-income"/></div>
+                    <div><p:outputLabel value="#{formatter.getCurrencyAmount(targets.calcIncome(target))}" styleClass="target-income"/></div>
+                </div>
+                <div class="target-params-div">
+                    <div><p:outputLabel value="#{targetMsg['expense']}" styleClass="target-expense"/></div>
+                    <div><p:outputLabel value="#{formatter.getCurrencyAmount(targets.calcExpense(target))}" styleClass="target-expense"/></div>
+                </div>
+            </div>
+
+            <p:panel header="#{targetMsg['students']}" toggleable="true" collapsed="true">
+            <p:dataTable id="studentsForTarget"
+                         widgetVar="studentsForTarget"
+                         value="#{targets.getTargetIncomeList(target)}"
+                         var="income"
+                         rows="30"
+                         paginator="true"
+                         paginatorTemplate="{PageLinks}"
+                         paginatorPosition="bottom"
+                         emptyMessage="#{msg['no.record']}"
+                         styleClass="headless"
+                         rowStyleClass="#{income.amount eq 0 ? 'student-row-no-income' : 'student-row-has-income'}">
+
+                <!--Иконка-->
+                <p:column width="50">
+                    <p:graphicImage library="default" name="images/icon_checked.png" rendered="#{!(income.amount eq 0)}"/>
+                    <p:graphicImage library="default" name="images/icon_cross.png" rendered="#{income.amount eq 0}"/>
+                </p:column>
+
+                <!--Имя-->
+                <p:column>
+                    <p:outputLabel value="#{formatter.getStudentName(income.student)}"/>
+                </p:column>
+
+                <!--Сумма-->
+                <p:column>
+                    <p:outputLabel value="#{formatter.getCurrencyAmount(income.amount)}"/>
+                </p:column>
+
+
+            </p:dataTable>
+
+            </p:panel>
+        </p:tab>
+    </p:tabView>
+
+</ui:composition>
+</html>

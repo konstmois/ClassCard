@@ -24,7 +24,7 @@
                      lazy="true">
 
             <!--Дата-->
-            <p:column headerText="#{cardMsg['operation.date']}" width="100">
+            <p:column headerText="#{cardMsg['operation.date']}" width="80">
                 <p:outputLabel value="#{income.date}">
                     <f:convertDateTime pattern="dd.MM.yyyy"/>
                 </p:outputLabel>
@@ -35,11 +35,38 @@
                 <p:outputLabel value="#{income.amount}"/>
             </p:column>
 
+            <!--Цель-->
+            <p:column filterBy="#{income.target.id}" width="150">
+                <f:facet name="filter">
+                    <p:selectCheckboxMenu label="#{cardMsg['operation.target']}"
+                                          showHeader="false"
+                                          onchange="PF('incomesTable').filter()"
+                                          converter="javax.faces.Long">
+                        <f:selectItems value="#{cardBean.targetFilterItems}"/>
+                    </p:selectCheckboxMenu>
+                </f:facet>
+                <p:outputLabel value="#{empty income.target ? ' - ' : income.target.name}"/>
+            </p:column>
+
+            <!--Ученик-->
+            <p:column filterBy="#{income.student.id}" width="150">
+
+                <f:facet name="filter">
+                    <p:selectCheckboxMenu label="#{cardMsg['operation.student']}"
+                                          showHeader="false"
+                                          onchange="PF('incomesTable').filter()"
+                                          converter="javax.faces.Long">
+                        <f:selectItems value="#{cardBean.studentFilterItems}"/>
+                    </p:selectCheckboxMenu>
+                </f:facet>
+                <p:outputLabel value="#{empty income.student ? ' - ' : formatter.getStudentName(income.student)}"/>
+            </p:column>
 
             <!--Описание-->
             <p:column headerText="#{cardMsg['operation.desc']}" width="150">
                 <p:outputLabel value="#{income.desc}"/>
             </p:column>
+
         </p:dataTable>
     </p:panel>
 

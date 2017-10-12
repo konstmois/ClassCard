@@ -35,6 +35,18 @@
                 <p:outputLabel value="#{expense.amount}"/>
             </p:column>
 
+            <!--Цель-->
+            <p:column filterBy="#{expense.target.id}" width="150">
+                <f:facet name="filter">
+                    <p:selectCheckboxMenu label="#{cardMsg['operation.target']}"
+                                          showHeader="false"
+                                          onchange="PF('expenseTable').filter()"
+                                          converter="javax.faces.Long">
+                        <f:selectItems value="#{cardBean.targetFilterItems}"/>
+                    </p:selectCheckboxMenu>
+                </f:facet>
+                <p:outputLabel value="#{empty expense.target ? ' - ' : expense.target.name}"/>
+            </p:column>
 
             <!--Описание-->
             <p:column headerText="#{cardMsg['operation.desc']}" width="150">

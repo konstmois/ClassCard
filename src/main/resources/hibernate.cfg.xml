@@ -11,5 +11,7 @@
         <mapping resource="hbm/expenseCategory.hbm.xml"/>
         <mapping resource="hbm/mccCode.hbm.xml"/>
         <mapping resource="hbm/studentClass.hbm.xml"/>
+        <mapping resource="hbm/student.hbm.xml"/>
+        <mapping resource="hbm/target.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

@@ -12,6 +12,8 @@ public class CardOperation {
     private String desc;
     private Date date;
     private String mcc;
+    private Target target;
+    private Student student;
 
     public Card getCard() {
         return card;
@@ -67,5 +69,21 @@ public class CardOperation {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Target getTarget() {
+        return target;
+    }
+
+    public void setTarget(Target target) {
+        this.target = target;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 }

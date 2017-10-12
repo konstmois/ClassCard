@@ -46,25 +46,25 @@
 
 
                     <p:row>
-                        <!--Пользователь для администратора/казначея класса-->
+                        <!--Пользователь для управляющего/казначея класса-->
                         <p:column>
                             <p:panelGrid columns="2" styleClass="inner-panel-grid">
-                                <f:facet name="header"><p:outputLabel value="#{classMsg['classadmin.panel.name']}"/> </f:facet>
+                                <f:facet name="header"><p:outputLabel value="#{classMsg['classmanager.panel.name']}"/> </f:facet>
                                 <!--Логин-->
-                                <p:outputLabel for="login-adm" value="#{userMsg['login']}" styleClass="label-small"/>
-                                <p:inputText id="login-adm" value="#{classEdit.entities.classAdmin.login}" required="true" styleClass="value-small"/>
+                                <p:outputLabel for="login-mgr" value="#{userMsg['login']}" styleClass="label-small"/>
+                                <p:inputText id="login-mgr" value="#{classEdit.entities.classManager.login}" required="true" styleClass="value-small"/>
 
                                 <!--Пароль-->
-                                <p:outputLabel for="password-adm" value="#{userMsg['password']}" styleClass="label-small"/>
-                                <p:password id="password-adm" value="#{classEdit.entities.classAdmin.password}" styleClass="value-small" required="true" redisplay="true"/>
+                                <p:outputLabel for="password-mgr" value="#{userMsg['password']}" styleClass="label-small"/>
+                                <p:password id="password-mgr" value="#{classEdit.entities.classManager.password}" styleClass="value-small" required="true" redisplay="true"/>
 
                                 <!--Имя-->
-                                <p:outputLabel for="desc-adm" value="#{userMsg['desc']}" styleClass="label-small"/>
-                                <p:inputText id="desc-adm" value="#{classEdit.entities.classAdmin.desc}" styleClass="value-small" required="true"/>
+                                <p:outputLabel for="desc-mgr" value="#{userMsg['desc']}" styleClass="label-small"/>
+                                <p:inputText id="desc-mgr" value="#{classEdit.entities.classManager.desc}" styleClass="value-small" required="true"/>
 
                                 <!--Удален-->
-                                <p:outputLabel for="deleted-adm" value="#{userMsg['deleted']}" styleClass="label-small"/>
-                                <p:selectBooleanCheckbox id="deleted-adm" value="#{classEdit.entities.classAdmin.deleted}" style="margin-left: 10px"/>
+                                <p:outputLabel for="deleted-mgr" value="#{userMsg['deleted']}" styleClass="label-small"/>
+                                <p:selectBooleanCheckbox id="deleted-mgr" value="#{classEdit.entities.classManager.deleted}" style="margin-left: 10px"/>
                             </p:panelGrid>
                         </p:column>
 
@@ -126,9 +126,9 @@
 
                 <!--Валидация-->
                 <h:panelGroup>
-                    <p:message for="login-adm" display="text" styleClass="value-large"/>
-                    <p:message for="password-adm" display="text" styleClass="value-large"/>
-                    <p:message for="desc-adm" display="text" styleClass="value-large"/>
+                    <p:message for="login-mgr" display="text" styleClass="value-large"/>
+                    <p:message for="password-mgr" display="text" styleClass="value-large"/>
+                    <p:message for="desc-mgr" display="text" styleClass="value-large"/>
                     <p:message for="login" display="text" styleClass="value-large"/>
                     <p:message for="password" display="text" styleClass="value-large"/>
                     <p:message for="desc" display="text" styleClass="value-large"/>

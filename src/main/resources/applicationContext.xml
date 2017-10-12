@@ -12,6 +12,8 @@
     <import resource="h2/jpaContext.xml"/>
 
     <bean id="classDAO"       class="ru.classcard.dao.StudentClassDAOImpl"/>
+    <bean id="studentDAO"     class="ru.classcard.dao.StudentDAOImpl"/>
+    <bean id="targetDAO"      class="ru.classcard.dao.TargetDAOImpl"/>
     <bean id="userDAO"        class="ru.classcard.dao.UserDAOImpl"/>
     <bean id="cardDAO"        class="ru.classcard.dao.CardDAOImpl"/>
     <bean id="operationDAO"   class="ru.classcard.dao.CardOperationDAOImpl"/>
@@ -22,5 +24,6 @@
     <bean id="accessService"  class="ru.classcard.services.access.AccessService"/>
     <bean id="expenseService" class="ru.classcard.services.operations.ExpenseService"/>
     <bean id="uploadService"  class="ru.classcard.services.operations.OperationsUploadService"/>
+    <bean id="targetService"  class="ru.classcard.services.target.TargetService"/>
 
 </beans>

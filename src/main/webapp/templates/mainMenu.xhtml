@@ -14,20 +14,19 @@
         <p:menubar orientation="horizontal" style="border: solid 1px #369B1E">
 
             <!--Главная-->
-            <p:menuitem id="mainItem" value="#{mainMenuMsg['main']}" rendered="#{access.isAccessibleClientMainMenu()}"
+            <p:menuitem id="mainItem" value="#{mainMenuMsg['main']}" rendered="#{access.isAccessibleClassMemberMenu()}"
                         action="/main/card?faces-redirect=true"
                         styleClass="#{view.viewId.contains('/main/') ? 'ui-menuitem-active' : ''}"/>
 
-            <!--Загрузка операций-->
-            <p:menuitem id="operationsUpload" value="#{mainMenuMsg['upload']}" rendered="#{access.isAccessibleClientUploadMenu()}"
-                        action="/upload/operations?faces-redirect=true"
-                        styleClass="#{view.viewId.contains('/upload/') ? 'ui-menuitem-active' : ''}"/>
+            <!--Управление классом-->
+            <p:menuitem id="classMgrItem" value="#{mainMenuMsg['class.management']}" rendered="#{access.isAccessibleClassManagerMenu()}"
+                        action="/classmanager/uploadOperations?faces-redirect=true"
+                        styleClass="#{view.viewId.contains('/classmanager/') ? 'ui-menuitem-active' : ''}"/>
 
             <!--Управление-->
-            <p:menuitem id="userAdminItem" value="#{mainMenuMsg['admin']}" rendered="#{access.isAccessibleUserAdminMenu()}"
-                        action="/admin/classes?faces-redirect=true"
+            <p:menuitem id="adminItem" value="#{mainMenuMsg['admin']}" rendered="#{access.isAccessibleAdminMenu()}"
+                        action="/admin/classList?faces-redirect=true"
                         styleClass="#{view.viewId.contains('/admin/') ? 'ui-menuitem-active' : ''}"/>
-
 
         </p:menubar>
     </h:form>
