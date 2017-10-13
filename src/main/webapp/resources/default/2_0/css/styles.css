@@ -21,6 +21,10 @@
     color: #666666;
 }
 
+span.ui-column-title label {
+    color:#FFFFFF;
+}
+
 input.ui-inputfield, textarea.ui-inputfield, div.ui-selectonemenu {
     border: solid 1px #cccccc;
     background-color: white;
@@ -700,6 +704,10 @@ table.inner-panel-grid td{
 
 .in-cell-edit-select-value {
     width: 80%;
+}
+
+.in-cell-edit-checkbox {
+    margin-left: 10px;
 }
 
 /* Убираем звездочки у обязательных полей*/

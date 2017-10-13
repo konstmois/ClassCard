@@ -16,5 +16,7 @@ public interface CardOperationDAO extends AbstractEntityDAO {
 
     List<CardOperation> findIncomesBy(Target target);
 
+    List<CardOperation> findRestIncomesBy(Target target);
+
     List<CardOperation> findExpensesBy(Target target);
 }

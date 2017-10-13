@@ -34,58 +34,63 @@ INSERT INTO STUDENT(id, name, last_name, student_class) VALUES (S_STUDENT_ID.NEX
 
 
 /*Расходы*/
-INSERT INTO CARD_OPERATION (id, target, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 1, 'EXPENSE', -1500.00, 'Тетради',   '7395', sysdate);
-INSERT INTO CARD_OPERATION (id, target, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 1, 'EXPENSE', -2500.00, 'Учебники',  '7395', sysdate);
-INSERT INTO CARD_OPERATION (id, target, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 2, 1, 'EXPENSE', -3500.00, 'Театр',     '7929', sysdate);
-INSERT INTO CARD_OPERATION (id, target, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 2, 1, 'EXPENSE', -4500.00, 'Экскурсия', '7929', sysdate);
-INSERT INTO CARD_OPERATION (id, target, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 1, 'EXPENSE', -1000.00, 'Тетради',   '7395', sysdate);
-INSERT INTO CARD_OPERATION (id, target, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 1, 'EXPENSE', -2000.00, 'Учебники',  '5972', sysdate);
-INSERT INTO CARD_OPERATION (id, target, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 3, 1, 'EXPENSE', -3000.00, 'Обеды',     '5972', sysdate);
-INSERT INTO CARD_OPERATION (id, target, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 3, 1, 'EXPENSE', -4000.00, 'Обеды',     '5972', sysdate);
-/*INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'EXPENSE', -4000.00, 'Нет цели', '5972', sysdate);*/
+INSERT INTO CARD_OPERATION (id, target, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 1, 'EXPENSE', -1500.00, 'Тетради',   '7395', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 1, 'EXPENSE', -2500.00, 'Учебники',  '7395', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 2, 1, 'EXPENSE', -3500.00, 'Театр',     '7929', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 2, 1, 'EXPENSE', -4500.00, 'Экскурсия', '7929', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 1, 'EXPENSE', -1000.00, 'Тетради',   '7395', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 1, 'EXPENSE', -2000.00, 'Учебники',  '5972', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 3, 1, 'EXPENSE', -3000.00, 'Обеды',     '5972', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 3, 1, 'EXPENSE', -4000.00, 'Обеды',     '5972', sysdate, 0);
+/*INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'EXPENSE', -4000.00, 'Нет цели', '5972', sysdate, 0);*/
 
 /*Нераспределенные приходные операции*/
-INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 2500.00, 'От Петр Петрович П.',      '2001', sysdate);
-INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 2500.00, 'От Илья Игоревич И.',      '2001', sysdate);
-INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 3500.00, 'От Анна Сергеевна П.',     '2002', sysdate);
-INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 4500.00, 'От Ирина Алексндровна У.', '2003', sysdate);
-INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 1000.00, 'От Ирина Петровна Б.',     '2000', sysdate);
-INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 2000.00, 'От Ирина Петровна Б.',     '2001', sysdate);
-INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 3000.00, 'От Ирина Алексндровна У.', '2002', sysdate);
-INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 4000.00, 'От Илья Игоревич И.',      '2003', sysdate);
+INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 2500.00, 'От Петр Петрович П.',      '2001', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 2500.00, 'От Илья Игоревич И.',      '2001', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 3500.00, 'От Анна Сергеевна П.',     '2002', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 4500.00, 'От Ирина Алексндровна У.', '2003', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 1000.00, 'От Ирина Петровна Б.',     '2000', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 2000.00, 'От Ирина Петровна Б.',     '2001', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 3000.00, 'От Ирина Алексндровна У.', '2002', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 4000.00, 'От Илья Игоревич И.',      '2003', sysdate, 0);
 
 /*Приходы на цель 1*/
-INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 1,  1, 'INCOME', 500.00,  'От Петр Петрович П.',      '2001', sysdate);
-INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 3,  1, 'INCOME', 2500.00, 'От Илья Игоревич И.',      '2001', sysdate);
-INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 5,  1, 'INCOME', 1500.00, 'От Анна Сергеевна П.',     '2002', sysdate);
-INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 7,  1, 'INCOME', 500.00,  'От Ирина Алексндровна У.', '2003', sysdate);
-INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 12, 1, 'INCOME', 300.00,  'От Ирина Петровна Б.',     '2000', sysdate);
-INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 4,  1, 'INCOME', 800.00,  'От Ирина Петровна Б.',     '2001', sysdate);
-INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 8,  1, 'INCOME', 900.00,  'От Ирина Алексндровна У.', '2002', sysdate);
-INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 17, 1, 'INCOME', 1000.00, 'От Илья Игоревич И.',      '2003', sysdate);
-INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 14, 1, 'INCOME', 1000.00, 'От Ирина Петровна Б.',     '2000', sysdate);
-INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 18, 1, 'INCOME', 1200.00, 'От Ирина Петровна Б.',     '2001', sysdate);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 1,  1, 'INCOME', 500.00,  'От Петр Петрович П.',      '2001', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 3,  1, 'INCOME', 2500.00, 'От Илья Игоревич И.',      '2001', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 5,  1, 'INCOME', 1500.00, 'От Анна Сергеевна П.',     '2002', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 7,  1, 'INCOME', 500.00,  'От Ирина Алексндровна У.', '2003', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 12, 1, 'INCOME', 300.00,  'От Ирина Петровна Б.',     '2000', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 4,  1, 'INCOME', 800.00,  'От Ирина Петровна Б.',     '2001', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 8,  1, 'INCOME', 900.00,  'От Ирина Алексндровна У.', '2002', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 17, 1, 'INCOME', 1000.00, 'От Илья Игоревич И.',      '2003', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 14, 1, 'INCOME', 1000.00, 'От Ирина Петровна Б.',     '2000', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 18, 1, 'INCOME', 1200.00, 'От Ирина Петровна Б.',     '2001', sysdate, 0);
 
 /*Приходы на цель 2*/
-INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 2, 2,  1, 'INCOME', 3500.00, 'От Петр Петрович П.',      '2001', sysdate);
-INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 2, 7,  1, 'INCOME', 2500.00, 'От Илья Игоревич И.',      '2001', sysdate);
-INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 2, 9,  1, 'INCOME', 1500.00, 'От Анна Сергеевна П.',     '2002', sysdate);
-INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 2, 16, 1, 'INCOME', 500.00,  'От Ирина Алексндровна У.', '2003', sysdate);
-INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 2, 12, 1, 'INCOME', 1300.00, 'От Ирина Петровна Б.',     '2000', sysdate);
-INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 2, 13, 1, 'INCOME', 3800.00, 'От Ирина Петровна Б.',     '2001', sysdate);
-INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 2, 5,  1, 'INCOME', 900.00,  'От Ирина Алексндровна У.', '2002', sysdate);
-INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 2, 10, 1, 'INCOME', 1000.00, 'От Илья Игоревич И.',      '2003', sysdate);
-INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 2, 11, 1, 'INCOME', 1000.00, 'От Ирина Петровна Б.',     '2000', sysdate);
-INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 2, 15, 1, 'INCOME', 1200.00, 'От Ирина Петровна Б.',     '2001', sysdate);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 2, 2,  1, 'INCOME', 3500.00, 'От Петр Петрович П.',      '2001', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 2, 7,  1, 'INCOME', 2500.00, 'От Илья Игоревич И.',      '2001', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 2, 9,  1, 'INCOME', 1500.00, 'От Анна Сергеевна П.',     '2002', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 2, 16, 1, 'INCOME', 500.00,  'От Ирина Алексндровна У.', '2003', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 2, 12, 1, 'INCOME', 1300.00, 'От Ирина Петровна Б.',     '2000', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 2, 13, 1, 'INCOME', 3800.00, 'От Ирина Петровна Б.',     '2001', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 2, 5,  1, 'INCOME', 900.00,  'От Ирина Алексндровна У.', '2002', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 2, 10, 1, 'INCOME', 1000.00, 'От Илья Игоревич И.',      '2003', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 2, 11, 1, 'INCOME', 1000.00, 'От Ирина Петровна Б.',     '2000', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 2, 15, 1, 'INCOME', 1200.00, 'От Ирина Петровна Б.',     '2001', sysdate, 0);
 
 /*Приходы на цель 3*/
-INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 3, 8,  1, 'INCOME', 500.00,  'От Петр Петрович П.',      '2001', sysdate);
-INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 3, 1,  1, 'INCOME', 2500.00, 'От Илья Игоревич И.',      '2001', sysdate);
-INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 3, 14, 1, 'INCOME', 1500.00, 'От Анна Сергеевна П.',     '2002', sysdate);
-INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 3, 9,  1, 'INCOME', 500.00,  'От Ирина Алексндровна У.', '2003', sysdate);
-INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 3, 10, 1, 'INCOME', 500.00,  'От Ирина Петровна Б.',     '2000', sysdate);
-INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 3, 11, 1, 'INCOME', 1800.00, 'От Ирина Петровна Б.',     '2001', sysdate);
-INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 3, 5,  1, 'INCOME', 1000.00, 'От Ирина Алексндровна У.', '2002', sysdate);
-INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 3, 5,  1, 'INCOME', 2000.00, 'От Илья Игоревич И.',      '2003', sysdate);
-INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 3, 15, 1, 'INCOME', 3000.00, 'От Ирина Петровна Б.',     '2000', sysdate);
-INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 3, 19, 1, 'INCOME', 1200.00, 'От Ирина Петровна Б.',     '2001', sysdate);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 3, 8,  1, 'INCOME', 500.00,  'От Петр Петрович П.',      '2001', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 3, 1,  1, 'INCOME', 2500.00, 'От Илья Игоревич И.',      '2001', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 3, 14, 1, 'INCOME', 1500.00, 'От Анна Сергеевна П.',     '2002', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 3, 9,  1, 'INCOME', 500.00,  'От Ирина Алексндровна У.', '2003', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 3, 10, 1, 'INCOME', 500.00,  'От Ирина Петровна Б.',     '2000', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 3, 11, 1, 'INCOME', 1800.00, 'От Ирина Петровна Б.',     '2001', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 3, 5,  1, 'INCOME', 1000.00, 'От Ирина Алексндровна У.', '2002', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 3, 5,  1, 'INCOME', 2000.00, 'От Илья Игоревич И.',      '2003', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 3, 15, 1, 'INCOME', 3000.00, 'От Ирина Петровна Б.',     '2000', sysdate, 0);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 3, 19, 1, 'INCOME', 1200.00, 'От Ирина Петровна Б.',     '2001', sysdate, 0);
+
+/*Сдача по каждой из целей*/
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 3, 8,  1, 'INCOME', 500.00,  'Сдача 3',      '2001', sysdate, 1);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 2, 8,  1, 'INCOME', 500.00,  'Сдача 2',      '2001', sysdate, 1);
+INSERT INTO CARD_OPERATION (id, target, student, card, type, amount, description, mcc, date, is_rest) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 8,  1, 'INCOME', 500.00,  'Сдача 1',      '2001', sysdate, 1);

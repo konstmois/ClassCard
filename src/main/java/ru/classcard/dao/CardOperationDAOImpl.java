@@ -9,6 +9,8 @@ import ru.classcard.model.Target;
 import java.util.List;
 import java.util.Map;
 
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
 import static org.hibernate.criterion.Restrictions.eq;
 import static org.hibernate.criterion.Restrictions.isNotNull;
 import static ru.classcard.model.OperationType.EXPENSE;
@@ -39,8 +41,21 @@ public class CardOperationDAOImpl extends AbstractEntityDAOImpl implements CardO
                 .add(eq("target", target))
                 .add(eq("type", INCOME))
                 .add(isNotNull("student"))
+                .add(eq("rest", FALSE))
                 .list();
     }
+
+    @Override
+    @Transactional
+    public List<CardOperation> findRestIncomesBy(Target target) {
+        return getSession().createCriteria(CardOperation.class)
+                .add(eq("target", target))
+                .add(eq("type", INCOME))
+                .add(eq("rest", TRUE))
+                .list();
+    }
+
+
 
     @Override
     @Transactional

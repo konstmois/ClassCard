@@ -10,12 +10,14 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.util.*;
 
+import static java.lang.Boolean.*;
 import static java.math.BigDecimal.*;
 import static java.util.Calendar.DAY_OF_MONTH;
 import static java.util.Calendar.getInstance;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toMap;
 import static ru.classcard.model.OperationType.EXPENSE;
+import static ru.classcard.model.OperationType.INCOME;
 
 public class TargetService {
 
@@ -23,6 +25,7 @@ public class TargetService {
     private static final String OTHER_CATEGORY_NAME = "Другое";
     private static final String OPERATION_TYPE_FIELD = "type";
     private static final String OPERATION_DATE_FIELD = "date";
+    private static final String OPERATION_IS_REST_FIELD= "rest";
 
     @Autowired
     private CardOperationDAO operationDAO;
@@ -56,22 +59,45 @@ public class TargetService {
     }
 
     public BigDecimal calcExpense(Target target) {
-        return operationDAO.findExpensesBy(target).stream()
-                .map(op -> op.getAmount())
-                .reduce(ZERO, BigDecimal::add);
+        BigDecimal expenses = operationDAO.findExpensesBy(target).stream()
+                                          .map(CardOperation::getAmount)
+                                          .reduce(ZERO, BigDecimal::add);
+
+        BigDecimal restIncomes = operationDAO.findRestIncomesBy(target).stream()
+                                             .map(CardOperation::getAmount)
+                                             .reduce(ZERO, BigDecimal::add);
+        return expenses.add(restIncomes);
     }
 
     public BigDecimal calcIncome(Target target) {
         return operationDAO.findIncomesBy(target)
                 .stream()
-                .map(op -> op.getAmount())
+                .map(CardOperation::getAmount)
                 .reduce(ZERO, BigDecimal::add);
     }
 
     public Map<String, Number> getExpenseToTargetMapping(Card card, Date month) {
         Map<String, Number> expenseMap = new HashMap<>();
         List<CardOperation> expenses = operationDAO.getOperationsBy(card, -1, -1, null, null, createFiltersForExpenseMapping(month));
+        List<CardOperation> restIncomes = operationDAO.getOperationsBy(card, -1, -1, null, null, createFiltersForRestIncomes(month));
 
+        mapExpenses(expenseMap, expenses);
+        mapRestIncomes(expenseMap, restIncomes);
+
+        return expenseMap;
+    }
+
+    private void mapRestIncomes(Map<String, Number> expenseMap, List<CardOperation> restIncomes) {
+        for (CardOperation income : restIncomes) {
+            Target target = income.getTarget();
+            double amount = income.getAmount().abs().doubleValue();
+            if (target != null && expenseMap.get(target.getName()) != null ) {
+                expenseMap.put(target.getName(), expenseMap.get(target.getName()).doubleValue() - amount);
+            }
+        }
+    }
+
+    private void mapExpenses(Map<String, Number> expenseMap, List<CardOperation> expenses) {
         if (!expenses.isEmpty()) {
             double amountOfOtherExpenses = 0;
             for (CardOperation expense : expenses) {
@@ -85,7 +111,14 @@ public class TargetService {
             }
             addOtherExpenses(expenseMap, amountOfOtherExpenses);
         }
-        return expenseMap;
+    }
+
+    private Map<String, Object> createFiltersForRestIncomes(Date month) {
+        HashMap<String, Object> filter = new HashMap<>();
+        filter.put(OPERATION_TYPE_FIELD, INCOME);
+        filter.put(OPERATION_IS_REST_FIELD, TRUE);
+        filter.put(OPERATION_DATE_FIELD, getMonthDateRange(month));
+        return filter;
     }
 
     private HashMap<String, Object> createFiltersForExpenseMapping(Date month) {

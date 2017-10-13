@@ -14,6 +14,7 @@ public class CardOperation {
     private String mcc;
     private Target target;
     private Student student;
+    private boolean isRest;
 
     public Card getCard() {
         return card;
@@ -85,5 +86,13 @@ public class CardOperation {
 
     public void setStudent(Student student) {
         this.student = student;
+    }
+
+    public boolean isRest() {
+        return isRest;
+    }
+
+    public void setRest(boolean rest) {
+        isRest = rest;
     }
 }
