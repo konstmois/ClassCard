@@ -9,7 +9,7 @@ import ru.classcard.dao.TargetDAO;
 import ru.classcard.model.Card;
 import ru.classcard.model.CardOperation;
 import ru.classcard.model.StudentClass;
-import ru.classcard.services.operations.ExpenseService;
+import ru.classcard.services.target.TargetService;
 import ru.classcard.ui.beans.CurrentUserBean;
 import ru.classcard.ui.datamodels.CardOperationLazyModel;
 
@@ -45,8 +45,8 @@ public class CardBean {
     @ManagedProperty(value = "#{targetDAO}")
     private TargetDAO targetDao;
 
-    @ManagedProperty(value = "#{expenseService}")
-    private ExpenseService expenseService;
+    @ManagedProperty(value = "#{targetService}")
+    private TargetService targetService;
 
     private Card card;
     private CardOperationLazyModel incomeList;
@@ -136,7 +136,7 @@ public class CardBean {
     private void calculateExpenseGraphModel() {
         try {
             expenseGraphModel = new DonutChartModel();
-            expenseGraphModel.addCircle(customizeExpenseMap(expenseService.getExpenseMapping(getCard(), getExpenseGraphDate())));
+            expenseGraphModel.addCircle(customizeExpenseMap(targetService.getExpenseToTargetMapping(getCard(), getExpenseGraphDate())));
             expenseGraphModel.setLegendPosition("e");
             expenseGraphModel.setSliceMargin(3);
             expenseGraphModel.setShowDataLabels(true);
@@ -164,8 +164,8 @@ public class CardBean {
         this.operationDao = operationDao;
     }
 
-    public void setExpenseService(ExpenseService expenseService) {
-        this.expenseService = expenseService;
+    public void setTargetService(TargetService targetService) {
+        this.targetService = targetService;
     }
 
     public void setStudentDao(StudentDAO studentDao) {

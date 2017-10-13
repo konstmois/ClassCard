@@ -282,6 +282,22 @@ thead.ui-panelgrid-header td {
     border-radius: 2px;
 }
 
+/* Классы для календаря */
+.ui-datepicker-header {
+    background: #4ea31e;
+    height:20px;
+}
+
+/*Убираем тело календаря для листания месяцев в бублике*/
+.ui-datepicker-calendar {
+    display: none;
+}
+
+.ui-datepicker-header a.ui-datepicker-prev,
+.ui-datepicker-header a.ui-datepicker-next {
+    display: none;
+}
+
 .ui-datepicker td span, .ui-datepicker td a  {
     border-color: white;
     text-align: center;
@@ -432,15 +448,6 @@ div.ui-paginator.ui-paginator-bottom {
     position: relative;
 }
 
-.ui-datepicker-calendar {
-    display: none;
-}
-
-.ui-datepicker-header a.ui-datepicker-prev,
-.ui-datepicker-header a.ui-datepicker-next {
-    display: none;
-}
-
 .cardNumber{
     position: absolute;
     top:140px;
@@ -489,11 +496,6 @@ div.ui-paginator.ui-paginator-bottom {
     position: absolute!important;
     top:2px;
     left:50px;
-}
-
-.ui-datepicker-header {
-    background-color: #4ea31e;
-    height:20px;
 }
 
 .customNavLeft {
