@@ -49,7 +49,7 @@
                     <f:facet name="input">
                         <p:selectOneMenu showHeader="false" converter="entityConverter" value="#{income.target}" styleClass="in-cell-edit-select-value">
                             <f:selectItem itemLabel="#{cardMsg['choose.target']}"/>
-                            <f:selectItems value="#{classMgmt.targetList}"
+                            <f:selectItems value="#{classMgmt.activeTargetList}"
                                            var="target"
                                            itemValue="#{target}"
                                            itemLabel="#{target.name}"/>

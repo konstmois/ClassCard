@@ -28,6 +28,7 @@ public class TargetEditBean {
     public void createNew() {
         target = new Target();
         target.setStudentClass(getCurrentClass());
+        target.setActive(true);
     }
 
     public void save() {

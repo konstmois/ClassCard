@@ -39,7 +39,7 @@ public class TargetListBean {
 
     public List<Target> getList() {
         if (targetList == null) {
-            targetList = targetDao.findBy(getCurrentClass());
+            targetList = targetDao.findActiveBy(getCurrentClass());
         }
         return targetList;
     }

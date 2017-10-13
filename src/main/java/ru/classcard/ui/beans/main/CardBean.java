@@ -76,7 +76,7 @@ public class CardBean {
 
     public List<SelectItem> getTargetFilterItems() {
         if (targetFilterList == null) {
-            targetFilterList = targetDao.findBy(getCurrentClass())
+            targetFilterList = targetDao.findActiveBy(getCurrentClass())
                     .stream()
                     .map(s -> new SelectItem(s.getId(), s.getName()))
                     .collect(toList());

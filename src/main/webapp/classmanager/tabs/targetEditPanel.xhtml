@@ -47,6 +47,15 @@
                         </p:column>
                     </p:row>
 
+                    <p:row>
+                        <p:column>
+                            <p:outputLabel value="#{targetMsg['field.active']}" styleClass="label-default"/>
+                        </p:column>
+                        <p:column>
+                            <p:selectBooleanCheckbox value="#{targetEdit.target.active}"/>
+                        </p:column>
+                    </p:row>
+
                 </p:panelGrid>
 
 

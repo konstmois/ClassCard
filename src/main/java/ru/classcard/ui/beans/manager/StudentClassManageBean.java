@@ -55,6 +55,10 @@ public class StudentClassManageBean {
         return targetDao.findBy(getCurrentClass());
     }
 
+    public List<Target> getActiveTargetList() {
+        return targetDao.findActiveBy(getCurrentClass());
+    }
+
     public LazyDataModel<CardOperation> getIncomeList() {
         if (incomeList == null) {
             incomeList = new CardOperationLazyModel(getCard(), INCOME, operationDao);

@@ -8,6 +8,7 @@ public class Target {
     private String name;
     private BigDecimal requiredAmount;
     private StudentClass studentClass;
+    private boolean active;
 
     public Long getId() {
         return id;
@@ -39,5 +40,13 @@ public class Target {
 
     public void setRequiredAmount(BigDecimal requiredAmount) {
         this.requiredAmount = requiredAmount;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

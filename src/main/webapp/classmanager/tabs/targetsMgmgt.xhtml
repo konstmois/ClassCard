@@ -57,6 +57,10 @@
                     <h:outputText value="#{target.requiredAmount}"/>
                 </p:column>
 
+                <p:column headerText="#{targetMsg['field.active']}">
+                    <p:selectBooleanCheckbox value="#{target.active}" disabled="true"/>
+                </p:column>
+
             </p:dataTable>
         </p:panel>
     </h:form>

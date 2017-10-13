@@ -18,6 +18,15 @@ public class TargetDAOImpl extends AbstractEntityDAOImpl implements TargetDAO {
 
     @Override
     @Transactional
+    public List<Target> findActiveBy(StudentClass clazz) {
+        return getSession().createCriteria(Target.class)
+                .add(eq("studentClass", clazz))
+                .add(eq("active", true))
+                .list();
+    }
+
+    @Override
+    @Transactional
     public <T> void save(T entity) {
         super.save(entity);
     }

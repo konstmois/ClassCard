@@ -8,4 +8,6 @@ import java.util.List;
 public interface TargetDAO extends AbstractEntityDAO {
 
     List<Target> findBy(StudentClass clazz);
+
+    List<Target> findActiveBy(StudentClass clazz);
 }

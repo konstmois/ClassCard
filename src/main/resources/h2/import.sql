@@ -6,9 +6,10 @@ INSERT INTO CC_USER (id, login, password, student_class, description, role, dele
 INSERT INTO CC_USER (id, login, password, student_class, description, role, deleted) VALUES (S_USER_ID.NEXTVAL, 'testa', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 1,'Test Class Admin', 'CLASS_MANAGER', 0);
 INSERT INTO CC_USER (id, login, password, description, role, deleted) VALUES (S_USER_ID.NEXTVAL, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Admin', 'ADMIN', 0);
 
-INSERT INTO TARGET (id, name, student_class, req_amount) VALUES (S_TARGET_ID.NEXTVAL, 'Учебники', 1, 8500.00);
-INSERT INTO TARGET (id, name, student_class, req_amount) VALUES (S_TARGET_ID.NEXTVAL, 'Поездки', 1, 50000.00);
-INSERT INTO TARGET (id, name, student_class, req_amount) VALUES (S_TARGET_ID.NEXTVAL, 'Обеды', 1, 10000.00);
+INSERT INTO TARGET (id, name, student_class, req_amount, active) VALUES (S_TARGET_ID.NEXTVAL, 'Учебники', 1, 8500.00,  1);
+INSERT INTO TARGET (id, name, student_class, req_amount, active) VALUES (S_TARGET_ID.NEXTVAL, 'Поездки',  1, 50000.00, 1);
+INSERT INTO TARGET (id, name, student_class, req_amount, active) VALUES (S_TARGET_ID.NEXTVAL, 'Обеды',    1, 10000.00, 1);
+INSERT INTO TARGET (id, name, student_class, req_amount, active) VALUES (S_TARGET_ID.NEXTVAL, 'Выпускной',1, 10000.00, 0);
 
 INSERT INTO STUDENT(id, name, last_name, student_class) VALUES (S_STUDENT_ID.NEXTVAL, 'Петя', 'Иванов', 1);
 INSERT INTO STUDENT(id, name, last_name, student_class) VALUES (S_STUDENT_ID.NEXTVAL, 'Маша', 'Петрова', 1);
@@ -41,7 +42,7 @@ INSERT INTO CARD_OPERATION (id, target, card, type, amount, description, mcc, da
 INSERT INTO CARD_OPERATION (id, target, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 1, 'EXPENSE', -2000.00, 'Учебники',  '5972', sysdate);
 INSERT INTO CARD_OPERATION (id, target, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 3, 1, 'EXPENSE', -3000.00, 'Обеды',     '5972', sysdate);
 INSERT INTO CARD_OPERATION (id, target, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 3, 1, 'EXPENSE', -4000.00, 'Обеды',     '5972', sysdate);
-INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'EXPENSE', -4000.00, 'Нет цели', '5972', sysdate);
+/*INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'EXPENSE', -4000.00, 'Нет цели', '5972', sysdate);*/
 
 /*Нераспределенные приходные операции*/
 INSERT INTO CARD_OPERATION (id, card, type, amount, description, mcc, date) VALUES (S_CARD_OP_ID.NEXTVAL, 1, 'INCOME', 2500.00, 'От Петр Петрович П.',      '2001', sysdate);
