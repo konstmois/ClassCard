@@ -21,10 +21,12 @@
                      paginatorPosition="bottom"
                      emptyMessage="#{msg['no.record']}"
                      rowKey="#{income.id}"
-                     lazy="true">
+                     lazy="true"
+                     sortBy="#{income.date}"
+                     sortOrder="descending">
 
             <!--Дата-->
-            <p:column headerText="#{cardMsg['operation.date']}" width="80">
+            <p:column headerText="#{cardMsg['operation.date']}" sortBy="#{income.date}" width="80">
                 <p:outputLabel value="#{income.date}">
                     <f:convertDateTime pattern="dd.MM.yyyy"/>
                 </p:outputLabel>
@@ -42,7 +44,7 @@
                                           showHeader="false"
                                           onchange="PF('incomesTable').filter()"
                                           converter="javax.faces.Long">
-                        <f:selectItems value="#{cardBean.targetFilterItems}"/>
+                        <f:selectItems value="#{modelFilters.targetFilterItems}"/>
                     </p:selectCheckboxMenu>
                 </f:facet>
                 <p:outputLabel value="#{empty income.target ? ' - ' : income.target.name}"/>
@@ -56,7 +58,7 @@
                                           showHeader="false"
                                           onchange="PF('incomesTable').filter()"
                                           converter="javax.faces.Long">
-                        <f:selectItems value="#{cardBean.studentFilterItems}"/>
+                        <f:selectItems value="#{modelFilters.studentFilterItems}"/>
                     </p:selectCheckboxMenu>
                 </f:facet>
                 <p:outputLabel value="#{empty income.student ? ' - ' : formatter.getStudentName(income.student)}"/>

@@ -10,6 +10,7 @@ import ru.classcard.util.DateTransformer;
 
 import javax.swing.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Map;
@@ -18,8 +19,10 @@ import static org.hibernate.criterion.Restrictions.*;
 
 public class AbstractEntityDAOImpl {
 
+    public static final Long ENTITY_FIELD_IS_NULL_FILTER = Long.MAX_VALUE;
+
     @Autowired
-    SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     private DateTransformer dateTransformer = new DateTransformer();
 
@@ -70,7 +73,7 @@ public class AbstractEntityDAOImpl {
                 if (entry.getValue() instanceof Date) {
                     withDateFilter(criteria, entry);
                 } else if (entry.getValue() instanceof Object[]) {
-                    criteria = withArrayFilter(criteria, entry);
+                    criteria = withArrayIdFilter(criteria, entry.getKey(), (Object[]) entry.getValue());
                 } else if (entry.getValue() instanceof DateRange) {
                     criteria = withDateRangeFilter(criteria, entry);
                 } else {
@@ -106,11 +109,28 @@ public class AbstractEntityDAOImpl {
         return criteria;
     }
 
-    private Criteria withArrayFilter(Criteria criteria, Map.Entry<String, Object> entry) {
-        if (((Object[]) entry.getValue()).length > 0) {
-            criteria = criteria.add(in(entry.getKey(), (Object[]) entry.getValue()));
+    private Criteria withArrayIdFilter(Criteria criteria, String filterValue, Object[] filterItems) {
+        if (filterItems.length > 0) {
+            boolean shouldApplyNullFilter = false;
+            Collection<Object> resultFilterItems = new ArrayList<>();
+            for (Object filterItem : filterItems) {
+                if (filterItem instanceof Long && filterItem.equals(ENTITY_FIELD_IS_NULL_FILTER)) {
+                    shouldApplyNullFilter = true;
+                } else {
+                    resultFilterItems.add(filterItem);
+                }
+            }
+            criteria = shouldApplyNullFilter
+                    ? criteria.add(or(
+                                      in(filterValue, resultFilterItems),
+                                      isNull(removeIdSuffix(filterValue))))
+                    :criteria.add(in(filterValue, resultFilterItems));
         }
         return criteria;
+    }
+
+    private String removeIdSuffix(String filterValue) {
+        return filterValue.substring(0, filterValue.lastIndexOf(".id"));
     }
 
     private Criteria withDateFilter(Criteria criteria, Map.Entry<String, Object> entry) {

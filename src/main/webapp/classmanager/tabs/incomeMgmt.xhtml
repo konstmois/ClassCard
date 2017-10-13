@@ -24,12 +24,14 @@
                      rowKey="#{income.id}"
                      lazy="true"
                      editable="true"
-                     editMode="cell">
+                     editMode="cell"
+                     sortBy="#{income.date}"
+                     sortOrder="descending">
 
             <p:ajax event="cellEdit" listener="#{classMgmt.updateCardOperation(income)}" />
 
             <!--Дата-->
-            <p:column headerText="#{cardMsg['operation.date']}" width="80">
+            <p:column headerText="#{cardMsg['operation.date']}" sortBy="#{income.date}" width="80">
                 <p:outputLabel value="#{income.date}">
                     <f:convertDateTime pattern="dd.MM.yyyy"/>
                 </p:outputLabel>
@@ -41,7 +43,17 @@
             </p:column>
 
             <!--Цель-->
-            <p:column headerText="#{cardMsg['operation.target']}" width="150">
+            <p:column filterBy="#{income.target.id}" headerText="#{cardMsg['operation.target']}" width="150">
+
+                <f:facet name="filter">
+                    <p:selectCheckboxMenu label="#{cardMsg['operation.target']}"
+                                          showHeader="false"
+                                          onchange="PF('incomesTable').filter()"
+                                          converter="javax.faces.Long">
+                        <f:selectItems value="#{modelFilters.targetFilterItems}"/>
+                    </p:selectCheckboxMenu>
+                </f:facet>
+
                 <p:cellEditor>
                     <f:facet name="output">
                         <p:outputLabel value="#{empty income.target ? ' - ' : income.target.name}"/>
@@ -59,7 +71,17 @@
             </p:column>
 
             <!--Ученик-->
-            <p:column headerText="#{cardMsg['operation.student']}" width="150">
+            <p:column filterBy="#{income.student.id}" headerText="#{cardMsg['operation.student']}" width="150">
+
+                <f:facet name="filter">
+                    <p:selectCheckboxMenu label="#{cardMsg['operation.student']}"
+                                          showHeader="false"
+                                          onchange="PF('incomesTable').filter()"
+                                          converter="javax.faces.Long">
+                        <f:selectItems value="#{modelFilters.studentFilterItems}"/>
+                    </p:selectCheckboxMenu>
+                </f:facet>
+
                 <p:cellEditor>
                     <f:facet name="output">
                         <p:outputLabel value="#{formatter.getStudentName(income.student)}"/>
