@@ -1,4 +1,4 @@
-package ru.classcard.ui.beans;
+package ru.classcard.ui.beans.admin;
 
 import ru.classcard.dao.UserDAO;
 import ru.classcard.model.*;

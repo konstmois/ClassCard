@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition>
+    <f:loadBundle basename="ru.classcard.ui.locale.card" var="cardMsg"/>
+    <p:panel id="incomesPanel">
+        <h:form id="incomeListEditForm">
+        <p:dataTable id="incomesTable"
+                     widgetVar="incomesTable"
+                     value="#{classMgmt.incomeList}"
+                     var="income"
+                     rows="10"
+                     paginator="true"
+                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
+                     paginatorPosition="bottom"
+                     emptyMessage="#{msg['no.record']}"
+                     rowKey="#{income.id}"
+                     lazy="true"
+                     editable="true"
+                     editMode="cell">
+
+            <p:ajax event="cellEdit" listener="#{classMgmt.updateCardOperation(income)}" />
+
+            <!--Дата-->
+            <p:column headerText="#{cardMsg['operation.date']}" width="80">
+                <p:outputLabel value="#{income.date}">
+                    <f:convertDateTime pattern="dd.MM.yyyy"/>
+                </p:outputLabel>
+            </p:column>
+
+            <!--Сумма-->
+            <p:column headerText="#{cardMsg['operation.amount']}" width="150">
+                <p:outputLabel value="#{income.amount}"/>
+            </p:column>
+
+            <!--Цель-->
+            <p:column headerText="#{cardMsg['operation.target']}" width="150">
+                <p:cellEditor>
+                    <f:facet name="output">
+                        <p:outputLabel value="#{empty income.target ? ' - ' : income.target.name}"/>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:selectOneMenu showHeader="false" converter="entityConverter" value="#{income.target}" styleClass="in-cell-edit-select-value">
+                            <f:selectItem itemLabel="#{cardMsg['choose.target']}"/>
+                            <f:selectItems value="#{classMgmt.targetList}"
+                                           var="target"
+                                           itemValue="#{target}"
+                                           itemLabel="#{target.name}"/>
+                        </p:selectOneMenu>
+                    </f:facet>
+                </p:cellEditor>
+            </p:column>
+
+            <!--Ученик-->
+            <p:column headerText="#{cardMsg['operation.student']}" width="150">
+                <p:cellEditor>
+                    <f:facet name="output">
+                        <p:outputLabel value="#{formatter.getStudentName(income.student)}"/>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:selectOneMenu showHeader="false" converter="entityConverter" value="#{income.student}" styleClass="in-cell-edit-select-value">
+                            <f:selectItem itemLabel="#{cardMsg['choose.student']}"/>
+                            <f:selectItems value="#{classMgmt.studentList}"
+                                           var="student"
+                                           itemValue="#{student}"
+                                           itemLabel="#{formatter.getStudentName(student)}"/>
+                        </p:selectOneMenu>
+                    </f:facet>
+                </p:cellEditor>
+            </p:column>
+
+            <!--Описание-->
+            <p:column headerText="#{cardMsg['operation.desc']}" width="150">
+
+                <p:cellEditor>
+                    <f:facet name="output">
+                        <p:outputLabel value="#{income.desc}"/>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText value="#{income.desc}" styleClass="in-cell-edit-value"/>
+                    </f:facet>
+                </p:cellEditor>
+            </p:column>
+
+        </p:dataTable>
+        </h:form>
+    </p:panel>
+
+</ui:composition>
+</html>

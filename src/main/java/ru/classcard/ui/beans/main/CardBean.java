@@ -1,4 +1,4 @@
-package ru.classcard.ui.beans;
+package ru.classcard.ui.beans.main;
 
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.chart.DonutChartModel;
@@ -10,6 +10,7 @@ import ru.classcard.model.Card;
 import ru.classcard.model.CardOperation;
 import ru.classcard.model.StudentClass;
 import ru.classcard.services.operations.ExpenseService;
+import ru.classcard.ui.beans.CurrentUserBean;
 import ru.classcard.ui.datamodels.CardOperationLazyModel;
 
 import javax.faces.bean.ManagedBean;

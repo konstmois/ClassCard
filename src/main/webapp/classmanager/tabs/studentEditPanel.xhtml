@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition>
+    <f:loadBundle basename="ru.classcard.ui.locale.student"  var="studentMsg"/>
+    <p:dialog id="#{dialogId}"
+              widgetVar="#{dialogId}"
+              showEffect="fade"
+              hideEffect="fade"
+              modal="true"
+              closeOnEscape="true"
+              closable="false"
+              resizable="false"
+              draggable="false"
+              position="center top"
+              appendTo="@(body)">
+
+        <h:form id="studentEditForm">
+            <p:panel id="#{panelId}">
+
+                <f:facet name="header">
+                    <p:outputLabel value="#{studentMsg['panel.name']}"/>
+                    <p:commandLink onclick="PF('#{dialogId}').hide()" styleClass="ui-icon ui-icon-closethick right"/>
+                </f:facet>
+
+                <p:panelGrid>
+                    <p:row>
+                        <p:column>
+                            <p:outputLabel for="studentName" value="#{studentMsg['field.name']}" styleClass="label-default"/>
+                        </p:column>
+                        <p:column>
+                            <p:inputText id="studentName" value="#{studentEdit.student.name}" required="true" styleClass="value-large"/>
+                        </p:column>
+                    </p:row>
+
+                    <p:row>
+                        <p:column>
+                            <p:outputLabel for="studentLastName" value="#{studentMsg['field.lastname']}" styleClass="label-default"/>
+                        </p:column>
+                        <p:column>
+                            <p:inputText id="studentLastName" value="#{studentEdit.student.lastName}" required="true" styleClass="value-large"/>
+                        </p:column>
+                    </p:row>
+                </p:panelGrid>
+
+
+                <h:panelGroup>
+                    <p:message for="studentName" display="text" styleClass="value-large"/>
+                    <p:message for="studentLastName" display="text" styleClass="value-large"/>
+                </h:panelGroup>
+
+
+                <f:facet name="footer">
+                    <p:commandButton id="saveButton" styleClass="main-button"
+                                     value="#{msg['save']}"
+                                     actionListener="#{studentEdit.save()}"
+                                     oncomplete="PF('#{dialogId}').hide();"
+                                     process="studentEditForm"
+                                     update="#{updateOnSubmit} @([id$=#{panelId}])"/>
+                    <p:commandButton id="cancelStudentEdit"
+                                     styleClass="cancel-button"
+                                     value="#{msg['cancel']}"
+                                     process="@this"
+                                     onclick="PF('#{dialogId}').hide();"
+                                     update="@([id$=#{panelId}])"/>
+                </f:facet>
+
+
+            </p:panel>
+        </h:form>
+    </p:dialog>
+</ui:composition>
+</html>

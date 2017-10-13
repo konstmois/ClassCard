@@ -15,14 +15,14 @@
 
 .main-header-text, .main-header-text .ui-widget  {
     font-size: 25px;
-    color: #369B1E;
+    color: #4ea31e;
     vertical-align: 15px;
     font-family: 'Open Sans Regular', 'Open Sans';
 }
 
 .main-header-welcome, .main-header-welcome .ui-widget  {
     font-size: 13px;
-    color: #369B1E;
+    color: #4ea31e;
     vertical-align: 15px;
     font-family: 'Open Sans Regular', 'Open Sans';
     padding-top: 5px;

@@ -15,4 +15,10 @@ public class TargetDAOImpl extends AbstractEntityDAOImpl implements TargetDAO {
     public List<Target> findBy(StudentClass clazz) {
         return getSession().createCriteria(Target.class).add(eq("studentClass", clazz)).list();
     }
+
+    @Override
+    @Transactional
+    public <T> void save(T entity) {
+        super.save(entity);
+    }
 }

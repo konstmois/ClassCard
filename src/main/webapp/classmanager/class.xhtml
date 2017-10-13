@@ -11,7 +11,51 @@
 
 <ui:composition template="../templates/masterLayout.xhtml">
     <ui:define name="mainContent">
-        <f:loadBundle basename="ru.classcard.ui.locale.card" var="cardMsg"/>
+        <f:loadBundle basename="ru.classcard.ui.locale.class" var="classMsg"/>
+
+        <p:panel id="classMgmgPanel">
+            <p:panelGrid>
+
+                <!--Имя класса-->
+                <p:column>
+                    <p:inputText id="className" value="#{classMgmt.currentClass.name}" readonly="true" styleClass="student-class-name"/>
+                </p:column>
+
+            </p:panelGrid>
+        </p:panel>
+
+        <div>
+            <p:tabView id="editable" dynamic="true" styleClass="card-tabs" cache="false">
+                <p:ajax event="tabChange"/>
+                <!--Поступления-->
+                <p:tab id="income" title="#{classMsg['tab.income']}">
+                    <ui:include src="tabs/incomeMgmt.xhtml"/>
+                </p:tab>
+
+                <!--Расходы-->
+                <p:tab id="expense" title="#{classMsg['tab.expense']}">
+                    <ui:include src="tabs/expenseMgmt.xhtml"/>
+                </p:tab>
+
+                <!--Цели-->
+                <p:tab id="target" title="#{classMsg['tab.targets']}">
+                    <ui:include src="tabs/targetsMgmgt.xhtml"/>
+                </p:tab>
+
+                <!--Ученики-->
+                <p:tab id="students" title="#{classMsg['tab.students']}">
+                    <ui:include src="tabs/studentsMgmt.xhtml"/>
+                </p:tab>
+
+                <!--Загрузка-->
+                <p:tab id="upload" title="#{classMsg['tab.upload']}">
+                    <ui:include src="tabs/uploadOperations.xhtml"/>
+                </p:tab>
+
+            </p:tabView>
+        </div>
+
+
 
     </ui:define>
 </ui:composition>

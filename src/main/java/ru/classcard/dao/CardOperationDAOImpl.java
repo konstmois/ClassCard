@@ -50,4 +50,10 @@ public class CardOperationDAOImpl extends AbstractEntityDAOImpl implements CardO
                 .add(eq("type", EXPENSE))
                 .list();
     }
+
+    @Override
+    @Transactional
+    public <T> void save(T entity) {
+        super.save(entity);
+    }
 }

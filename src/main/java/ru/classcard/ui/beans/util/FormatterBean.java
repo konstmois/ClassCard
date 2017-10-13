@@ -32,7 +32,9 @@ public class FormatterBean {
     }
 
     public String getStudentName(Student s) {
-        return s.getLastName() + " " + s.getName();
+        return s != null
+                ? s.getLastName() + " " + s.getName()
+                : "-";
     }
 
 }

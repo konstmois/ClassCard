@@ -1,6 +1,6 @@
 .ui-menubar {
     height: 35px;
-    background-color: #369B1E;
+    background-color: #4ea31e;
 }
 
 .ui-menuitem-text {
@@ -29,13 +29,13 @@
 }
 
 .ui-menuitem-active .ui-menuitem-text {
-    color: #369B1E;
+    color: #4ea31e;
 }
 
 a.ui-menuitem-active, li.ui-menuitem-active a {
     background: #ffffff;
     height: 37px;
-    border: solid 1px #369B1E !important;
+    border: solid 1px #4ea31e !important;
 }
 
 .ui-menuitem-link.sub-menu-item {

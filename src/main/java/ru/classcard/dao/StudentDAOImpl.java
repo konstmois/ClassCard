@@ -15,4 +15,10 @@ public class StudentDAOImpl extends AbstractEntityDAOImpl implements StudentDAO 
     public List<Student> findBy(StudentClass clazz) {
         return getSession().createCriteria(Student.class).add(eq("studentClass", clazz)).list();
     }
+
+    @Override
+    @Transactional
+    public <T> void save(T entity) {
+        super.save(entity);
+    }
 }

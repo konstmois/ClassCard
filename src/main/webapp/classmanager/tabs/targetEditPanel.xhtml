@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition>
+    <f:loadBundle basename="ru.classcard.ui.locale.target"  var="targetMsg"/>
+    <p:dialog id="#{dialogId}"
+              widgetVar="#{dialogId}"
+              showEffect="fade"
+              hideEffect="fade"
+              modal="true"
+              closeOnEscape="true"
+              closable="false"
+              resizable="false"
+              draggable="false"
+              position="center top"
+              appendTo="@(body)">
+
+        <h:form id="targetEditForm">
+            <p:panel id="#{panelId}">
+                <f:facet name="header">
+                    <p:outputLabel value="#{targetMsg['panel.name']}"/>
+                    <p:commandLink onclick="PF('#{dialogId}').hide()" styleClass="ui-icon ui-icon-closethick right"/>
+                </f:facet>
+                <p:panelGrid>
+
+                    <p:row>
+                        <p:column>
+                            <p:outputLabel for="targetName" value="#{targetMsg['field.name']}" styleClass="label-default"/>
+                        </p:column>
+                        <p:column>
+                            <p:inputText id="targetName" value="#{targetEdit.target.name}" required="true" styleClass="value-large"/>
+                        </p:column>
+                    </p:row>
+
+                    <p:row>
+                        <p:column>
+                            <p:outputLabel for="targetAmount" value="#{targetMsg['field.amount']}" styleClass="label-default"/>
+                        </p:column>
+                        <p:column>
+                            <p:inputNumber id="targetAmount"  value="#{targetEdit.target.requiredAmount}" styleClass="value-large" decimalPlaces="2" required="true"/>
+                        </p:column>
+                    </p:row>
+
+                </p:panelGrid>
+
+
+
+                <h:panelGroup>
+                    <p:message for="targetName" display="text" styleClass="value-large"/>
+                    <p:message for="targetAmount" display="text" styleClass="value-large"/>
+                </h:panelGroup>
+
+
+
+                <f:facet name="footer">
+                    <p:commandButton id="saveButton" styleClass="main-button"
+                                     value="#{msg['save']}"
+                                     actionListener="#{targetEdit.save()}"
+                                     oncomplete="PF('#{dialogId}').hide();"
+                                     process="targetEditForm"
+                                     update="#{updateOnSubmit} @([id$=#{panelId}])"/>
+                    <p:commandButton id="cancelTargetEdit"
+                                     styleClass="cancel-button"
+                                     value="#{msg['cancel']}"
+                                     process="@this"
+                                     onclick="PF('#{dialogId}').hide();"
+                                     update="@([id$=#{panelId}])"/>
+                </f:facet>
+            </p:panel>
+        </h:form>
+    </p:dialog>
+</ui:composition>
+</html>

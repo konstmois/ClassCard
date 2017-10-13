@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition>
+    <f:loadBundle basename="ru.classcard.ui.locale.target" var="targetMsg"/>
+    <h:form>
+        <p:panel id="targetListPanel">
+            <p:dataTable id="targetsTable"
+                         widgetVar="targetsTable"
+                         value="#{classMgmt.targetList}"
+                         var="target"
+                         rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                         paginatorPosition="bottom"
+                         emptyMessage="#{msg['no.record']}"
+                         rowKey="#{target.id}"
+                         selection="#{targetEdit.target}"
+                         selectionMode="single">
+
+                <!--Открытие панели пользователя-->
+                <p:ajax event="rowSelect" oncomplete="PF('editTargetDialog').show()" update="@([id$='editTargetPanel'])"/>
+                <f:facet name="header">
+                    <div class="images">
+                        <p:graphicImage id="createTargetImage"
+                                        styleClass="data-table-header-image"
+                                        library="default"
+                                        name="images/create-user-icon.png"
+                                        onclick="createTargetButton()"/>
+                        <p:remoteCommand id="createTarget"
+                                         resetValues="true"
+                                         name="createTargetButton"
+                                         actionListener="#{targetEdit.createNew()}"
+                                         process="@this"
+                                         update="@([id$=editTargetPanel])"
+                                         oncomplete="PF('editTargetDialog').show();"/>
+
+                    </div>
+                    #{targetMsg['datatable.header']}
+                    <div class="clear"/>
+                </f:facet>
+
+                <p:column headerText="#{targetMsg['field.id']}">
+                    <h:outputText value="#{target.id}"/>
+                </p:column>
+                <p:column headerText="#{targetMsg['field.name']}">
+                    <h:outputText value="#{target.name}"/>
+                </p:column>
+                <p:column headerText="#{targetMsg['field.amount']}">
+                    <h:outputText value="#{target.requiredAmount}"/>
+                </p:column>
+
+            </p:dataTable>
+        </p:panel>
+    </h:form>
+
+    <ui:include src="targetEditPanel.xhtml">
+        <ui:param name="panelId" value="editTargetPanel"/>
+        <ui:param name="dialogId" value="editTargetDialog"/>
+        <ui:param name="updateOnSubmit" value="@([id$=targetListPanel])"/>
+    </ui:include>
+
+</ui:composition>
+</html>

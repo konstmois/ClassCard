@@ -1,4 +1,4 @@
-package ru.classcard.ui.beans;
+package ru.classcard.ui.beans.main;
 
 import ru.classcard.comparator.TargetIncomeComparator;
 import ru.classcard.dao.CardOperationDAO;
@@ -8,6 +8,7 @@ import ru.classcard.model.StudentClass;
 import ru.classcard.model.Target;
 import ru.classcard.model.TargetIncome;
 import ru.classcard.services.target.TargetService;
+import ru.classcard.ui.beans.CurrentUserBean;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;

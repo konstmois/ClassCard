@@ -1,9 +1,10 @@
-package ru.classcard.ui.beans;
+package ru.classcard.ui.beans.manager;
 
 import org.jboss.logging.Logger;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 import ru.classcard.services.operations.OperationsUploadService;
+import ru.classcard.ui.beans.main.CardBean;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -23,8 +24,6 @@ public class OperationsUploadBean {
 
     @ManagedProperty(value = "#{uploadService}")
     private OperationsUploadService uploadService;
-
-
 
     public void upload(FileUploadEvent event) {
         UploadedFile file = event.getFile();

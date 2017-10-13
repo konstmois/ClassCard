@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition>
+    <f:loadBundle basename="ru.classcard.ui.locale.student" var="studentMsg"/>
+    <h:form>
+        <p:panel id="studentListPanel">
+            <p:dataTable id="studentsTable"
+                         widgetVar="studentsTable"
+                         value="#{classMgmt.studentList}"
+                         var="student"
+                         rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                         paginatorPosition="bottom"
+                         emptyMessage="#{msg['no.record']}"
+                         rowKey="#{student.id}"
+                         selection="#{studentEdit.student}"
+                         selectionMode="single">
+
+                <!--Открытие панели пользователя-->
+                <p:ajax event="rowSelect" oncomplete="PF('editStudentDialog').show()" update="@([id$='editStudentPanel'])"/>
+                <f:facet name="header">
+                    <div class="images">
+                        <p:graphicImage id="createStudentImage"
+                                        styleClass="data-table-header-image"
+                                        library="default"
+                                        name="images/create-user-icon.png"
+                                        onclick="createStudentButton()"/>
+                        <p:remoteCommand id="createStudent"
+                                         resetValues="true"
+                                         name="createStudentButton"
+                                         actionListener="#{studentEdit.createNew()}"
+                                         process="@this"
+                                         update="@([id$=editStudentPanel])"
+                                         oncomplete="PF('editStudentDialog').show();"/>
+
+                    </div>
+                    #{studentMsg['datatable.header']}
+                    <div class="clear"/>
+                </f:facet>
+
+                <p:column headerText="#{studentMsg['field.id']}">
+                    <h:outputText value="#{student.id}"/>
+                </p:column>
+                <p:column headerText="#{studentMsg['field.name']}">
+                    <h:outputText value="#{student.name}"/>
+                </p:column>
+                <p:column headerText="#{studentMsg['field.lastname']}">
+                    <h:outputText value="#{student.lastName}"/>
+                </p:column>
+
+            </p:dataTable>
+        </p:panel>
+    </h:form>
+
+    <ui:include src="studentEditPanel.xhtml">
+        <ui:param name="panelId" value="editStudentPanel"/>
+        <ui:param name="dialogId" value="editStudentDialog"/>
+        <ui:param name="updateOnSubmit" value="@([id$=studentListPanel])"/>
+    </ui:include>
+
+</ui:composition>
+
+</html>

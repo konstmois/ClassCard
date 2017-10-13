@@ -35,7 +35,7 @@ label.ui-selectonemenu-label {
 
 input.ui-inputfield[readonly='readonly'], input.ui-inputfield[readonly],
 textarea.ui-inputfield[readonly='readonly'], textarea.ui-inputfield[readonly] {
-    background-color: #cccccc;
+    background-color: #eeeeee;
     color: #666666;
 }
 
@@ -48,9 +48,9 @@ textarea.ui-inputfield[readonly='readonly'], textarea.ui-inputfield[readonly] {
 .ui-button {
     height: 27px !important;
     font-size: 16px !important;
-    color: rgb(255, 255, 255) !important;
+    color: #FFFFFF !important;
     margin: 2px 10px !important;
-    background-color: rgb(54, 152, 30) !important;
+    background-color: #4ea31e !important;
     top: 2px;
 }
 
@@ -60,15 +60,15 @@ textarea.ui-inputfield[readonly='readonly'], textarea.ui-inputfield[readonly] {
 }
 
 .ui-button:hover {
-    background-color: rgb(39, 112, 22) !important;
+    background-color: #277016 !important;
 }
 
 .ui-button.ui-state-disabled {
-    background-color: rgb(155, 205, 143) !important;
+    background-color: #9BCD8F !important;
 }
 
 .ui-button.cancel-button {
-    background-color: rgb(102, 102, 102) !important;
+    background-color: #666666 !important;
 }
 
 .ui-button.cancel-button:hover {
@@ -76,24 +76,24 @@ textarea.ui-inputfield[readonly='readonly'], textarea.ui-inputfield[readonly] {
 }
 
 .ui-button.cancel-button.ui-state-disabled {
-    background-color: rgb(179, 179, 179) !important;
+    background-color: #B3B3B3 !important;
 }
 
 .ui-button.main-button {
-    background-color: rgb(245, 151, 36) !important;
+    background-color: #F59724 !important;
 }
 
 .ui-button.main-button:hover {
-    background-color: rgb(220, 126, 10) !important;
+    background-color: #DC7E0A !important;
 }
 
 .ui-button.main-button.ui-state-disabled {
-    background-color: rgb(250, 203, 146) !important;
+    background-color: #FACB92 !important;
 }
 
 /* Гриды*/
 .ui-datatable-tablewrapper thead .ui-state-default {
-    background-color: rgb(54, 152, 30);
+    background-color: #4ea31e;
 }
 
 .ui-datatable-tablewrapper .ui-button {
@@ -112,7 +112,7 @@ textarea.ui-inputfield[readonly='readonly'], textarea.ui-inputfield[readonly] {
 
 .ui-column-title {
     font-size: 13px;
-    color: rgb(255, 255, 255);
+    color: #FFFFFF;
     margin: 2px 2px;
 }
 
@@ -132,23 +132,24 @@ input.ui-column-filter {
 }
 
 .ui-slider-handle {
-    border: solid 1px rgb(102, 102, 102) !important;
-    background-color: rgb(54, 152, 30) !important;
+    border: solid 1px #666666 !important;
+    background-color: #4ea31e !important;
 }
 
 .ui-datatable-even {
-    background-color: rgb(245, 245, 245);
+    background-color: #F5F5F5;
 }
 
 .ui-datatable-header {
-    background: rgb(155, 205, 143);
+    background: #9BCD8F;
     color: white;
     font-size: 16px;
 }
 
+/*Выделенные строки в таблице*/
 .ui-datatable-selectable:hover, .ui-datatable-selectable.ui-state-highlight {
-    background: rgb(245, 151, 36);
-    color: white;
+    background: #E6E6E6;
+    border:none;
 }
 
 /* tab*/
@@ -157,7 +158,7 @@ input.ui-column-filter {
 }
 
 .ui-tabs-nav .ui-state-default:hover, .ui-tabs-nav .ui-state-active {
-    background: rgb(245, 151, 36);
+    background: #F59724;
 }
 
 .ui-tabs-nav .ui-state-default:hover a, .ui-tabs-nav .ui-state-active a {
@@ -183,13 +184,14 @@ input.ui-column-filter {
 /* панель, очень много только для модального окна*/
 .ui-panel-titlebar {
     text-align: center;
-    background: #36981E;
+    background: #4ea31e;
 }
 
 
 thead.ui-panelgrid-header td {
     text-align: center;
-    background: rgb(155, 205, 143);
+    background: #9BCD8F;
+    border:none;
 }
 
 .ui-panel-title {
@@ -243,7 +245,7 @@ thead.ui-panelgrid-header td {
     height: 20px;
     width: 20px;
     border: solid 1px #cccccc;
-    background-color: white;
+    background-color: #FFFFFF;
     border-radius: 2px;
 }
 
@@ -251,7 +253,7 @@ thead.ui-panelgrid-header td {
     height: 20px;
     width: 20px;
     border: none;
-    background-color: white;
+    background-color: #FFFFFF;
     border-radius: 2px;
 }
 
@@ -259,7 +261,7 @@ thead.ui-panelgrid-header td {
     height: 20px;
     width: 20px;
     border: none;
-    background-color: white;
+    background-color: #FFFFFF;
     border-radius: 2px;
 }
 
@@ -276,13 +278,8 @@ thead.ui-panelgrid-header td {
     height: 14px;
     border: none;
     margin: 3px;
-    background-color: rgb(245, 151, 36);
-    background-image: none;
+    background: #F59724 none;
     border-radius: 2px;
-}
-
-.ui-datepicker-header {
-    background: rgb(155, 205, 143);
 }
 
 .ui-datepicker td span, .ui-datepicker td a  {
@@ -298,13 +295,13 @@ thead.ui-panelgrid-header td {
 }
 
 .ui-datepicker-today .ui-state-highlight, .ui-datepicker-today a.ui-state-default.ui-state-highlight.ui-state-active {
-    background-color: rgb(245, 151, 36);
+    background-color: #F59724;
     color: white;
 }
 
 .ui-datepicker-current-day .ui-state-active  {
     border: 1px solid #fbd850;
-    color: rgb(245, 151, 36);
+    color: #F59724;
 }
 
 .table-cell {
@@ -330,6 +327,10 @@ thead.ui-panelgrid-header td {
     width: 50px;
 }
 
+.label-default {
+    width: 100px;
+}
+
 .value-small {
     width: 150px;
 }
@@ -343,6 +344,10 @@ div.value-small {
 }
 
 .value-large {
+    width: 350px;
+}
+
+span.value-large input {
     width: 350px;
 }
 
@@ -395,10 +400,20 @@ div.value-small {
     word-wrap: break-word;
 }
 
+/*Рамки в гридах*/
 .ui-datatable tbody td {
     border:none;
-    height:30px;
+    height:32px;
 }
+
+.ui-editable-column {
+    border:none;
+}
+
+.ui-cell-editor-output {
+    border:none;
+}
+
 
 div.ui-paginator.ui-paginator-bottom {
     border:none;
@@ -450,7 +465,7 @@ div.ui-paginator.ui-paginator-bottom {
     display: block;
     width:100%;
     margin-left: -12px;
-    color: rgb(80, 170, 70);
+    color: #4ea31e;
 }
 
 .cardBalance-title {
@@ -458,7 +473,7 @@ div.ui-paginator.ui-paginator-bottom {
     display: block;
     width:100%;
     margin-left: -12px;
-    color: rgb(120, 120, 120);
+    color: #787878;
 }
 
 .div-custom-calendar {
@@ -477,7 +492,7 @@ div.ui-paginator.ui-paginator-bottom {
 }
 
 .ui-datepicker-header {
-    background-color:rgb(54, 152, 30) !important;
+    background-color: #4ea31e;
     height:20px;
 }
 
@@ -608,6 +623,10 @@ span.ui-icon.ui-button-icon-right {
     background-image: url("#{resource['default:images/ui-icons_ffffff_256x240.png']}")!important;
 }
 
+span.ui-icon.ui-icon-triangle-1-s.ui-c {
+    background-image: url("#{resource['primefaces-sbersafetheme:images/ui-icons_454545_256x240.png']}")!important;
+}
+
 .ui-panelgrid .ui-panelgrid-cell {
     border-width: 0px;
 }
@@ -639,7 +658,7 @@ table.inner-panel-grid td{
 }
 
 .target-income {
-    color: #50aa46;
+    color: #4ea31e;
 }
 
 .target-expense {
@@ -665,4 +684,23 @@ table.inner-panel-grid td{
 /*Чтобы кастомные фильтры в заголовках таблиц не растягивали шапку*/
 .ui-column-customfilter {
     margin-top:-18px;
+}
+
+/*Выравнивание инпута с именем класса по размеру вкладок*/
+.student-class-name {
+    width: 492px;
+}
+
+/*Ширина элемента редактирования в таблице*/
+.in-cell-edit-value {
+    width: 88%;
+}
+
+.in-cell-edit-select-value {
+    width: 80%;
+}
+
+/* Убираем звездочки у обязательных полей*/
+span.ui-outputlabel-rfi {
+    display: none;
 }

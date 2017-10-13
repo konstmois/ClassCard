@@ -11,7 +11,7 @@
     <h:outputStylesheet name="css/main_menu.css" library="default" />
     <f:loadBundle basename="ru.classcard.ui.locale.templates.mainMenu" var="mainMenuMsg"/>
     <h:form id="mainMenuForm">
-        <p:menubar orientation="horizontal" style="border: solid 1px #369B1E">
+        <p:menubar orientation="horizontal" style="border: solid 1px #4ea31e">
 
             <!--Главная-->
             <p:menuitem id="mainItem" value="#{mainMenuMsg['main']}" rendered="#{access.isAccessibleClassMemberMenu()}"
@@ -20,7 +20,7 @@
 
             <!--Управление классом-->
             <p:menuitem id="classMgrItem" value="#{mainMenuMsg['class.management']}" rendered="#{access.isAccessibleClassManagerMenu()}"
-                        action="/classmanager/uploadOperations?faces-redirect=true"
+                        action="/classmanager/class?faces-redirect=true"
                         styleClass="#{view.viewId.contains('/classmanager/') ? 'ui-menuitem-active' : ''}"/>
 
             <!--Управление-->

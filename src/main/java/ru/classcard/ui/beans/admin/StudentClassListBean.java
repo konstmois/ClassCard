@@ -1,4 +1,4 @@
-package ru.classcard.ui.beans;
+package ru.classcard.ui.beans.admin;
 
 import org.primefaces.model.LazyDataModel;
 import ru.classcard.dao.StudentClassDAO;
