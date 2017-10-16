@@ -17,14 +17,14 @@
                 <p:panelGrid styleClass="cardInfo" style="width: 100%">
                     <p:row>
                         <p:column styleClass="valign-top">
-                            <p:graphicImage library="default" name="images/visa.jpg"       rendered="#{cardBean.card.type=='VISA'}" styleClass="card-logo"/>
-                            <p:graphicImage library="default" name="images/mastercard.jpg" rendered="#{cardBean.card.type=='MASTER_CARD'}" styleClass="card-logo"/>
-                            <pre><p:outputLabel id="cardNumber" value="#{formatter.getCardNumber(cardBean.card.number)}" styleClass="cardNumber"/></pre>
+                            <p:graphicImage library="default" name="images/visa.jpg"       rendered="#{classBean.card.type=='VISA'}" styleClass="card-logo"/>
+                            <p:graphicImage library="default" name="images/mastercard.jpg" rendered="#{classBean.card.type=='MASTER_CARD'}" styleClass="card-logo"/>
+                            <pre><p:outputLabel id="cardNumber" value="#{formatter.getCardNumber(classBean.card.number)}" styleClass="cardNumber"/></pre>
                         </p:column>
                         <p:column styleClass="cardBalance-container valign-top">
                             <div class="cardBalance-cell">
                                 <div style="text-align: right"><p:outputLabel value="#{cardMsg['balance']}" styleClass="cardBalance-title"/></div>
-                                <div style="text-align: right"><p:outputLabel id="cardBalance" value="#{formatter.getCurrencyAmount(cardBean.card.balance)}" styleClass="cardBalance"/></div>
+                                <div style="text-align: right"><p:outputLabel id="cardBalance" value="#{formatter.getCurrencyAmount(classBean.card.balance)}" styleClass="cardBalance"/></div>
                             </div>
                         </p:column>
                         <p:column style="padding-left: 0px;">

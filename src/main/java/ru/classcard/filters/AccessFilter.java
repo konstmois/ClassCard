@@ -22,7 +22,7 @@ public class AccessFilter implements Filter {
     private static final String LOGIN_URL_PATH = "/login.xhtml";
     private static final String ACCESS_DENIED_URL_PATH = "/error/accessDenied.xhtml";
     private static final String ROOT_PAGE_PATH = "/";
-    private static final String REDIRECT_SUFFIX = "?faces-redirect=true";
+    private static final String REDIRECT_SUFFIX = ".xhtml?faces-redirect=true";
 
     @Autowired
     private AccessService accessService;
@@ -44,10 +44,10 @@ public class AccessFilter implements Filter {
         String path = request.getRequestURI().substring(request.getContextPath().length());
         boolean resourceRequest = request.getRequestURI().startsWith(request.getContextPath() + ResourceHandler.RESOURCE_IDENTIFIER + "/");
 
-        if (isIgnorableURL(path, resourceRequest)) {
-            filterChain.doFilter(servletRequest, response);
-        } else if (isAuthorizedAndLoginPageOrRootRequested(user, path)) {
+        if (isAuthorizedAndLoginPageOrRootRequested(user, path)) {
             redirectToUrl(request, response, user.getRole().getStartingPage() + REDIRECT_SUFFIX);
+        } else if (isIgnorableURL(path, resourceRequest)) {
+            filterChain.doFilter(servletRequest, response);
         } else if (user == null) {
             redirectToUrl(request, response, LOGIN_URL_PATH);
         } else if (!checkAccess(user, path)) {

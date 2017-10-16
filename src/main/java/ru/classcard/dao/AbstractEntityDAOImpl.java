@@ -99,11 +99,11 @@ public class AbstractEntityDAOImpl {
         DateRange value = (DateRange) entry.getValue();
         String fieldName = entry.getKey();
         if (value.getTo() == null && value.getFrom() != null) {
-            criteria = criteria.add(gt(fieldName, value.getFrom()));
+            criteria = criteria.add(ge(fieldName, value.getFrom()));
         } else if (value.getFrom() == null && value.getTo() != null) {
             criteria = criteria.add(le(fieldName, value.getTo()));
         } else if (value.getFrom() != null && value.getTo() != null) {
-            criteria = criteria.add(gt(fieldName, value.getFrom()))
+            criteria = criteria.add(ge(fieldName, value.getFrom()))
                                .add(le(fieldName, value.getTo()));
         }
         return criteria;

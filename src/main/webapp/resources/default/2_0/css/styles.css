@@ -672,14 +672,14 @@ table.inner-panel-grid td{
 }
 
 .ui-datatable-odd.student-row-has-income{
-    background-color: #FBFFF9;
+    background-color: #f9fff7;
 }
 
 .ui-datatable-odd.student-row-no-income{
     background-color: #FFFBFB;
 }
 .ui-datatable-even.student-row-has-income{
-    background-color: #F6FAF6;
+    background-color: #f4f8f4;
 }
 
 .ui-datatable-even.student-row-no-income{

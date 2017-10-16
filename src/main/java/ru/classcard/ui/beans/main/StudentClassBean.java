@@ -25,8 +25,8 @@ import static ru.classcard.model.OperationType.INCOME;
 import static ru.classcard.ui.locale.Messages.UTF8_CONTROL;
 
 @ViewScoped
-@ManagedBean(name = "cardBean")
-public class CardBean {
+@ManagedBean(name = "classBean")
+public class StudentClassBean {
 
     private static final String TARGET_BUNDLE = "ru.classcard.ui.locale.target";
 
