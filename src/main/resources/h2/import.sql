@@ -3,7 +3,7 @@ INSERT INTO CARD (id, number, balance, type, description) VALUES (S_CARD_ID.NEXT
 INSERT INTO STUDENT_CLASS(id, name, card) VALUES (S_STUDENT_CLASS_ID.NEXTVAL, 'Школа №1, Класс 1А', 1);
 
 INSERT INTO CC_USER (id, login, password, student_class, description, role, deleted) VALUES (S_USER_ID.NEXTVAL, 'test',  'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 1,'Test Class Member', 'CLASS_MEMBER', 0);
-INSERT INTO CC_USER (id, login, password, student_class, description, role, deleted) VALUES (S_USER_ID.NEXTVAL, 'testa', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 1,'Test Class Admin', 'CLASS_MANAGER', 0);
+INSERT INTO CC_USER (id, login, password, student_class, description, role, deleted) VALUES (S_USER_ID.NEXTVAL, 'testm', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 1,'Test Class Manager', 'CLASS_MANAGER', 0);
 INSERT INTO CC_USER (id, login, password, description, role, deleted) VALUES (S_USER_ID.NEXTVAL, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Admin', 'ADMIN', 0);
 
 INSERT INTO TARGET (id, name, student_class, req_amount, active) VALUES (S_TARGET_ID.NEXTVAL, 'Учебники', 1, 8500.00,  1);
