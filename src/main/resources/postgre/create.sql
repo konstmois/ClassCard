@@ -13,7 +13,7 @@ CREATE SEQUENCE s_card_id;
 
 CREATE TABLE "student_class" (
   "id"   BIGINT PRIMARY KEY,
-  "name" VARCHAR(10),
+  "name" VARCHAR(100),
   "card" BIGINT REFERENCES "card"(id)
 );
 CREATE UNIQUE INDEX idx_student_class_id   ON "student_class"(id);
@@ -58,7 +58,7 @@ CREATE TABLE "student" (
   "id"            BIGINT PRIMARY KEY,
   "name"          VARCHAR(100),
   "last_name"     VARCHAR(100),
-  "student_class" BIGINT REFERENCES "student_class"(id),
+  "student_class" BIGINT REFERENCES "student_class"(id)
 );
 CREATE UNIQUE INDEX idx_student_id    ON "student"(id);
 CREATE        INDEX idx_student_class ON "student"(student_class);

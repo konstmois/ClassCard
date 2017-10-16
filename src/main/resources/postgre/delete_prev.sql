@@ -1,6 +1,6 @@
 DROP TABLE "mcc_code";
-DROP TABLE "expense_category"
-DROP TABLE "card_operation"
+DROP TABLE "expense_category";
+DROP TABLE "card_operation";
 DROP TABLE "card";
 DROP TABLE "cc_user";
 DROP SEQUENCE s_user_id;

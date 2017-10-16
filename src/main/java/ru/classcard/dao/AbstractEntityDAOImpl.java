@@ -120,11 +120,16 @@ public class AbstractEntityDAOImpl {
                     resultFilterItems.add(filterItem);
                 }
             }
-            criteria = shouldApplyNullFilter
-                    ? criteria.add(or(
-                                      in(filterValue, resultFilterItems),
-                                      isNull(removeIdSuffix(filterValue))))
-                    :criteria.add(in(filterValue, resultFilterItems));
+
+            if (shouldApplyNullFilter) {
+                if (resultFilterItems.isEmpty()) {
+                    criteria = criteria.add(isNull(removeIdSuffix(filterValue)));
+                } else {
+                    criteria = criteria.add(or(in(filterValue, resultFilterItems), isNull(removeIdSuffix(filterValue))));
+                }
+            } else {
+                criteria = criteria.add(in(filterValue, resultFilterItems));
+            }
         }
         return criteria;
     }
