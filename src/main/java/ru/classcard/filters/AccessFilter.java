@@ -58,7 +58,7 @@ public class AccessFilter implements Filter {
     }
 
     private boolean isIgnorableURL(String path, boolean resourceRequest) {
-        return LOGIN_URL_PATH.equals(path) || ACCESS_DENIED_URL_PATH.equals(path) || resourceRequest;
+        return (path != null && path.startsWith(LOGIN_URL_PATH)) || ACCESS_DENIED_URL_PATH.equals(path) || resourceRequest;
     }
 
     private boolean isAuthorizedAndLoginPageOrRootRequested(User user, String path) {

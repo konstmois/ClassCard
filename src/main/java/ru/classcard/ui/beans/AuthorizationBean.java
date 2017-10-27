@@ -24,7 +24,7 @@ public class AuthorizationBean implements Serializable {
 
     private static final String RETURN_TO_LOGIN_PAGE = "login";
     private static final String REDIRECT_AFTER_LOGOUT = "/login?faces-redirect=true";
-    private static final String REDIRECT_SUFFIX = "?faces-redirect=true";
+    private static final String REDIRECT_SUFFIX = ".xhtml?faces-redirect=true";
 
     private String login;
     private String password;

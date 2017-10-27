@@ -44,8 +44,8 @@ public class ModelFiltersBean {
                     .map(s -> new SelectItem(s.getId(), s.getLastName() + " " + s.getName()))
                     .collect(toList());
             studentFilterList.sort(new SelectItemComparator());
+            studentFilterList.add(getSelectItemForNullFieldValue());
         }
-        studentFilterList.add(getSelectItemForNullFieldValue());
         return studentFilterList;
     }
 
@@ -55,8 +55,8 @@ public class ModelFiltersBean {
                     .stream()
                     .map(s -> new SelectItem(s.getId(), s.getName()))
                     .collect(toList());
+            targetFilterList.add(getSelectItemForNullFieldValue());
         }
-        targetFilterList.add(getSelectItemForNullFieldValue());
         return targetFilterList;
     }
 

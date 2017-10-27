@@ -3,7 +3,6 @@ package ru.classcard.dao;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.classcard.types.DateRange;
 import ru.classcard.util.DateTransformer;
@@ -15,6 +14,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.Map;
 
+import static org.hibernate.criterion.Order.*;
 import static org.hibernate.criterion.Restrictions.*;
 
 public class AbstractEntityDAOImpl {
@@ -52,7 +52,7 @@ public class AbstractEntityDAOImpl {
     protected <T> Criteria buildCriteria(Class<T> classEntity, int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, Object> filters) {
         Criteria criteria = getSession().createCriteria(classEntity);
         criteria = withFilters(filters,
-                        withSortOrder(sortField, sortOrder,
+                        withSortOrderByFieldAndId(sortField, sortOrder,
                                 withPagingLimits(first, pageSize, criteria)));
         return criteria;
     }
@@ -84,12 +84,12 @@ public class AbstractEntityDAOImpl {
         return criteria;
     }
 
-    private Criteria withSortOrder(String sortField, SortOrder sortOrder, Criteria criteria) {
+    private Criteria withSortOrderByFieldAndId(String sortField, SortOrder sortOrder, Criteria criteria) {
         if (sortField != null && !sortField.isEmpty()) {
             if (SortOrder.ASCENDING.equals(sortOrder)) {
-                criteria = criteria.addOrder(Order.asc(sortField));
+                criteria = criteria.addOrder(asc(sortField)).addOrder(asc("id"));
             } else if (SortOrder.DESCENDING.equals(sortOrder)) {
-                criteria = criteria.addOrder(Order.desc(sortField));
+                criteria = criteria.addOrder(desc(sortField)).addOrder(desc("id"));
             }
         }
         return criteria;

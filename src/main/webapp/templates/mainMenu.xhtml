@@ -15,17 +15,17 @@
 
             <!--Главная-->
             <p:menuitem id="mainItem" value="#{mainMenuMsg['main']}" rendered="#{access.isAccessibleClassMemberMenu()}"
-                        action="/main/class?faces-redirect=true"
+                        action="/main/class.xhtml?faces-redirect=true"
                         styleClass="#{view.viewId.contains('/main/') ? 'ui-menuitem-active' : ''}"/>
 
             <!--Управление классом-->
             <p:menuitem id="classMgrItem" value="#{mainMenuMsg['class.management']}" rendered="#{access.isAccessibleClassManagerMenu()}"
-                        action="/classmanager/class?faces-redirect=true"
+                        action="/classmanager/class.xhtml?faces-redirect=true"
                         styleClass="#{view.viewId.contains('/classmanager/') ? 'ui-menuitem-active' : ''}"/>
 
             <!--Управление-->
             <p:menuitem id="adminItem" value="#{mainMenuMsg['admin']}" rendered="#{access.isAccessibleAdminMenu()}"
-                        action="/admin/classList?faces-redirect=true"
+                        action="/admin/classList.xhtml?faces-redirect=true"
                         styleClass="#{view.viewId.contains('/admin/') ? 'ui-menuitem-active' : ''}"/>
 
         </p:menubar>
