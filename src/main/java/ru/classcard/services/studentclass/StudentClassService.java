@@ -28,10 +28,20 @@ public class StudentClassService {
     }
 
     private void saveUser(User user, String prevPass) {
-        if (!user.getPassword().equals(prevPass)) {
+        if (shouldSetPrevPass(user)) {
+            user.setPassword(prevPass);
+        } else if (shouldUpdatePass(user, prevPass)) {
             String hash = shaHex(user.getPassword());
             user.setPassword(hash);
         }
         userDao.save(user);
+    }
+
+    private boolean shouldSetPrevPass(User user) {
+        return user.getPassword() == null || user.getPassword().equals("");
+    }
+
+    private boolean shouldUpdatePass(User user, String prevPass) {
+        return !user.getPassword().equals(prevPass);
     }
 }

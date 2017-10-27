@@ -56,7 +56,20 @@
 
                                 <!--Пароль-->
                                 <p:outputLabel for="password-mgr" value="#{userMsg['password']}" styleClass="label-small"/>
-                                <p:password id="password-mgr" value="#{classEdit.entities.classManager.password}" styleClass="value-small" required="true" redisplay="true"/>
+                                <p:password id="password-mgr"
+                                            value="#{classEdit.entities.classManager.password}"
+                                            styleClass="value-small"
+                                            required="#{!classEdit.isEdit()}"
+                                            match="password-mgr-repeat"
+                                            validatorMessage="#{userMsg['password-rules']}"
+                                            validator="password.validator"/>
+
+                                <!--Повтор пароля-->
+                                <p:outputLabel for="password-mgr-repeat" value="#{userMsg['repeat']}" styleClass="label-small"/>
+                                <p:password id="password-mgr-repeat"
+                                            value="#{classEdit.entities.classManager.password}"
+                                            styleClass="value-small"
+                                            required="#{!classEdit.isEdit()}"/>
 
                                 <!--Имя-->
                                 <p:outputLabel for="desc-mgr" value="#{userMsg['desc']}" styleClass="label-small"/>
@@ -81,7 +94,18 @@
 
                                 <!--Пароль-->
                                 <p:outputLabel for="password" value="#{userMsg['password']}" styleClass="label-small"/>
-                                <p:password id="password" value="#{classEdit.entities.classMember.password}" styleClass="value-small" required="true" redisplay="true"/>
+                                <p:password id="password"
+                                            value="#{classEdit.entities.classMember.password}"
+                                            styleClass="value-small"
+                                            required="#{!classEdit.isEdit()}"
+                                            match="password-repeat"
+                                            validatorMessage="#{userMsg['password-rules']}"
+                                            validator="password.validator"/>
+
+                                <!--Повтор пароля-->
+                                <p:outputLabel for="password-repeat" value="#{userMsg['repeat']}" styleClass="label-small"/>
+                                <p:password id="password-repeat" value="#{classEdit.entities.classMember.password}" styleClass="value-small" required="#{!classEdit.isEdit()}"/>
+
 
                                 <!--Имя-->
                                 <p:outputLabel for="desc" value="#{userMsg['desc']}" styleClass="label-small"/>
