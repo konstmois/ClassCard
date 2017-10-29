@@ -48,36 +48,68 @@
                     <p:row>
                         <!--Пользователь для управляющего/казначея класса-->
                         <p:column>
-                            <p:panelGrid columns="2" styleClass="inner-panel-grid">
+                            <p:panelGrid styleClass="inner-panel-grid">
                                 <f:facet name="header"><p:outputLabel value="#{classMsg['classmanager.panel.name']}"/> </f:facet>
+
                                 <!--Логин-->
-                                <p:outputLabel for="login-mgr" value="#{userMsg['login']}" styleClass="label-small"/>
-                                <p:inputText id="login-mgr" value="#{classEdit.entities.classManager.login}" required="true" styleClass="value-small"/>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel for="login-mgr" value="#{userMsg['login']}" styleClass="label-small"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText id="login-mgr" value="#{classEdit.entities.classManager.login}" required="true" styleClass="value-small"/>
+                                    </p:column>
+                                </p:row>
 
                                 <!--Пароль-->
-                                <p:outputLabel for="password-mgr" value="#{userMsg['password']}" styleClass="label-small"/>
-                                <p:password id="password-mgr"
-                                            value="#{classEdit.entities.classManager.password}"
-                                            styleClass="value-small"
-                                            required="#{!classEdit.isEdit()}"
-                                            match="password-mgr-repeat"
-                                            validatorMessage="#{userMsg['password-rules']}"
-                                            validator="password.validator"/>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel id="password-mgr-label" for="password-mgr" value="#{userMsg['password']}" styleClass="label-small"/>
+                                        <p:tooltip for="password-mgr-label" value="#{userMsg['password-rules']}" style="width: 250px;"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:password id="password-mgr"
+                                                    value="#{classEdit.entities.classManager.password}"
+                                                    styleClass="value-small"
+                                                    required="#{!classEdit.isEdit()}"
+                                                    match="password-mgr-repeat"
+                                                    validatorMessage="#{userMsg['password-rules']}"
+                                                    validator="password.validator"/>
+                                    </p:column>
+                                </p:row>
 
-                                <!--Повтор пароля-->
-                                <p:outputLabel for="password-mgr-repeat" value="#{userMsg['repeat']}" styleClass="label-small"/>
-                                <p:password id="password-mgr-repeat"
-                                            value="#{classEdit.entities.classManager.password}"
-                                            styleClass="value-small"
-                                            required="#{!classEdit.isEdit()}"/>
+                                <!--Повторите-->
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel for="password-mgr-repeat" value="#{userMsg['repeat']}" styleClass="label-small"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:password id="password-mgr-repeat"
+                                                    value="#{classEdit.entities.classManager.password}"
+                                                    styleClass="value-small"
+                                                    required="#{!classEdit.isEdit()}"/>
+                                    </p:column>
+                                </p:row>
 
                                 <!--Имя-->
-                                <p:outputLabel for="desc-mgr" value="#{userMsg['desc']}" styleClass="label-small"/>
-                                <p:inputText id="desc-mgr" value="#{classEdit.entities.classManager.desc}" styleClass="value-small" required="true"/>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel for="desc-mgr" value="#{userMsg['desc']}" styleClass="label-small"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText id="desc-mgr" value="#{classEdit.entities.classManager.desc}" styleClass="value-small" required="true"/>
+                                    </p:column>
+                                </p:row>
 
                                 <!--Удален-->
-                                <p:outputLabel for="deleted-mgr" value="#{userMsg['deleted']}" styleClass="label-small"/>
-                                <p:selectBooleanCheckbox id="deleted-mgr" value="#{classEdit.entities.classManager.deleted}" style="margin-left: 10px"/>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel for="deleted-mgr" value="#{userMsg['deleted']}" styleClass="label-small"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox id="deleted-mgr" value="#{classEdit.entities.classManager.deleted}" style="margin-left: 10px"/>
+                                    </p:column>
+                                </p:row>
                             </p:panelGrid>
                         </p:column>
 
@@ -86,34 +118,65 @@
 
                         <!--Пользователь для остальных представителей класса-->
                         <p:column>
-                            <p:panelGrid columns="2" styleClass="inner-panel-grid">
+                            <p:panelGrid styleClass="inner-panel-grid">
                                 <f:facet name="header"><p:outputLabel value="#{classMsg['classmember.panel.name']}"/> </f:facet>
+
                                 <!--Логин-->
-                                <p:outputLabel for="login" value="#{userMsg['login']}" styleClass="label-small"/>
-                                <p:inputText id="login" value="#{classEdit.entities.classMember.login}" required="true" styleClass="value-small"/>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel for="login" value="#{userMsg['login']}" styleClass="label-small"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText id="login" value="#{classEdit.entities.classMember.login}" required="true" styleClass="value-small"/>
+                                    </p:column>
+                                </p:row>
 
                                 <!--Пароль-->
-                                <p:outputLabel for="password" value="#{userMsg['password']}" styleClass="label-small"/>
-                                <p:password id="password"
-                                            value="#{classEdit.entities.classMember.password}"
-                                            styleClass="value-small"
-                                            required="#{!classEdit.isEdit()}"
-                                            match="password-repeat"
-                                            validatorMessage="#{userMsg['password-rules']}"
-                                            validator="password.validator"/>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel id="password-label" for="password" value="#{userMsg['password']}" styleClass="label-small"/>
+                                        <p:tooltip for="password-label" value="#{userMsg['password-rules']}" style="width: 250px;"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:password id="password"
+                                                    value="#{classEdit.entities.classMember.password}"
+                                                    styleClass="value-small"
+                                                    required="#{!classEdit.isEdit()}"
+                                                    match="password-repeat"
+                                                    validatorMessage="#{userMsg['password-rules']}"
+                                                    validator="password.validator"/>
+                                    </p:column>
+                                </p:row>
 
                                 <!--Повтор пароля-->
-                                <p:outputLabel for="password-repeat" value="#{userMsg['repeat']}" styleClass="label-small"/>
-                                <p:password id="password-repeat" value="#{classEdit.entities.classMember.password}" styleClass="value-small" required="#{!classEdit.isEdit()}"/>
-
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel for="password-repeat" value="#{userMsg['repeat']}" styleClass="label-small"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:password id="password-repeat" value="#{classEdit.entities.classMember.password}" styleClass="value-small" required="#{!classEdit.isEdit()}"/>
+                                    </p:column>
+                                </p:row>
 
                                 <!--Имя-->
-                                <p:outputLabel for="desc" value="#{userMsg['desc']}" styleClass="label-small"/>
-                                <p:inputText id="desc" value="#{classEdit.entities.classMember.desc}" styleClass="value-small" required="true"/>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel for="desc" value="#{userMsg['desc']}" styleClass="label-small"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText id="desc" value="#{classEdit.entities.classMember.desc}" styleClass="value-small" required="true"/>
+                                    </p:column>
+                                </p:row>
 
                                 <!--Удален-->
-                                <p:outputLabel for="deleted" value="#{userMsg['deleted']}" styleClass="label-small"/>
-                                <p:selectBooleanCheckbox id="deleted" value="#{classEdit.entities.classMember.deleted}" style="margin-left: 10px"/>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel for="deleted" value="#{userMsg['deleted']}" styleClass="label-small"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox id="deleted" value="#{classEdit.entities.classMember.deleted}" style="margin-left: 10px"/>
+                                    </p:column>
+                                </p:row>
                             </p:panelGrid>
                         </p:column>
 
@@ -122,25 +185,49 @@
 
                         <!--Данные карты класса-->
                         <p:column>
-                            <p:panelGrid columns="2" styleClass="inner-panel-grid">
+                            <p:panelGrid styleClass="inner-panel-grid">
                                 <f:facet name="header"><p:outputLabel value="#{classMsg['card.panel.name']}"/> </f:facet>
                                 <!--Номер-->
-                                <p:outputLabel for="cardNumber" value="#{cardMsg['card.number']}" styleClass="label-small"/>
-                                <p:inputMask id="cardNumber" value="#{classEdit.entities.card.number}" mask="9999" styleClass="value-small" required="true"/>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel for="cardNumber" value="#{cardMsg['card.number']}" styleClass="label-small"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputMask id="cardNumber" value="#{classEdit.entities.card.number}" mask="9999" styleClass="value-small" required="true"/>
+                                    </p:column>
+                                </p:row>
 
                                 <!--Баланс-->
-                                <p:outputLabel for="cardBalance" value="#{cardMsg['card.balance']}" styleClass="label-small"/>
-                                <p:inputNumber id="cardBalance"  value="#{classEdit.entities.card.balance}" styleClass="value-small" decimalPlaces="2" required="true"/>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel for="cardBalance" value="#{cardMsg['card.balance']}" styleClass="label-small"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputNumber id="cardBalance"  value="#{classEdit.entities.card.balance}" styleClass="value-small" decimalPlaces="2" required="true"/>
+                                    </p:column>
+                                </p:row>
 
                                 <!--Тип-->
-                                <p:outputLabel for="cardType" value="#{cardMsg['card.type']}" styleClass="label-small"/>
-                                <p:selectOneMenu id="cardType" value="#{classEdit.entities.card.type}" converter="CardTypeConverter" styleClass="value-small" showHeader="false" required="true">
-                                    <f:selectItems value="#{classEdit.cardTypeList}"/>
-                                </p:selectOneMenu>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel for="cardType" value="#{cardMsg['card.type']}" styleClass="label-small"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectOneMenu id="cardType" value="#{classEdit.entities.card.type}" converter="CardTypeConverter" styleClass="value-small" showHeader="false" required="true">
+                                            <f:selectItems value="#{classEdit.cardTypeList}"/>
+                                        </p:selectOneMenu>
+                                    </p:column>
+                                </p:row>
 
                                 <!--Описание-->
-                                <p:outputLabel for="cardDesc" value="#{cardMsg['card.desc']}" styleClass="label-small"/>
-                                <p:inputText id="cardDesc" value="#{classEdit.entities.card.desc}" styleClass="value-small" required="true"/>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel for="cardDesc" value="#{cardMsg['card.desc']}" styleClass="label-small"/>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText id="cardDesc" value="#{classEdit.entities.card.desc}" styleClass="value-small" required="true"/>
+                                    </p:column>
+                                </p:row>
                             </p:panelGrid>
                         </p:column>
                     </p:row>
